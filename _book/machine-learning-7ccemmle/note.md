@@ -1,3 +1,21 @@
+<html>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+	<div id="gitalk-container"></div>
+	<script>
+	var gitalk = new Gitalk({
+		"clientID": "Ov23li1TkQEYXFu51qLu",
+		"clientSecret": "0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5",
+		"repo": "Jingqing3948.github.io",
+		"owner": "Jingqing3948",
+		"admin": ["Jingqing3948"],
+		"id": location.pathname,      
+		"distractionFreeMode": false  
+	});
+	gitalk.render("gitalk-container");
+	</script>
+</html>
+
 
 ## Probability 概率论基础
 
@@ -297,21 +315,3 @@ inference 和 learning 的区别在于 p(x, t) 是否已知。
 ![image-20241012181732276](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png)
 
 ![image-20241013234152760](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410132341005.png)
-
-<html>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-	<div id="gitalk-container"></div>
-	<script>
-	var gitalk = new Gitalk({
-		"clientID": "Ov23li1TkQEYXFu51qLu",
-		"clientSecret": "0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5",
-		"repo": "Jingqing3948.github.io",
-		"owner": "Jingqing3948",
-		"admin": ["Jingqing3948"],
-		"id": location.pathname,      
-		"distractionFreeMode": false  
-	});
-	gitalk.render("gitalk-container");
-	</script>
-</html>
