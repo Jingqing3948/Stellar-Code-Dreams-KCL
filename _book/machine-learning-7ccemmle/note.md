@@ -1,22 +1,3 @@
-<html>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-	<div id="gitalk-container"></div>
-	<script>
-	var gitalk = new Gitalk({
-		"clientID": "Ov23li1TkQEYXFu51qLu",
-		"clientSecret": "0c4ca8b5adfcc2aedd741ba78ca96fcbf2c4f5b5",
-		"repo": "Jingqing3948.github.io",
-		"owner": "Jingqing3948",
-		"admin": ["Jingqing3948"],
-		"id": location.pathname,      
-		"distractionFreeMode": false  
-	});
-	gitalk.render("gitalk-container");
-	</script>
-</html>
-
-
 ## Probability 概率论基础
 
 ### Random Variables 随机变量
@@ -36,7 +17,6 @@ p(x)的范围肯定是0到1的，概率不可能大于1.rv x中的所有概率�
 - Binary/Bernoulli variable 二元随机变量：x中只有两个值，类似投硬币的正反。那么这两个值概率互补。比如投硬币正反概率各50%。
 
 - categorical/multinoulli variable 分类随机变量：有多个结果。
-
 
 <div align="center">
 
@@ -85,6 +65,7 @@ $$
 - 
 
 - 高斯随机变量 N(µ, σ^2^) 的期望，对于f(x)=x函数来说=µ，对于f(x)=x^2^函数来说=µ^2^+σ^2^.
+
 - 高斯随机变量的期望是线性的，aµ\_1+bµ\_2.
 
 ### Vector 向量
@@ -109,7 +90,7 @@ $\widetilde{x}$：x的归一化，相当于一个和x方向相同但是长度=1�
 
 ### matrix 矩阵
 
-![image-20240930132654242](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301326346.png)
+![image-20240930132654242](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233177.png)
 
 **diagonal matrix 对角矩阵**：只有对角线上的值非零（a_ii）
 
@@ -221,11 +202,11 @@ $$
 
 什么情况下预测一定和真实值相等或者差1呢？只有0和1两种结果的伯努利随机向量情况就是。比如天气预测问题：
 
-![image-20241006235908950](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410062359101.png)
+![image-20241006235908950](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233082.png)
 
 如何评估硬推理的整体性能呢？一般用损失函数的平均值 population loss 计算。
 
-![image-20241007000224593](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070002656.png)
+![image-20241007000224593](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142205425.png)
 
 比如下题，预测器是令t永远=1，求 population loss。只需要计算算错部分的概率即可。
 
@@ -243,11 +224,11 @@ $$
 
 对数损失的惩罚更高：
 
-![image-20241007014247176](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070142271.png)
+![image-20241007014247176](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233961.png)
 
 而 population 对数损失的计算公式如下（按x求期望）：
 
-![image-20241007014320347](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070143416.png)
+![image-20241007014320347](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142205452.png)
 
 [对数损失（Log Loss）详解（code） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/659617924)
 
@@ -304,14 +285,105 @@ inference 和 learning 的区别在于 p(x, t) 是否已知。
 
 而 ERM 模型偏向真实的方法就是让损失尽可能小，这样训练结果也更偏向准确。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121435595.png" alt="image-20241012143514514" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142205423.png" alt="image-20241012143514514" style="zoom:50%;" />s
 
 例题：
 
-![image-20241012181643970](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121816117.png)
+![image-20241012181643970](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233170.png)
 
 向量中两个元素的意思代表：[x=0时t预测为多少，x=1时t预测为多少]，loss就是x值不变，t值预测错的概率。
 
 ![image-20241012181732276](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png)
 
 ![image-20241013234152760](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410132341005.png)
+
+### 两种模型的选择
+
+例题：
+
+![image-20241014131224176](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141312358.png)
+
+当M，多项式的最高项=1时，两种预测器拟合出的预测结果分别如图：
+
+![image-20241014131359896](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233239.png)
+
+这种情况下，ERM **underfits** the data 欠拟合数据：
+
+- 模型不够复杂，the model is not rich enough
+- estimation error 很小，ERM 和 population-optimal 的预测结果很像
+- 但是 bias 很大，因为用错公式了，population -optimal 一次方的函数怎么样也不可能和原数据很接近。
+- training loss 和 population loss 都很大。
+
+如果M=9：
+
+![image-20241014131846579](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141318744.png)
+
+这种情况下，ERM **overfits** the data 过拟合数据：
+
+- 模型太复杂了，为了匹配所有训练数据，训练数据外的数据不够精确。
+- 这是因为训练模型重点在于记住训练的数据集，而不是总结出没见过的数据的规律。
+- estimation error 很大，ERM 和 population -optimal 差距很大；
+- bias 很小，population -optimal 预测器和真正的数据规律很像。
+- 当训练数据够多时，training 和 population -optimal 之间的差距会越来越小，training 会越来越准确。
+
+M=3 时，模型预测如图，可以看出在欠拟合和过拟合中间的M值会比较贴近正确预测结果。：
+
+![image-20241014132520199](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141325430.png)
+
+但是我们如何判断模型是否过拟合？我们不一定知道正确的模型公式。
+
+### Validation 验证
+
+我们可以拿出一部分已知数据作为验证集 validation，用训练集训练，验证集再计算损失。
+
+![image-20241014133239570](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141332711.png)
+
+- 损失函数应该会小于真实值，因为 ERM 是基于整个训练集训练的。
+
+- 偏差问题：大数定理不再有效，因为大数定理是“训练集数量越多，整个训练集的损失越小”，而验证集的损失和训练集是分开的。所以验证集的损失是整体损失的有偏估计 biased estimate。
+
+比如我们可以利用验证选择更合适的模型：
+
+![image-20241014135027400](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141350628.png)
+
+如何选择验证集？
+
+### K-Fold Cross-Validation
+
+首先将模型划分为K个类。从每个类中选取一个值作为验证集。
+
+![image-20241014170717690](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141707768.png)
+
+例题：如下
+
+![image-20241014171317611](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141713672.png)
+
+如果是总体最优预测模型：很简单，把所有数据都记录下来，并且如果只涉及到这四个数据，损失=0.
+
+![image-20241014171717926](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141717057.png)
+
+现在假设我们先选择两个数据作为训练数据。假设我们选择了x=2 x=3. 那就完蛋了，我们得到的结果是t(x)=2，不受x的影响。
+
+ ˆ t(x|θ) = θ0 + θ1x. θ0=2，θ1=0.
+
+那么总体损失就是(2^2^+1^2^+0+0)/4=5/4，过拟合。
+
+### Bias vs Estimation Error
+
+如何权衡偏差和估计错误？
+
+![image-20241014201907778](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142019894.png)
+
+第一部分：最优预测的损失。最优预测也可能会有损失的。当然，最优预测我们也很难找到因为不知道概率。
+
+第二部分：bias。跟模型选择有关。
+
+第三部分：估计错误。跟训练数据集大小有关。
+
+在之前的例子中，我们知道：
+
+M增加，也就是模型 class 复杂度增加，bias 会下降，但 estimation error 可能会增加，过度拟合。
+
+N 增加，也就是训练数据集增加，bias 不变，estimation error 会减少。
+
+![image-20241014202757817](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233154.png)
