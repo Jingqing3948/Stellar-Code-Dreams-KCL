@@ -90,7 +90,7 @@ $\widetilde{x}$：x的归一化，相当于一个和x方向相同但是长度=1�
 
 ### matrix 矩阵
 
-![image-20240930132654242](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233177.png)
+![image-20240930132654242](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142205394.png)
 
 **diagonal matrix 对角矩阵**：只有对角线上的值非零（a_ii）
 
@@ -202,7 +202,7 @@ $$
 
 什么情况下预测一定和真实值相等或者差1呢？只有0和1两种结果的伯努利随机向量情况就是。比如天气预测问题：
 
-![image-20241006235908950](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233082.png)
+![image-20241006235908950](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410062359101.png)
 
 如何评估硬推理的整体性能呢？一般用损失函数的平均值 population loss 计算。
 
@@ -224,7 +224,7 @@ $$
 
 对数损失的惩罚更高：
 
-![image-20241007014247176](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233961.png)
+![image-20241007014247176](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070142271.png)
 
 而 population 对数损失的计算公式如下（按x求期望）：
 
@@ -289,7 +289,7 @@ inference 和 learning 的区别在于 p(x, t) 是否已知。
 
 例题：
 
-![image-20241012181643970](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233170.png)
+![image-20241012181643970](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121816117.png)
 
 向量中两个元素的意思代表：[x=0时t预测为多少，x=1时t预测为多少]，loss就是x值不变，t值预测错的概率。
 
@@ -305,7 +305,7 @@ inference 和 learning 的区别在于 p(x, t) 是否已知。
 
 当M，多项式的最高项=1时，两种预测器拟合出的预测结果分别如图：
 
-![image-20241014131359896](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233239.png)
+![image-20241014131359896](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141314110.png)
 
 这种情况下，ERM **underfits** the data 欠拟合数据：
 
@@ -386,4 +386,4 @@ M增加，也就是模型 class 复杂度增加，bias 会下降，但 estimatio
 
 N 增加，也就是训练数据集增加，bias 不变，estimation error 会减少。
 
-![image-20241014202757817](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142233154.png)
+![image-20241014202757817](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142027925.png)

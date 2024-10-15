@@ -16,7 +16,7 @@ ADC将信号采样转为离散的数字信号供计算机处理，这门课程�
 
 模拟信号转换为数字信号的方式：
 $$
-x[n]={x_a[nT]},	-∞<n<+∞
+x[n]={x_a[nT]},	-\infty<n<+\infty
 $$
 简单来说就是以一定的周期进行采样嘛。周期是T，我们对原模拟函数x_a在 [0, T, 2T, 3T...]处取样得到y轴的数值，生成数字信号。
 
@@ -30,10 +30,10 @@ x[n]的函数形式表示这个函数是一个离散时间信号，x(n)的函数
 
 **单位样本序列**，又叫（离散时间）脉冲：
 $$
-δ[n]=
+\delta[n]=
 \begin{cases}
-0& \text{n!=0}\\
-1& \text{n=0}
+0 & \text{if } n \neq 0 \\
+1 & \text{if } n = 0
 \end{cases}
 $$
 这个序列很简单。图示如下：
@@ -42,7 +42,7 @@ $$
 
 这个序列的一个重要作用是：
 $$
-x[n]=\sum^{∞}_{k=-∞}x[k]δ[n-k]
+x[n]=\sum^{\infty}_{k=-\infty}x[k]\delta[n-k]
 $$
 对于任何序列，这个公式都适用。也就是说在每个采样点，我用δ[n]的1与这个采样点的x值相乘，得到的序列和原序列一样。也就相当于x[n]=x[n]*1嘛！
 
@@ -51,21 +51,21 @@ $$
 **单位阶跃序列**：
 $$
 u[n]=\begin{cases}
-1& \text{n>=0}\\
-0& \text{n<0}
+1& \text{if } n \geq 0\\
+0& \text{if } n \lt 0
 \end{cases}
 $$
 也就是说正半轴是u=1的直线，负半轴全是0.
 
 ![image-20240914230733299](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409142307365.png)
 
-单位阶跃序列和单位样本序列的关系：单位样本序列从-∞到当前采样点的累加，就等于当前采样点单位阶跃序列的值。
+单位阶跃序列和单位样本序列的关系：单位样本序列从-\infty到当前采样点的累加，就等于当前采样点单位阶跃序列的值。
 $$
-u[n]=\sum^{n}_{k=-∞}δ[k]
+u[n]=\sum^{n}_{k=-\infty}\delta[k]
 $$
 单位样本序列是单位阶跃序列的一阶后向差分。
 $$
-δ[n]=u[n]-u[n-1]
+\delta[n]=u[n]-u[n-1]
 $$
 **指数序列：**形如x[n]=Aα^n^。下图是0<α<1的形状：
 
@@ -81,8 +81,8 @@ $$
 
 那么，我们就可以假设A=|A|e^{jΦ}^，α=|α|e^{jω}^（实数和复数都可以这样表示，实数只不过是相位角=π的倍数罢了）：
 $$
-x[n]=Aα^n
-=|Aα^n|e^{j(Φ+nω)}=|A\alpha^n|[cos(n\omega+\phi)+jsin(n\omega+\phi)]
+x[n]=A\alpha ^n
+=|A\alpha ^n|e^{j(\Phi +n\omega )}=|A\alpha^n|[cos(n\omega+\phi)+jsin(n\omega+\phi)]
 $$
 包络，也就是振幅，也就是|Aα|这一块，如果α>1，则和α成正比。如果0<α<1，则成反比。
 
@@ -94,14 +94,14 @@ $$
 
 对于连续时间信号来说，这个函数一定是周期函数。但是对于离散时间信号来说，判断是否为周期函数的依据是：
 $$
-x[n]=x[n+N], N为整数周期
+x[n]=x[n+N], N\;is\;integer\;period
 $$
 我们把这个判别公式代入函数，挑简单的，只挑一个正弦函数，可以得到：
 $$
-\begin{align}
-Acos(ωn+Φ)&=Acos(ωn+Nω+Φ)\\
-Nω&=2πk，Nk均为整数&
-\end{align}
+\begin{aligned}
+Acos(\omega n+\Phi )&=Acos(\omega n+N\omega +\Phi )\\
+N\omega &=2\pi k,\,Nk\;are\;integers
+\end{aligned}
 $$
 
 只有当上式满足的时候，该正弦离散时间序列才是周期序列。也就是说ω需要时π的一定倍数。
@@ -126,12 +126,12 @@ y[n]=x[n-n_d]
 $$
 **滑动平均系统**：第n个样本是由其前后的一定数量样本的平均值得到。假设这个范围是n往左M1个，往右M2个的范围，则公式为：
 $$
-\begin{align}
+\begin{aligned}
 y[n]&=\frac{1}{M_1+M_2+1}\sum^{M_2}_{k=-M_1}x[n-k]\\
 &=\frac{1}{M_1+M_2+1}\{x[n+M_1]+x[n+M_1-1]+...+x[n]\\
 \\
 &+x[n-1]+...+x[n-M_2]\}
-\end{align}
+\end{aligned}
 $$
 **无记忆系统**：y[n]只和n采样点的x有关，y[n]只和x[n]有关。
 
@@ -139,22 +139,22 @@ $$
 
 **线性系统**：满足如下公式就是线性系统。
 $$
-T\{a·x_1[n]+b·x_2[n]\}=a·T\{x_1[n]\}+b·T\{x_2[n]\}=a·y_1[n]+b·y_2[n]
+T\{a\cdot x_1[n]+b\cdot x_2[n]\}=a\cdot T\{x_1[n]\}+b\cdot T\{x_2[n]\}=a\cdot y_1[n]+b\cdot y_2[n]
 $$
 也就是说满足累加性和齐次性，累加性是T{x1[n]+x2[n]}=y1[n]+y2[n]，齐次性是T{ax1[n]}=ay1[n].
 
 **累加器系统**：系统在某个时刻的输出等于这个该时刻之前所有输入之和。
 $$
-y[n]=\sum^{n}_{k=-∞}x[k]
+y[n]=\sum^{n}_{k=-\infty}x[k]
 $$
 累加器系统是一个线性系统。（本来就是数据求和嘛，乘函数以及两个累加器相加得到的结果也是原数据的倍数累加而已）
 
 **时不变系统**：输入延时一定值，输出也延时同样的值，则为时不变系统。判别公式为：
 $$
-\begin{align}
-若x_1[n]&=x[n-n_0]\\
+\begin{aligned}
+if\;x_1[n]&=x[n-n_0]\\
 y_1[n]=y[n-n_0]&=T\{x_1[n]\}=T\{x[n-n_0]\}
-\end{align}
+\end{aligned}
 $$
 **压缩器系统**：从样本中跳过M-1个数据选一个作为输出。
 $$
@@ -162,10 +162,10 @@ y[n]=x[Mn]
 $$
 这个系统不是是不变的。我们代入公式试一下：
 $$
-\begin{align}
+\begin{aligned}
 &y_1[n]=x_1[Mn]=x[Mn-n_0]\\
 &T\{x[n-n_0]\}=x[Mn-Mn_0]
-\end{align}
+\end{aligned}
 $$
 等式不成立。
 
@@ -179,8 +179,10 @@ $$
 
 **稳定系统：**对于有界的输入，必定会产生有界的输出。
 $$
-|x[n]|<=B_x<∞\\
-|y[n]|<=B_y<∞
+\begin{aligned}
+|x[n]|\leq B_x\lt \infty\\
+|y[n]|\leq B_y\lt \infty
+\end{aligned}
 $$
 比如y[n]=x[n]^2^，如果我们设定|x[n]|<=Bx，那么y[n]一定<=By=Bx^2^可知这个系统稳定。
 
@@ -194,12 +196,14 @@ $$
 
 单位冲激信号的系统输出我们设定为h[n]。
 $$
-\begin{align}
-x[n]&=\sum^{+∞}_{k=-∞}x[k]δ[n-k]\\
-y[n]&=T\{x[n]\}=T\{{\sum^{+∞}_{k=-∞}x[k]δ[n-k]}\}\\
-&=\sum^{+∞}_{k=-∞}x[k]T\{δ[n-k]\}\\
-&=\sum^{+∞}_{k=-∞}x[k]h[n-k]
-\end{align}
+
+\begin{aligned}
+x[n] &= \sum^{+\infty}_{k=-\infty} x[k] \delta[n-k] \\
+y[n] &= T\left(x[n]\right) = T\left(\sum^{+\infty}_{k=-\infty} x[k] \delta[n-k]\right) \\
+     &= \sum^{+\infty}_{k=-\infty} x[k] T\left(\delta[n-k]\right) \\
+     &= \sum^{+\infty}_{k=-\infty} x[k] h[n-k]
+\end{aligned}
+
 $$
 第二行到第三行的转变是线性系统的特性。
 
@@ -213,7 +217,7 @@ $$
 
 对于时不变性质，可以得出：
 $$
-y[n-n_0]=\sum^{+∞}_{k=-∞}x[k]h[n-n_0-k]
+y[n-n_0]=\sum^{+\infty}_{k=-\infty}x[k]h[n-n_0-k]
 $$
 简化写法：
 $$
@@ -256,11 +260,11 @@ $$
 
 离散信号的时域到频域转换公式（傅里叶变换公式）：
 $$
-X(e^{j\omega})=\sum^{∞}_{n=-∞}x(n)e^{-j\omega n}
+X(e^{j\omega})=\sum^{\infty}_{n=-\infty}x(n)e^{-j\omega n}
 $$
 
 $$
-y(n)=H(e^{j\omega})e^{j\omega n}, H(e^{j\omega})=\sum^{∞}_{n=-∞}h(n)e^{-j\omega n}
+y(n)=H(e^{j\omega})e^{j\omega n}, H(e^{j\omega})=\sum^{\infty}_{n=-\infty}h(n)e^{-j\omega n}
 $$
 
 H(e^jω^) 被称为频率响应。它是一个复数函数，以2π为周期。
