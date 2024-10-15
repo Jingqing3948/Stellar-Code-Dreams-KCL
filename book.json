@@ -1,12 +1,5 @@
 {
   "plugins": [
-    "katex",
-    "valine"
-  ],
-  "pluginsConfig": {
-      "valine": {
-          "appId": "OWtn71sMOtqrfpazCT6PO2P4-MdYXbMMI",
-          "appKey": "3B2xnJaZpkOicURLnpGWhAL1"
-      }
-  }
+    "katex"
+  ]
 }
