@@ -198,14 +198,13 @@ $$
 
 单位冲激信号的系统输出我们设定为h[n]。
 $$
-
 \begin{aligned}
 x[n] &= \sum^{+\infty}_{k=-\infty} x[k] \delta[n-k] \\
 y[n] &= T\left(x[n]\right) = T\left(\sum^{+\infty}_{k=-\infty} x[k] \delta[n-k]\right) \\
      &= \sum^{+\infty}_{k=-\infty} x[k] T\left(\delta[n-k]\right) \\
      &= \sum^{+\infty}_{k=-\infty} x[k] h[n-k]
 \end{aligned}
-
+
 $$
 第二行到第三行的转变是线性系统的特性。
 
@@ -356,3 +355,7 @@ $$
 5. nx[n] ←→ -z (dX(z)/dz)，ROC 不变。
 6. x[n]=lim{z→∞}X(z)，ROC 不变。
 7. x[n]*h[n] ←→ H(z)X(z)，ROC 是两者交集。
+
+### 常用z变换对
+
+![image-20241017232423031](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410172324191.png)
