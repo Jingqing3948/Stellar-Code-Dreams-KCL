@@ -94,13 +94,15 @@ Readiness Level 是衡量项目的指标之一。
 | Matrix Organisation 矩阵组织                     | 结合两者，在不同项目间共享人力物资等资源                     | 有效利用资源，平衡目标             | 可能权责不清，沟通不便；决策效率降低                     |
 | Collaborative Projects Organisation 合作项目组织 | 项目成员分布在不同地点甚至国家                               | 融会贯通，促进学习创新，扩展视野   | 沟通交流可能存在问题；知识产权界限                       |
 
-## Stakeholders 股东
+## 项目人员组成
+
+### Stakeholders 股东
 
 股东可以影响项目 having potential influence on the project
 
 但是只有内部股东需要担责 Only Internal stakeholders are responsible/accountable  towards the project.
 
-### 两种重要的股东
+**两种重要的股东**：
 
 - 赞助者 sponsors / customers: 拥有项目，能管理项目，能提供资源给项目（比如资金，技术）。**top level management**
 
@@ -114,7 +116,7 @@ Readiness Level 是衡量项目的指标之一。
 
 methodology（制定需求）-> capture requirements（实现需求）-> consolodate requirements（评估结果）
 
-### capture requirements
+#### capture requirements 实现股东需求
 
 Validation: Checks the proposed concept/solution  stakeholders’ requirements  **against the  and needs** 确保股东需求能实现
 
@@ -122,9 +124,9 @@ Verification：Check the implemented solution (prototype/service) **meet  design
 
 Performance:  **meet certain  performance (KPI) characteristics** 评估结果
 
-### Categorisation of Stakeholders and Engagement
+#### Categorisation of Stakeholders and Engagement 股东分类
 
-然后需要对**股东**进行优先级排序，判断谁说的话更有分量。
+然后需要对**股东**进行优先级排序，判断谁说的话更有分量。主要有两种分类方式：
 
 Stakeholder Power-Interest Matrix: 根据功能和股东兴趣两个维度制定优先级。
 
@@ -134,21 +136,15 @@ Salience Model:  power, legitimacy, urgency 三个维度。（权力，比如我
 
 ![image-20241011141649633](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111416805.png)
 
-Dormant stakeholders 休眠股东: no need for major communication，给钱就完事了，少交流。
+- Dormant stakeholders 休眠股东: no need for major communication，给钱就完事了，少交流。
+- Discretionary stakeholders 可自由支配的股东：regular project updates . 也不需要过多交流，给他们项目更新进度就行。
+- Demanding stakeholders 需求股东：Only keep them informed，他们比较急。
+- Dominant stakeholders主要股东：consider their communication and their involvement **needs at all times** 
+- Dangerous stakeholders 危险股东：有钱有权，Must meet their needs.
+- Dependent stakeholders 相关股东：Keep them informed when I need their resources
+- Definitive stakeholders 明确股东：Always keep them informed, satisfied and involved。
 
-Discretionary stakeholders 可自由支配的股东：regular project updates . 也不需要过多交流，给他们项目更新进度就行。
-
-Demanding stakeholders 需求股东：Only keep them informed，他们比较急。
-
-Dominant stakeholders主要股东：consider their communication and their involvement **needs at all times** 
-
-Dangerous stakeholders 危险股东：有钱有权，Must meet their needs.
-
-Dependent stakeholders 相关股东：Keep them informed when I need their resources
-
-Definitive stakeholders 明确股东：Always keep them informed, satisfied and involved。
-
-### Monitoring
+#### Monitoring 评估股东
 
 股东部分我们就先不讲怎么实现项目了，直接讲到如何监控评估股东：
 
@@ -156,15 +152,15 @@ Definitive stakeholders 明确股东：Always keep them informed, satisfied and 
 
 **Communicate with key stakeholders to  discover and manage their expectations upfront and during the project.**
 
-## PROJECT TEAMS 项目团队
+### Project Teams 项目团队
 
 ![image-20241011144423888](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111444012.png)
 
-核心执行团队： conducting the works on a continuous basis, and are required for decision making 持续工作，以及做决定。
+核心执行团队： conducting the works on a continuous basis, and are required for decision making 负责持续工作，以及下决定。
 
-项目团队：贡献自己的部分，比如技术，人力。
+项目团队：负责贡献自己的部分，比如技术，人力。
 
-项目支持团队：支持核心团队。
+项目支持团队：负责支持核心团队。
 
 Characteristics of good team members:
 
@@ -174,8 +170,63 @@ Characteristics of good team members:
 - Should be robust 够强壮？？
 - Should have a strong result/goal orientation 目标性强
 
-##  BID / PROJECT MANAGER
+###  Bid / Project Manager 投标经理 / 项目经理
 
 Bid Manger：做计划，拉人组建团队， 筹备资源，在项目执行中确保足够的细节等等。
 
 Project Manager：执行，监控，控制（可能还会改团队人员或者计划），报告（和 top management, 各个功能部门，other stakeholders）等等。
+
+## Managing Bid & Proposal 管理投标提案
+
+主要目的是创建优的投标提案，满足公司和客户需求。
+
+### Prospect Phase 勘探阶段
+
+调研现有市场数据进行分析。（如竞品分析）
+
+![image-20241018132641835](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181326926.png)
+
+### Project Evaluation & Selection 项目评估选择
+
+因为不同项目之间要竞争资源，所以不可能所有项目都做，要选择项目进行投标。
+
+如何评估哪些项目适合选？
+
+- 是否符合公司的目标
+- 是否值得做，利益大于投入
+- 是否是现有项目中最好的最值得做的
+
+**Capital Budgeting** 资本预算法：estimating the financial viability of a capital investment over the life of  the investment. 评估投资周期内金融可行性。包括如下的一些方法：
+
+数字计算类方法：
+
+- **Payback Period Method 回收期法**: Length of time (years) required for a project to repay its initial fixed investment 项目偿还投资金需要花多久。
+- **Accounting Rate of Return 会计收益率法**: Uses accounting profits rather than cash flows expected from a project as a percentage of the capital invested 利润占投资的百分比
+- **Discounted Cash Flow (DCF) techniques 折现回收期法**: Calculates value of returns that occur over a long period rather than immediately after completion 计算折现后的现金流量收回投资金所需时间，考虑时间成本。
+
+非数字类方法，根据对项目的兴趣以及项目的难度评估：
+
+- **The Sacred Cow 神圣的奶牛？**: Project suggested by a senior and influential person 老板说选啥项目我就选啥
+- **The Operating/Competitive Necessity Model 运营/竞争必要性模型**: Project is necessary for continued operation of the company or for maintaining a competitive  position. 项目对公司的持续运营或者确保公司的竞争力的重要性
+- **The Comparative Benefit Model 比较效益模型**: A selection committee arranges projects in a ranked order and the projects will be selected 比较项目优先级。
+
+接下来，要进行 Review 环节。有外部客户的 Review 如下：
+
+- B/P 负责人先建立一个 B&P Data Repository 投标数据库。
+- 考虑项目可行性和收益 feasible & benefits
+- 根据外部客户需求（如果涉及到外部客户的话）制定解决方案
+- 再重新考虑一下是否要投标
+
+这就引入了评估项目的优劣势、机会与威胁的重要方法：SWOT
+
+![image-20241018135743001](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181357066.png)
+
+以及分析政治、经济、社会、技术、环境、法律等外部因素评估对项目的影响：PESTEL。
+
+Political, Economic, Social, Technological,  Environmental and Legal
+
+![image-20241018140127589](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181401687.png)
+
+### Prepare B&P 
+
+评估完成后就开始准备提案了。

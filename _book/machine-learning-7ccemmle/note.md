@@ -238,42 +238,54 @@ $$
 
 ## Supervised Learning 监督学习
 
+推理和学习的主要区别在于 p(x, t) 是否已知。下面的天气例题说明了这一点。
+
 模型不可靠或者太复杂的时候，如果知道输入数据和期望输出我们可以用监督学习。
+
+监督学习的步骤简单来说分为五步：
+
+1. Inductive bias selection 归纳偏置。首先我们假设一下目标模型是什么样的，比如：一次函数？二次函数？做了这个假设之后再代入训练（比如t=ax，代入训练数据后求出a）。当然，我们的假设可能会有偏差，毕竟不一定所有问题都能找到完全合适的问题解决，这个偏差就叫 bias。
+2. Training 训练。下面会讲到，我们把已知的数据分为训练集和测试集，训练集用于训练我们的模型，测试集用于检验模型效果不用于训练。
+3. Validation 验证，利用训练集数据计算 loss 损失判断模型的合理性，比如二次函数用一次函数的模型，偏差就会很大。
+4. Revise inductive bias 可能考虑是否修改归纳偏置模型。
+5. test 测试集测试。
 
 监督学习解决的问题主要分为：
 
 - regression problem 回归问题，连续
 - classification problem 分类问题，离散
 
-*memoralizing 是记忆，记住x,t的键值对。learning是学习，找规律。*
+*memoralizing 是记忆，记住训练数据中的x,t的键值对。learning是学习，找规律。*
 
-no free lunch theorem: 没有一种通用的学习算法可以在各种任务中都有很好的表现。我们需要对数据进行先验假设。这个假设叫做 inductive bias 归纳偏见，因为我们会在归纳过程中再做修改。
+no free lunch theorem 没有免费的午餐定理: **没有一种通用的学习算法可以在各种任务中都有很好的表现**。我们需要对数据进行先验假设 inductive bias ，在归纳过程中再做修改。最终得到一个预测器 predictor，连续问题是软预测器 soft，离散问题是硬预测器 hard。
 
-比如下面这张图，我们觉得两条横线不同长度，就是因为 inductive bias：
+比如下面这张图，我们觉得两条横线不同长度，就是因为我们大脑根据经验觉得在参考线的辅助下两条线不一样长。这个过程有点类似于计算机的归纳偏置。
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111628240.png" alt="image-20241011162802012" style="zoom: 25%;" />
 
-![image-20241011163108736](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111631927.png)
 
-inference 和 learning 的区别在于 p(x, t) 是否已知。
 
 ### Population-optimal within-class 预测模型
 
-比如下题，下雨=0，晴天=1，x：今天天气，t：明天天气
+例题：下雨=0，晴天=1，x：今天天气，t：明天天气。
 
 ![image-20241011163518385](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111635618.png)
 
-如果我们不知道概率，但是有1000次今天和明天天气的训练数据，我们可以输入系统并进行训练（把这1k次数据作为概率）。
+如果我们不知道概率，但是有1000次今天和明天天气的训练数据，我们可以输入系统并进行训练（把这1k次数据作为概率）。选择概率最大的结果。
 
 ### ERM 模型
 
 先设立好 inductive bias 后，我们需要选一个预测器进行训练直到一定数量的结果预测正确。比如多项式预测器：
+$$
+\begin{aligned}
+\hat{t}(x|\theta)&=\theta_0+\theta_1 x+\theta_2 x^2+...+\theta_Mx^M=\theta^Tu(x)\\
+\theta\;vecto&r=[\theta_0, \theta_1, ... \theta_M]\\
+u(x)&=[1, x, x^2, ... x^M]^T
+\end{aligned}
+$$
+根据魏尔斯特拉斯近似定理 Weierstrass approximation theorem：任何连续函数，随着M的增加，精准度都会逐渐增大。（当然预测器复杂度也增加了，所以并不能只一味增加了事，计算难度也会大幅增加的）
 
-![image-20241011164938550](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111649776.png)
-
-根据魏尔斯特拉斯近似定理 Weierstrass approximation theorem：任何连续函数，随着M的增加，精准度都会逐渐增大。（当然预测器复杂度也增加了）
-
-同样使用loss记录偏差：
+记录偏差的方式：
 
 ![image-20241012140021710](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121400861.png)
 
@@ -285,13 +297,13 @@ inference 和 learning 的区别在于 p(x, t) 是否已知。
 
 而 ERM 模型偏向真实的方法就是让损失尽可能小，这样训练结果也更偏向准确。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142205423.png" alt="image-20241012143514514" style="zoom:50%;" />s
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142205423.png" alt="image-20241012143514514" style="zoom:50%;" />
 
 例题：
 
 ![image-20241012181643970](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121816117.png)
 
-向量中两个元素的意思代表：[x=0时t预测为多少，x=1时t预测为多少]，loss就是x值不变，t值预测错的概率。
+loss就是x值不变，t值预测错的概率。
 
 ![image-20241012181732276](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png)
 
@@ -387,3 +399,41 @@ M增加，也就是模型 class 复杂度增加，bias 会下降，但 estimatio
 N 增加，也就是训练数据集增加，bias 不变，estimation error 会减少。
 
 ![image-20241014202757817](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142027925.png)
+
+### 训练机制
+
+不同模型如何避免过拟合和欠拟合的问题？
+
+经典机器学习：选择合适的模型容量，直接避免这两类问题。
+
+深度学习：explicit / implicit regularization 进行调整（可能因为一些原因不能选到最合适的模型容量？），或增加模型大小
+
+LLM：增加模型大小或数据量
+
+### Regularization
+
+一种让 ERM 模型变得更加泛化的方法。
+
+我们知道θ的参数过多会导致 overfitting，那么正交化期望：降低θ的权重使得过拟合问题不那么明显。
+
+![image-20241018001547234](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410180015332.png)
+
+括号内的部分是正交训练损失，Regularized training loss.
+
+R(θ)部分相当于只求出 θ 的长度平方. lamda 是一个参数，尽可能的在减小训练损失和准确度之间权衡。
+
+### Probabilistic Models 概率模型
+
+概率模型的训练采用软预测，因为其中的概率不确定性。
+
+事实上很多确定性模型也可以用概率模型的特例来看待，也同样可以应用其公式。
+
+![image-20241018004057324](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410180040447.png)
+
+此模型的期望值=硬预测器和β^-1^。这样可以模拟数据生成过程中的不确定性。
+
+损失：仍然是求 log，−logp(t|x,θ)
+
+population log-loss：求损失的期望。
+
+Maximum Likelihood Learning 最大似然学习的期望结果就是找到θ序列使得 population loss 最小。
