@@ -526,13 +526,13 @@ $$
 
 二阶导=0：在该点处局部线性。>0：说明是“U”形状。<0：说明是“倒U”形状。
 
-如果二阶导一直>=0，说明函数是一个类似二次函数那样增长率逐渐增加的样子，在这种情况下一阶导=0的点可以判断一定是极小值点。
+如果二阶导一直>=0，那么 g(θ) 的增长率（一阶导）就是一直增加或不变的（比如二次函数），那么我们可以称原函数 g 为凸函数 convex，并且 stationary point 一定是最小值点。
 
 ![image-20241023063138746](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410230631921.png)
 
 θ向量是从1到D维的所有θ系数，而∇g(θ)是所有θ的导数的向量。
 
-首先如果一个点是极值点 stationary point，这个点的一阶导一定=0，这是充分条件 一阶优化条件 first-order optimality condition。
+首先如果一个点是极值点 stationary point，这个点的一阶导一定=0，这是充分条件：一阶优化条件 first-order optimality condition。
 
 多元函数的曲率由下公式定义 Hessian：
 
@@ -542,10 +542,137 @@ $$
 
 ![image-20241023183135607](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410231831727.png)
 
-如果这个值全部>=0，那么我们可以称原函数 g 为凸函数 convex，并且 stationary point 一定是最小值点。
+其中的值全部=0说明是凸函数。
 
-### 一阶导优化 first-order optimization
+### Gradient descent 梯度下降优化
 
-使用导数对训练进行优化。比如一阶导优化，首先设定 θ1的初始值。然后：
+是一种局部优化方法 Local optimization。
 
-![image-20241023184642762](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410231846882.png)
+简单来说，每次迭代的时候沿损失梯度下降最快的方向走一定的步长，让下次迭代的θ序列损失更小。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270009617.png" alt="[神经网络基础理论与简单实践 | korilin's blog](https://korilin.com/posts/basic-theory-and-simple-practice-of-neural-network/image_21.png)" style="zoom:67%;" />
+
+公式如下，注意这里的θ不是指多项式中的每一个参数θ，而是每次迭代产生的一组θ。初始化第一组 θ 后，后面的每组 θ 都迭代计算。γ是学习率，步长，决定每次迭代要迈多大的步子。
+$$
+\theta^{(i+1)}=\theta^{(i)}-\gamma\nabla g(\theta^{(i)})
+$$
+
+
+如果 γ 设置的太大了，就容易迈过，再回头往反方向走。
+
+![[深度学习优化算法入门：一、梯度下降 - 知乎](https://zhuanlan.zhihu.com/p/45365719)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270016642.webp)
+
+### 梯度下降的性质
+
+- 如果 g(θ) 的二阶导全部<=L，可以说 g(θ) 是 L-smooth 的函数。
+
+$$
+\frac{d^2g(\theta)}{d\theta^2}\le L
+$$
+
+就是 g(θ) 一阶导的增长率不会过快，一定在 L 的范围内。
+
+![image-20241027002233224](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270022541.png)
+
+- 当学习率 γ<=1/L 时，有如下性质：
+  -  guaranteed reduction of the loss function: 
+
+$$
+g(\theta^{(i+1)})\le g(\theta^{(i)})-\frac{\gamma}{2}\|\nabla g(\theta^{(i)})\|^2
+$$
+
+​		也就是说下一次迭代的 θ 一定能让损失下降这么多。
+
+- - convergence to a stationary point：g(θ) 收敛，$\nabla g(\theta^{(i)})\rightarrow0$
+
+不过问题在于 L 不一定知道。我们可以通过验证，以及其他方法获取（后续章节介绍）。
+
+### Stochastic Gradient Descent 随机梯度下降
+
+计算整个数据集的梯度，对于大模型来说计算成本还是太高了。
+
+每次迭代我们不挑出所有的训练集样本点计算 g(θ) ，只随机选取部分。
+$$
+\theta^{(i+1)}\leftarrow \theta^{(i)}-\frac{\gamma^{(i)}}{S^{(i)}}\sum_{n \in S^{(i)}}\nabla g_n(\theta^{(i)})
+$$
+SGD 相比 GD 可能需要多走几步因为一开始的每一步不一定精准朝着 g(θ) 下降方向。但是计算成本还是下降了，因为 GD 每一步迈之前都要先考虑清楚所有可能的方向，再决定出让损失最小化的下一次迈步；如果数据量太大，这个功夫都够 SGD 走好多步了。
+
+所以选择合适的学习率也可以适当减少迭代次数。根据 Munro-Robbins conditions，SGD 的学习率设置：
+$$
+\sum^{\infty}_{i=1}\gamma^{(i)}=\infty\;and\;\sum^{\infty}_{i=1}(\gamma^{(i)})^2\lt\infty
+$$
+第一部分保证了学习率不会太小以至于原地踏步，永远无法到达 stationary point；第二部分确保学习率不会太大，SGD 的方差是逐渐减小直到消失的，保证逐渐逼近 stationary point 而不会在极点附近来回徘徊。
+
+比如 $\gamma^{(i)}=1/i^{\alpha},\alpha \in (0.5, 1]$ 这个学习率满足这一条件。
+
+多项式学习率常常用 $ \gamma ^{(i)} = \gamma ^{(0)}/(1 + \beta i)^\alpha, \beta>0,\gamma^{(0)}>0,\alpha \in (0.5,1]$
+
+除了对学习率范围设限，另一种避免到达不了极点的方法是 S 样本量每次迭代都会增加。这两种方式可以结合使用。
+
+### 计算梯度的方式
+
+Symbolic Differentiation：直接求导。
+
+![image-20241027153846442](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271538688.png)
+
+Numerical Differentiation：利用导数定义近似求解。把 g(θ) 看作一个黑盒，不关心其内部结构，只考虑输入输出。
+
+![image-20241027154010115](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271540283.png)
+
+![image-20241027154230734](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271542004.png)
+
+Automatic Differentiation：使用求导方法，但是只求出某个点的梯度值而不是先求出整体公式。
+
+三种方式的对比：
+
+![image-20241027161151946](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271611213.png)
+
+### Computational Graph 计算图
+
+便于计算梯度的图。
+
+比如：
+$$
+g(\theta)=\theta^2_1+\theta^2_2+\theta^2_3
+$$
+计算图表示为：
+
+![image-20241027162607416](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626631.png)
+
+当然也可能出现θ1θ2这样的形式：
+
+![image-20241027162639522](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626706.png)
+
+已知 θ 序列求 g(θ) 非常简单，把参数带进去就可以。forward pass
+
+backward pass 是反向，假设 g(θ)=1，反推回来。所有 f() 的部分要对相应的 θ 求导。
+
+例题： $g(\theta)=\theta^2_1+2\theta^2_2-\theta^2_3$ ，求 [1,-1,1] 点处的梯度。
+
+首先进行 forward pass，代入三点数值到计算图中求 g(θ) 在[1,-1,1] 处的数值，这一步的主要作用是确定计算图：
+
+![image-20241027164947168](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271649432.png)
+
+接着假设 g(θ)=1，倒推回来：
+
+![image-20241027165203236](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271652421.png)
+
+[2, -2, 2] 部分是对 forward pass 中三个函数求导再代入 [1,-1,1] 的值得到的。
+
+最终得到的 $\nabla g(\theta)=[2,-4,-2]^T$
+
+例题2：如下图，f1-f3都是 $(x_1+2x_2)^2$，f4=logx。
+
+求[1, -2, 1] 点处的梯度下降值。
+
+![image-20241027183553508](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271835911.png)
+
+首先 forward pass 求出 g(θ)，并且在此过程中把每个函数对于 x1 x2 的求导也算出来：
+
+![image-20241027183825574](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271838872.png)
+
+然后假设 g(θ)=1，反推回去得到 θ 的值。
+
+![image-20241027184236357](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271842537.png)
+
+$\nabla \theta=[-4/3, -8/3,0]^T$
