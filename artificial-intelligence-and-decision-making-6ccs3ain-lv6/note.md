@@ -270,3 +270,104 @@ Policy improvement：根据效用找到当前状态的最好策略，更新效�
 然后第一轮迭代，采用“横向移动”的策略，因为往中间列走可以带来更大的效用。而中间列不动。左右两列期望值变大了，那么左右两列最优策略更新.
 
 但是这样计算量可能会很大（n个线性方程，每个有3种策略的话，计算量可能达到n^3^）所以我们取得近似值即可。
+
+## Principle Component Analysis 主成分分析
+
+之前我们已经学习了机器学习的决策方法。这部分主要讲述“怎么合理运用这些决策方法”。
+
+比如计算机视觉通过图片识别数字：
+
+![image-20241101204707782](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012047233.png)
+
+每个图片都是128*128像素的，我们如果把这16384个像素点都作为特征/维度，计算量太大了。是否可以降低维度只选取部分对结果影响较大的特征？
+
+比如是否可以降低维度为2维特征？我们选取两个适当的特征，找到的规律如下图：
+
+![image-20241101205309695](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012053930.png)
+
+这时我们在输入一个测试图片，它在图中落到的位置如图：
+
+![image-20241101205341680](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012053761.png)
+
+很明显可以推测它是0那一类的。
+
+PCA 既方便数据存储，也降低了学习难度。
+
+比如：判断学生公寓是“标准公寓”还是“豪华公寓”，“公寓大小”的影响维度可能有“公寓面积”和“几室几厅”等影响因素；“公寓位置”维度可能包括“离超市距离”，“离学校距离”，“离地铁距离”……等。
+
+我们先选择“公寓面积”和“几室几厅”两个维度进行对比。绘制一张2维图并把所有数据点标注出来。
+
+![image-20241101210624336](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012106503.png)
+
+这个图非常明显，我们应当舍弃 x 轴的特征因为数据集都是4室的房间。降维到1维只保留“公寓面积”即可。
+
+当然一般情况都会更复杂：
+
+![image-20241101211007184](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012110254.png)
+
+对于这个图我们找到一条线，让所有点到这条线的距离最之和（最小二乘距离）：
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012110391.png" alt="image-20241101211043265" style="zoom:67%;" />
+
+这条线就是降维后的特征。
+
+### 特征向量
+
+如何实现降维？首先我们了解一些概念。比如原坐标轴写法如下：
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012235907.png" alt="image-20241101223535647" style="zoom:67%;" />
+
+其变形可以写作（两个列向量）：
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012235173.png" alt="image-20241101223559089" style="zoom:67%;" />
+
+这个就是从图1到图2的变形矩阵。对于原图1中的向量 (x,y) 乘以这个变形矩阵就是变形图中的向量。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012238308.png" alt="image-20241101223833215" style="zoom:67%;" />
+
+如果有一个向量乘这个矩阵后等于这个向量的一定倍数的向量，那么这个向量被称作 an eigenvector of the matrix M（M 矩阵的特征向量），倍数是 eigenvalue 特征值。
+$$
+M \cdot \boldsymbol v = \lambda \boldsymbol v
+$$
+
+### PCA 具体算法
+
+1. 首先我们有包括所有数据所有维度的矩阵（每一行是一个数据，每一列是同一个维度。n×d矩阵）：
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012313454.png" alt="image-20241101231315350" style="zoom:67%;" />
+
+2. 我们沿每个特征方向上求平均值，并且用原矩阵减去这个平均值把所有数据都调整到原点附近，这样更方便看出大致方向：
+
+$$
+B=\boldsymbol X - \boldsymbol{\overline{X}}
+$$
+
+大概效果如图：
+
+![image-20241101231536083](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012315159.png)
+
+3. 再计算协方差矩阵，协方差矩阵主要作用是反应特征之间的相关性（获得一个d×d矩阵）。
+
+$$
+\boldsymbol C=\frac{1}{n}\boldsymbol{B}^T \boldsymbol B
+$$
+
+4. 选取前k大的特征向量 v_1到 v_k. 这部分好像比较难，本课程不涵盖，一般 python 直接解决。
+5. 用特征向量组成一个 d×k 的矩阵。
+
+![image-20241101233337882](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012333956.png)
+
+6. 用 W 和 x 数据点得到在新的维度上的 y 数据点：
+
+$$
+\boldsymbol y_i=\boldsymbol W^T \cdot \boldsymbol x_i
+$$
+
+y 是 1×d 的向量。
+
+如何衡量特征向量的重要性？根据这k个新向量的方差比上原来的d个特征值（总方差）计算新的特征向量可以“解释”原来的特征向量的方差的占比。占比越大说明舍弃的部分占比方差越小，越没有意义，降维效果越好。
+$$
+\frac{\sum^r_{i=1}\lambda_i}{\sum^d_{i=1}\lambda_i}
+$$
+
+![image-20241101234233869](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012342979.png)

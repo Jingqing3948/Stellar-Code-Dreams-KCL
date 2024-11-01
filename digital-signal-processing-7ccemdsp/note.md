@@ -359,3 +359,96 @@ $$
 
 ![image-20241017232423031](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410172324191.png)
 
+## 连续时间信号取样
+
+这节课是叫离散信号处理没错，所以我们避免处理连续信号，可以把连续信号取样为离散信号处理。
+
+![image-20241027184733652](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271847897.png)
+
+效果上相当于乘了 δ 函数。
+$$
+x_s(t)=x_c(t)s(t),s(t)=\sum^\infty_{n=-\infty}\delta(t-nT)
+$$
+采样的频率表示：
+$$
+X_s(j\Omega)=X_C(j\Omega)*S(j\Omega)=\frac{1}{T}\sum^{\infty}_{k=-\infty}X_c(j(\Omega-k\Omega_s))
+$$
+
+如果采样频率过低，可能会导致对原信号的推测不准确，比如下图：
+
+![[什么是混叠? - 知乎](https://zhuanlan.zhihu.com/p/23923059)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410292020213.jpeg)
+
+这种现象叫做混叠 aliasing，主要就是采样频率不够大造成的。
+
+### 奈奎斯特采样定律
+
+信号的最大频率用 Ω_N 表示，如果频域满足如下两个条件：
+
+- 对于 $|\Omega|>\Omega_N$ ，$X_c(j\Omega)=0$ （也就是说 x_c(t) 是 bandlimited 的）
+- T 小到 $\Omega_s>2\Omega_N$ , 取样频率是原频率的2倍以上
+
+那么 $X_c(j(\Omega-k\Omega))$ 就不发生混叠，并且我们可以用一个 filter h_r(t) 和 x_s(t) 卷积重构的 x_c(t) （采样频率够高，可以从采样后的信号恢复原信号）. 过滤公式和过滤器的傅里叶变换如下：
+$$
+x_r(t)=\int^{\infty}_{-\infty}x_s(\xi)h_r(t-\xi)d\xi=\sum^{\infty}_{n=-\infty}x_c(nT)h_r(t-nT)\\
+H_r(j\Omega)=\begin{cases}
+T &  |\Omega|<\Omega_c \\
+0 & |\Omega|>\Omega_c
+\end{cases}
+$$
+其中Ω_c 是低通滤波器 H 的频率， $\Omega_N<\Omega_c<\Omega_s-\Omega_N$
+
+没有混叠发生时，有：
+$$
+X(e^{j\omega})=\frac{1}{T}\sum^{\infty}_{k=-\infty}X_c(j(\frac{\omega}{T}-\frac{2\pi k}{T}))
+$$
+这就是奈奎斯特采样定律，其中 $\Omega_s=2\Omega_N$ 的采样频率就是奈奎斯特采样率（Ωc=Ωs/2=π/T）。从图像上看的效果就是刚好每次采样的频域信号是相接的。
+
+下图可以清晰解释为什么采样频率过低会导致混叠，频率估计错误。上下两个图像的周期明显不同。
+
+信号的最大频率是 Ω_N，则频域图上超过±Ω\_N 部分应该都=0. 采样频率够大才可以确定这一点，采样频率不够大的话没法确定频域图上下界是 Ω\_N 因为没有摸到左右边界，就没法确定左右边界在哪了。
+
+![image-20241029200654475](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410292006792.png)
+
+### 带限信号的重建
+
+奈奎斯特定律只能保证采样的频率正确，但也不能保证可以无损恢复为原信号。如下图的恢复：
+
+![[《信号与系统》解读 第4章 连续信号的离散化：采样与采样定理、奈奎斯特准则、脉冲编码调制PCM_采样定理和奈奎斯特定理-CSDN博客](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410292026474.png)](https://i-blog.csdnimg.cn/blog_migrate/10232bcdec0367bca77a0c42fcb56804.png)
+
+如果设置合适的 h 函数，即理想低通滤波器就可以无损恢复原信号。
+
+截止频率设置为：$\Omega_C=\Omega_s/2$
+
+则有：
+$$
+h_r(t)=\frac{sin(\pi t/T)}{\pi t/T}\\
+x_r(t)=\sum^{\infty}_{n=-\infty}x[n]\frac{sin(\pi (t-nT)/T)}{\pi (t-nT)/T}
+$$
+![[没有幻灯片标题](https://realtimetech.ustc.edu.cn/_upload/article/files/5f/71/77450bde46de832d7f14ae714039/e16a2953-6949-4393-997d-8dede2a612d7.pdf)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410301417957.png)
+
+### 连续信号处理
+
+对于输入的连续信号，首先我们进行采样转换为离散信号，然后通过系统处理，最终再重建为连续信号。
+
+![image-20241030142506011](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410301425372.png)
+
+
+
+那么整个过程的公式就可以写作：
+$$
+Y(j\Omega)=H_r(j\Omega)H(e^{j\Omega T})X_c(j\Omega)
+$$
+第一个 H 是重建连续信号用的，上面我们已经讲过其公式就是在 $\pm \frac{\Omega_s}{2}$ 范围内都=T，超过这个范围都=0.
+
+第二个 H 是离散时间系统的频率响应。
+
+那么整个连续系统的频率响应可以写作：
+$$
+H_{eff}(j\Omega)=H(e^{j\Omega T}),|\Omega|<\frac{\pi}{T}
+$$
+*这里应该是要乘T的吧，省略了？*
+
+离散信号的连续时间处理：令：
+$$
+h[n]=Th_c(nT)
+$$
