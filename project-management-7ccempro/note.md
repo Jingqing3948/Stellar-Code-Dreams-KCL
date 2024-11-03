@@ -6,7 +6,7 @@ It is a piece of planned work completed over a period of time or an activity tha
 
 程序 Program：关联多个项目来达到大目标，可能涉及到不同领域的项目，比如造一个飞机，要审批，竞标，科研，生产等等。项目的结果可能更加注重成品，而程序的结果注重多个项目的效益（除了成品，还有花费的时间金钱等）。
 
-Project Structure, work package, task, activity 是逐步细化的概念。比如 project structure 是“后端开发”，work package是“设计后端数据库”，task是“设计数据库接口”，activity是“编写单元测试代码”。
+Project Structure, work package, task, activity 是逐步细化的概念。比如 project structure 是“后端开发”，work package 是“设计后端数据库”，task 是“设计数据库接口”，activity是“编写单元测试代码”。
 
 project和business operations的区别在于introduces business change.
 
@@ -176,19 +176,25 @@ Bid Manger：做计划，拉人组建团队， 筹备资源，在项目执行中
 
 Project Manager：执行，监控，控制（可能还会改团队人员或者计划），报告（和 top management, 各个功能部门，other stakeholders）等等。
 
-## Managing Bid & Proposal 管理投标提案
+## Managing Bid & Proposal 标书管理
 
 主要目的是创建优的投标提案，满足公司和客户需求。
 
-### Prospect Phase 勘探阶段
+标书管理阶段和项目管理阶段关联紧密，比如对项目的组织规划，风险管理，各个阶段的评审等。
 
-调研现有市场数据进行分析。（如竞品分析）
+整体结构图如下：
+
+![image-20241103131320088](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031313153.png)
+
+### Prospect Phase 前景阶段
+
+调研现有市场数据进行分析（如竞品分析），评估**是否值得为某个项目准备投标**。
 
 ![image-20241018132641835](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181326926.png)
 
 ### Project Evaluation & Selection 项目评估选择
 
-因为不同项目之间要竞争资源，所以不可能所有项目都做，要选择项目进行投标。
+可能有很多值得公司做的项目，但不同项目之间要竞争资源，所以不可能所有项目都做，要选择项目进行投标。
 
 如何评估哪些项目适合选？
 
@@ -196,7 +202,9 @@ Project Manager：执行，监控，控制（可能还会改团队人员或者�
 - 是否值得做，利益大于投入
 - 是否是现有项目中最好的最值得做的
 
-**Capital Budgeting** 资本预算法：estimating the financial viability of a capital investment over the life of  the investment. 评估投资周期内金融可行性。包括如下的一些方法：
+**Capital Budgeting** 资本预算法：estimating the financial viability of a capital investment over the life of  the investment. 评估投资周期内金融可行性。
+
+其他方法：
 
 数字计算类方法：
 
@@ -209,6 +217,8 @@ Project Manager：执行，监控，控制（可能还会改团队人员或者�
 - **The Sacred Cow 神圣的奶牛？**: Project suggested by a senior and influential person 老板说选啥项目我就选啥
 - **The Operating/Competitive Necessity Model 运营/竞争必要性模型**: Project is necessary for continued operation of the company or for maintaining a competitive  position. 项目对公司的持续运营或者确保公司的竞争力的重要性
 - **The Comparative Benefit Model 比较效益模型**: A selection committee arranges projects in a ranked order and the projects will be selected 比较项目优先级。
+
+#### Project Selection Review GR1
 
 接下来，要进行 Review 环节。有外部客户的 Review 如下：
 
@@ -227,6 +237,180 @@ Political, Economic, Social, Technological,  Environmental and Legal
 
 ![image-20241018140127589](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181401687.png)
 
-### Prepare B&P 
+### Prepare B&P 准备提案
 
-评估完成后就开始准备提案了。
+评估完成后就开始准备提案了。首先需要根据客户需求创建 project 并制定项目计划。
+
+#### Define project charter 定义项目章程
+
+主要作用是让大家尽早达成一致，别做着做着发现大家目标不同。
+
+- 项目定义 Project identification
+- 项目背景
+- 利益相关者 stakeholders
+- 项目描述
+- goals, objectives, constraints
+- 等等……
+
+##### Requirements & Requirements baseline 需求和需求基线
+
+**注意下面的部分会提到一些概念，ppt 中强调务必不能搞混。Requirements, Goals, Objectives, Deliverables**
+
+A requirement is a specific need or want defined in  unambiguous, abstract, clear, unique, consistent, atomic and verifiable terms and  identifies what is needed for stakeholder acceptance.
+
+需求有几大特点：
+
+- abstract：不包括具体的技术实现方法，就只是需求。
+- unambiguous：必须没有歧义，清晰描述需求。
+- Traceable：需求描述 requirement description，system requirement，solution 这三者之间有关联性。
+- Testable：必须有方法可以测试需求是否满足。
+
+需求基线：建立一个需求表格，对其中的需求分析是否保留，要采取什么样的措施解决这些需求。
+
+![image-20241103122003256](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031220378.png)
+
+##### Goals and Objectives 目标和具体目标
+
+Goal is  an overarching long-term clear aim. 项目的总体方向和预期成果，是一个长期、清晰、覆盖整个项目的目标。*比如：开发一个可用于自动驾驶车辆认证的模拟器。*
+
+Objectives are concrete measurable achievements to be made following a certain  number of steps. 为了实现目标而设立的具体行动步骤，需要在一定时间预算质量要求内完成。相比 Goals 是可以衡量的，所以采用**SMART标准**，即**具体（Specific）、可衡量（Measurable）、可实现（Achievable）、相关性（Relevant）和时间限制（Time-bound）**。*比如：构建一个可扩展的架构，实现自动化单域的服务级协议（SLA）谈判。*
+
+需求是项目必须满足的特定条件，用于判断项目是否成功。具体目标是为了实现项目总体目标制定的短期步骤，有助于项目逐步达成预期成果。比如需求规定系统响应时间必须小于1秒，那么具体目标可能会是“优化代码和数据库查询，在6个月内将系统响应时间减少到1秒以内”。*主要区别可能是具体目标有特定的步骤，时间金钱等限制？*
+
+##### Deliverable 可交付物
+
+ the outcome/result of a project’s task/activity. 在 execution phase 产生，交给股东衡量是否和 proposal phase 阶段的 objectives 相符。
+
+#### Define Project Structures 定义项目结构
+
+#####  Organisational Breakdown Structure 组织分解结构
+
+to Organize the people who will be working on the project 所有要给这个项目打工的人。下图是一个 OBS 的示例，细化到每个层次的人，以及他们要向谁汇报。
+
+![image-20241103125335269](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031253335.png)
+
+#####  Work Breakdown Structure 工作分解结构
+
+把整体大工作分解为许多小工作（并且包含交付 deliverables 部分）。
+
+![image-20241103125915339](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031259405.png)
+
+并且每个 WP（Work package，第一章的概念）都需要细致的描述：
+
+- SMART 目标
+- scope, requirements, descriptions, dependencies, inputs 前置条件
+- schedule 时间表
+- deliverables, milestones 产出
+- resources estimates 资源评估
+
+##### Responsibility Assignment Matrix (RAM)
+
+这部分有点像之前的股东分类。列出每个 WP 有谁参与，这些人的参与度。
+
+![image-20241103131021874](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031310967.png)
+
+#### Create Management Plans (PMP) 准备管理计划
+
+ defines how the project is executed,  monitored, and controlled.
+
+![image-20241103133651829](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031336900.png)
+
+#### Estimates - Develop Costs/Budgets 评估成本
+
+Identify, define and establish all cost elements to be consider in the Project Lifecycle
+
+为每个 WP 估算成本，最终加上整个项目的 factored risk impact 风险开销
+
+![image-20241103134133315](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031341374.png)
+
+cost 分为 direct / indirect
+
+直接开销比如人员，材料，设备等。
+
+间接开销比如租房费，保险费，同时用在多个项目的费用。
+
+评估主要分为如下步骤：
+
+- prepare estimating： Define/refine assumptions and quantifying the main parameters 估计量化主要参数；Choose the estimate techniques 选择合适的评估技术
+- Develop estimate：用选定的评估技术计算，分析 cost impact of Risks，分析 confidencee in the estimates，并降低不确定度，确定最终的 risk 和 cost。
+- aggregate duration 计算整个过程的资源花费并最终确定 estimate
+- review
+- monitor estimating process
+- record, report, manage
+
+#### Risks 风险
+
+A risk is an uncertain event, that, should it occur, would have an adverse effect  on the course of the project. 一旦发生会对项目造成不利影响。
+
+risk 主要分为：
+
+- Risk Identification 
+- Risk Characterisation and Prioritisation 
+- Risk Handling
+- Risk Monitoring
+
+#### Establish Resource Needs & Schedule
+
+Specify a baseline for task durations, deliverables/milestones, dependencies and  expected resources to be allocated.
+
+![image-20241103145329682](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031453759.png)
+
+#### Finalise Project Execution Baseline
+
+![image-20241103145602198](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031456267.png)
+
+#### Project Proposal
+
+Bid Manager 把各个提案部分**整合 integration** 起来变成一个用户文档。
+
+### Proposal Submission Review 提案审核与提交
+
+Bid Team 把最终的相关文档发给高层 Senior Management，等待其和  peer reviewers 的建议。确保 GR1 阶段决策基本都完成后进入下一阶段。
+
+#### Technical review of the proposal 技术审核
+
+Reviewer 应该采纳用户建议 Customer Review Board，并且假设自己对项目没有任何先验知识 proir knowledge 地考虑一系列问题：
+
+- 提案是否符合招标文件（RFP）中的要求和标准？
+- 提案内容是否完整？
+- 所提出的方法是否合理，即方法和逻辑是否清晰、可靠？
+- 所交付的成果是否物有所值？
+- 完成该工作的时间（小时）是否被评估为可行和现实的？
+- 所提出的方法是否详细说明以便于理解？
+- 提案是否能够交付所需的成果？
+
+reviewer 应当在一定期限内考虑这些问题的解决方法和项目的改进方案，再发送给 technical lead。
+
+#### Proposal Submission Review GR2
+
+完成风险审核和技术审核后进入 GR2。总结如下内容：
+
+![image-20241103153039506](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031530574.png)
+
+#### Proposal Hearing &  Negotiation Review GR3 听证会
+
+用户可能会提问以及协商，bid team 需要准备召开听证会来获取用户授权许可签合同。
+
+签合同需要的条件：
+
+- Define milestones/deliverables: 投标经理定义了项目里程碑和可交付产品
+- Compliance and export controls 符合出口管制需求规定
+- Declare background intellectual property: 后台知识产权用来保护公司
+- Manage Price and contract: 销售经理确定可以协商的价钱范围，别给我砍一半我再不挣钱就完蛋了
+- Establish the contractual terms of the commercial proposal：采购主管 capture leader 在 bid manager, financial controller 和 contract manager 投标经理，财务总监，合同经理的帮助下确定商业计划书的合同条款
+
+#### Handover – GR4 交接
+
+提案现在就当交完了，也和用户协商通过签合同了。接下来就不是 bid manager 主要负责的事情了，要交接给 project manager 开始干项目了，所以要把现有文件进行交接。
+
+bid team 需要做的有：
+
+- ensure smooth transition 在所有部门合力工作下尽量确保交接丝滑进行
+- update the bid data repository 协商后可能投标数据库会有改动，所以记得更新
+- present the project context and their bid knowledge to the projec manager 和项目经理讲讲项目背景和投标信息
+- provide the access to bid data repository to project manager 给项目经理访问投标数据库的权限
+- closing administrative activities 结束行政活动（文件和数据）
+- closing the spending authorisations 结清支出授权（投标的预算，剩下的要平账）
+- analysing lessons learnt and recording them 吸取教训
+- updating the commercial opportunity data 更新商业机会数据，后续投标有用（这个公司这次采纳了我们的xx项目投标，说不定下次也很有机会继续合作）
+- handover!
