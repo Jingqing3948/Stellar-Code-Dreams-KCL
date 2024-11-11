@@ -452,3 +452,32 @@ $$
 $$
 h[n]=Th_c(nT)
 $$
+
+### 降低采样率
+
+Sampling Rate Reduction，实现起来很简单，周期变成 MT，$x[n]=x[nM]$
+
+如果 x[n] 带宽小于 $\frac{\pi}{M}$，那么不会发生 information loss.
+
+如果 x[n] 带宽= $\frac{\pi}{M}$，那么会发生 aliasing.
+
+如果 x[n] 带宽大于 $\frac{\pi}{M}$，那么会发生 information loss. 可以应用低通滤波器降低频率到带宽为 $\frac{\pi}{M}$ 来降低损失。
+
+![image-20241105095556692](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411050955949.png)
+
+### 提高采样率
+
+和降低类似，$x[n]=x[\frac{n}{L}]$。一般周期用 $\frac{MT}{L}$ 表示，M 是降低采样率的系数，L 是提高采样率的系数。
+
+![image-20241105095431610](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411050954849.png)
+
+整体如图，为了降低信息损失所以先增加频率再减少：
+
+![image-20241105100633959](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411051006110.png)
+
+## LTI 变换分析
+
+### 线性时不变系统的性质
+
+- 根据 h[n] 是否是有穷的持续时间，可分为 FIR (Finite Impulse Response) 和 IIR 系统。
+- 

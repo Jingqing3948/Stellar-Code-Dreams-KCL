@@ -61,7 +61,7 @@ Readiness Level 是衡量项目的指标之一。
 
 - Customer Readiness Level：比如低成熟度，用户需要自己百度才能用明白对方的产品。高成熟度，产品非常好懂，易于操作。
 - Business Readiness Level：市场需求，是否可扩展到其他项目。
-- Technology Readiness Level：从简单的技术概念，到可交付的系统。
+- Technology Readiness Level TRL：从简单的技术概念，到可交付的系统。
 
 随着项目发展，成熟度会越来越高，比如项目前期可能会提出一些新技术概念，项目后期新概念经过多次迭代后已经成熟许多。
 

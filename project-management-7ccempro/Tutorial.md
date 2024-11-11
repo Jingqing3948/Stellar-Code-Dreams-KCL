@@ -1,6 +1,8 @@
 ## Tutorial 3
 
-### 1. Which of the following statement is true about a program?
+### 单选题
+
+**1. Which of the following statement is true about a program?**
 
 **A.** **Program is a group of related projects** **(Answer)**
 
@@ -12,7 +14,7 @@ D. Program is a collaborative project
 
 > 如题，Program 由很多相关联的 Projects 组成。
 
-### 2. Which from the following statement is NOT correct?
+**2. Which from the following statement is NOT correct?**
 
 A. Projects have well-defined objectives
 
@@ -24,7 +26,7 @@ C. The projects and programs are inter-related
 
 > Program 的最终目标并不只是单纯把 Project 的目标相加，而是一个整体的更远的目标。
 
-### 3. Which one of the following statements best describes a project?
+**3. Which one of the following statements best describes a project?**
 
 A. A project is a set of tools and techniques often used to deliver organisational tasks
 
@@ -36,7 +38,7 @@ D. A project is a time-bounded routine task with a planning phase
 
 > Project 的定义，有时间资源限制的情况下实现预期目标。
 
-### 4. Specify which of the following is a non-project?
+**4. Specify which of the following is a non-project?**
 
 A. Devising a novel patient heart monitoring system
 
@@ -48,7 +50,7 @@ C. Building a road to overcome city traffic
 
 > 生产“节能”水壶没有明确的目标。节能多少？
 
-### 5. What characteristic distinguishes a project from regular business operations?
+**5. What characteristic distinguishes a project from regular business operations?**
 
 A. Produces benefits
 
@@ -62,7 +64,7 @@ E. Incurs cost and efforts
 
 > Projects 重点在于“变化”。比如实现新的目标，性能优化等。
 
-### 6. The main parts of a project proposal (big picture discussed in the lecture 1) include:
+**6. The main parts of a project proposal (big picture discussed in the lecture 1) include:**
 
 A. Context, Concept and objectives
 
@@ -76,7 +78,7 @@ D. Dissemination and exploitation
 
 > 如题。
 
-### 7. Primary goal(s) of managing projects is/are:
+**7. Primary goal(s) of managing projects is/are:**
 
 A. Scope
 
@@ -90,7 +92,7 @@ D. A and B
 
 > 如题。
 
-### 8. A project is typically defined in terms of scope, time, cost and which other parameters?
+**8. A project is typically defined in terms of scope, time, cost and which other parameters?**
 
 A. Benefits and impacts
 
@@ -136,11 +138,17 @@ D. Controls
 
 **12.** When talking about TRLs, we are defining the maturity of technology, business and customer readiness level in accepting the technology. **False**
 
+> Technology Readiness Level 只包含技术的，CRL 和 BRL 才是另外两个。
+
 **13.** While it may appear a rather simple idea, the basic purpose for initiating a project is to accomplish some goals. **True**
 
 **14.**   ‘Technology’ is defined as specific information necessary for the ‘development’, ‘production’, of goods in a project. **False**
 
+> Specific information 是不对的，技术可能是知识工具技能手段不只是信息。
+
 **15.**   According to project life cycle concept, the greatest amount of activity occurs during the final stages of the project. **False**
+
+> 同第7判断题。
 
 **16.**   A project is considered a one-time new activity while it uses with the organisation's established processes/procedures. **True**
 
@@ -148,12 +156,18 @@ D. Controls
 
 **18.**   The amount of effort put into a project reaches a peak and remains there until completion of the project. **False**
 
+> Remain 不对，逐渐减少到0
+
 **19.**   B&P phases include prospect phase, prospect analysis, proposal preparation, and project transition. **True**
 
 **20.**   The prospect phase only includes Horizon scanning. **False**
 
+> Horizon scanning and technical watch.
+
 **21.**   A project differs from a program in terms of structure, effort, length, and benefits. **True**
 
 **22.**   SMART objectives are specific, measurable, achievable, realistic and time-bounded. **True**
+
+> 中国教材常用的 R 是 relevant，好像外国人用 realistic.
 
 **23.** For Quality Assurance Management companies follow ISO 9001. **True**
