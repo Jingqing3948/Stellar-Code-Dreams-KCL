@@ -429,3 +429,89 @@ $$
 所以就算有节点恶意插入假块，过一段时间也会被取代。这个节点如果想一直维持假块，就需要一直在自己的假块链基础上计算新的块并链接发送给其他节点，但是由于 POW 问题，计算负担对于该节点来说非常大。
 
 每个块10分钟左右就能产生（期望下），但是随之产生的比特币是逐渐减少的，2009年挖一个块有50个比特币，2020年左右630000个块才会产生6个比特币。而计算 POW 的过程其实很看运气，总体而言算力越大越可能更快地计算出结果。
+
+## Game Theory 游戏理论
+
+涉及多个 Agents 之间的交互，使得效用最大化。比如吃豆人游戏涉及到吃豆人和鬼两种 Agent，我们需要猜测鬼的行为并制定 solution strategy
+
+例：choose a side 游戏，两辆车各从两个方向中选一个方向走，下图是收益矩阵 payoff matrix：
+
+![image-20241126054816186](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260548354.png)
+
+可以看出 i 车走 up，j 车走 left 的时候或者正好相反的时候两者都有1的收益。
+
+(up, left) 代表 i 往上，j 往左的结果。
+
+对于某一个 Agent 的 payoff matrix 矩阵写法如下：
+
+![image-20241126055000279](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260550514.png)
+
+$$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
+
+### Strategies
+
+下面介绍几种效用策略。
+
+#### Dominant Strategies 主导策略
+
+如果采取某一个 action，取得的所有结果都优于另一个结果，可以说这个结果是占主导地位的，下图中明显对两个 Agents C 比 D 取得的结果都好：
+
+![image-20241126055250801](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260552062.png)
+
+如果 s1 策略的所有效用都 > s2, 可以说 s1 strongly dominates s2.
+
+如果 s1 策略的所有效用都 >= s2, 可以说 s1 weakly dominates s2.
+
+我们可以先把效用一定最低的策略删掉再考虑其他情况。当然这种情况不太多见。
+
+记住，每次只考虑某一侧的效用，比如下图，列策略就只考虑蓝色部分，可以删掉 R：
+
+![image-20241126055803806](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260558030.png)
+
+#### Nash equilibrium 纳什均衡
+
+指：在当前策略组合下，任何一方试图改变策略，都不会取得更好的结果。
+
+下图中，当有一方选择 Y 后，另一方最优策略都是 Y。
+
+![image-20241126060051945](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260600188.png)
+
+而 (X, Y) 就不是 NE 策略了，i 选 X 的时候 j 确实选 Y 合适，但 j 选 Y 的时候 X 选 Y 更合适。
+
+一个游戏中可能有多个纳什均衡，也可能一个也没有。
+
+#### Pareto Optimality 帕累托最优
+
+如果某种结果下，想提升一个 Agents 的回报，就必须要牺牲另一个 Agents 的回报才能实现的话，那么这个结果就叫帕累托最优。
+
+下图中 (C,D) (D,C) 是两个帕累托最优。**注意不光是横向和纵向对比，斜着也要满足，比如 j 从 D 到 C 提升后，i 保留原值 C 或者变成 D 都不会有更好的结果。**
+
+![image-20241126060837133](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260608278.png)
+
+#### Social Welfare 社会福利
+
+所有人福利求和，总体福利最大化才是最优结果。
+
+### Normal form games 正规博弈
+
+一个正规博弈 (N, A, u)：N 表示玩家 / Agents 个数，A 是存储了每个玩家可能的 actions 的集合，u 是每个玩家的效用真实值，比如 pay off 就是一种效用表示方式。
+
+如果所有 player 的效用都是一样的（比如 payoff 表是对称的），那么可以称之为 common payoff game。
+
+如果采取什么策略，总效益之和都一样，可以称之为 constant sum game. 如果=0，则为 zero sum game. （石头剪刀布）
+
+### Mixed strategy 混合策略
+
+就像 MDP 有0.2的概率不沿着目标方向前进，混合策略用概率来决定最终行为。我们需要计算 P 的最优值使得期望效益最大。
+
+例题：
+
+![image-20241126082944428](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260829660.png)
+
+求最佳 P(a1)。我们画两张图呈现随着 P(a1) 变化，j 选择 a3 或者 a4 的前提下效用变化：
+
+![image-20241126083047287](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260830723.png)
+
+![image-20241126083054455](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260830645.png)
+
+两线交点处是 rational choice of mixed strategy。也就是 P(a1)=0.2，那么 P(a2)=0.8
