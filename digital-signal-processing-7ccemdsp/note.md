@@ -321,7 +321,7 @@ X(z)和ROC共同确定x[n]. 两个不同的x[n]可能X(z)一样，ROC不同。�
 
 ![image-20241015112614881](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410151126207.png)
 
-- ROC在图上表现为一个圆环或者圆。**当单位圆（z=e^{-jw}^）包含在内时，X(z) 是稳定的，**x[n]的傅里叶变换存在（因为z=e^{-jw}^时就是傅里叶变换的公式，说明收敛）
+- ROC在图上表现为一个圆环或者圆。**当单位圆（z=e^{-jw}^）包含在内时，X(z) 是稳定的，**x[n]的傅里叶变换存在（因为z=e^{-jw}^ 时就是傅里叶变换的公式，说明收敛）
 
 - 当x[n]由有限个非零值组成时，z[n]的取值就非常随意了，基本除了0和无穷都可以取（z可以取到无穷的）。
 
@@ -389,11 +389,13 @@ $$
 
 那么 $X_c(j(\Omega-k\Omega))$ 就不发生混叠，并且我们可以用一个 filter h_r(t) 和 x_s(t) 卷积重构的 x_c(t) （采样频率够高，可以从采样后的信号恢复原信号）. 过滤公式和过滤器的傅里叶变换如下：
 $$
+\begin{aligned}
 x_r(t)=\int^{\infty}_{-\infty}x_s(\xi)h_r(t-\xi)d\xi=\sum^{\infty}_{n=-\infty}x_c(nT)h_r(t-nT)\\
 H_r(j\Omega)=\begin{cases}
 T &  |\Omega|<\Omega_c \\
 0 & |\Omega|>\Omega_c
 \end{cases}
+\end{aligned}
 $$
 其中Ω_c 是低通滤波器 H 的频率， $\Omega_N<\Omega_c<\Omega_s-\Omega_N$
 
@@ -421,8 +423,10 @@ $$
 
 则有：
 $$
+\begin{aligned}
 h_r(t)=\frac{sin(\pi t/T)}{\pi t/T}\\
 x_r(t)=\sum^{\infty}_{n=-\infty}x[n]\frac{sin(\pi (t-nT)/T)}{\pi (t-nT)/T}
+\end{aligned}
 $$
 ![[没有幻灯片标题](https://realtimetech.ustc.edu.cn/_upload/article/files/5f/71/77450bde46de832d7f14ae714039/e16a2953-6949-4393-997d-8dede2a612d7.pdf)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410301417957.png)
 
@@ -479,5 +483,101 @@ Sampling Rate Reduction，实现起来很简单，周期变成 MT，$x[n]=x[nM]$
 
 ### 线性时不变系统的性质
 
-- 根据 h[n] 是否是有穷的持续时间，可分为 FIR (Finite Impulse Response) 和 IIR 系统。
-- 
+- 根据 h[n] 是否是有穷的持续时间，可分为 FIR (Finite Impulse Response) 和 IIR 系统。由此可以推出，FIR 是稳定系统；系统是因果的当且仅当 h[n] 在 n<0 处全部=0.
+- H(z) 被称为系统函数 / 传递函数 System / transfer function. H(e) 是频率响应 frequency response.
+
+### 群延时
+
+Group Delay：
+$$
+\tau _g(\omega)=-\frac{d \angle H(e^{j\omega})}{d\omega}
+$$
+在足够小的 omega_0 范围内可以这样表示：
+
+![image-20241114141619133](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141416373.png)
+
+### 理想滤波器
+
+理想低通滤波器：
+
+![image-20241114141805654](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141418840.png)
+
+理想高通滤波器：
+
+![image-20241114141825225](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141418446.png)
+
+理想带通滤波器：
+
+![image-20241114141843223](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141418418.png)
+
+### LCCD Equations
+
+形如下图的公式：
+
+![image-20241114142230823](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141422416.png)
+
+性质：
+
+![image-20241114142327244](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141423432.png)
+
+![image-20241114142344819](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141423022.png)
+
+![image-20241114142357479](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141423091.png)
+
+![image-20241114142412666](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141424457.png)
+
+### 逆系统
+
+经过一次系统 T，再经过一次其逆系统Ti，还等于原函数。
+
+![image-20241114184919817](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141849534.png)
+
+![image-20241114191529766](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411141915291.png)
+
+LTI 系统并不一定有逆；有逆的系统逆不一定唯一；Hi(z) 是唯一的但是不同的 ROC 可能产生不同的逆。
+
+根据 $$H(z)H_i(z)=1$$ 的引理，可得知：两者 ROC 必须是非空交集，否则这个系统没有逆冲激响应。
+
+例题：判断 Hi(z) 可能的逆系统冲击响应。
+
+![image-20241114222444243](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411142224133.png)
+
+首先，i) 不是一个有效集合，排除。
+
+iii) 也排除，因为 iii) 的 ROC 是小于 1/6，和 H(z) 的 ROC 没有交集，这个逆系统不存在。
+
+剩下的两个选项用逆 z 变换：
+
+![image-20241114222801964](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411142228629.png)
+
+![image-20241114222817866](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411142228054.png)
+
+### 全通系统
+
+![image-20241117220416643](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172204979.png)
+
+如果 z=e^w^ 是一个零点，那么z=1/e^w^ 是其一个极点（分子分母）。这两个点在图上是关于实轴对称的。
+
+![image-20241117220653701](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172206883.png)
+
+### 最小相位系统
+
+Minimum Phase Systems：稳定且因果，有逆系统，也是稳定且因果的。当且仅当其所有零点和极点都在单位圆内才会发生。
+
+### 频率响应补偿
+
+DSP 处理时有时我们需要找到一个稳定因果无逆系统的逆系统，怎么办？退而求其次，只要其幅值乘积=1满足即可。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172214485.png" alt="image-20241117221411220" style="zoom: 50%;" />
+
+过程：
+
+![image-20241117221546283](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172215541.png)
+
+![image-20241117221555656](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172215999.png)
+
+### 最小相位和全通分解
+
+如果稳定因果系统 H(z) 在单位圆上没零点，它就可以拆成一个 ap 系统和一个 mp 系统的乘积。
+
+![image-20241117221844867](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172218421.png)

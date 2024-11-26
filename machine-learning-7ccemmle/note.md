@@ -1,3 +1,5 @@
+atch size S 
+
 ## Probability 概率论基础
 
 在正式开始机器学习方法之前，我们先学习一些概率论的知识以便后面进入算法正题。
@@ -63,8 +65,10 @@ xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})]=\sum_{x\in \mathcal{X}}p(x)\bullet f(x)
 $$
 比如下题，cat 是分类分布，表示 x 有0.1的概率=1,0.2的概率=2,0.7的概率=3，求f(x)的期望值：
 $$
+\begin{aligned}
 x\sim Cat([0.1,0.2,0.7])\,and\,f(x)=x^2\\
 E_{x\sim Cat(q)}[x^2]=0.1 \cdot 0^2+0.2\cdot 1^2+0.3\cdot 3^2=3
+\end{aligned}
 $$
 连续函数类似，求积分而已。
 $$
@@ -163,6 +167,8 @@ $$
 
 推理的中间过程是一个概率模型 probabilistic model （x和t的联合分布 p(x,t) ）来预测最可能的t。
 
+模型的具体实现被称作预测器 predictor。
+
 推理问题主要分为两类，离散的 detection （比如晴天或者雨天）和连续的 estimation（比如温度）。
 
 而推理结果又分为两种：hard predictor 和 soft predictor，hard 就是有具体结果的（比如t是一个关于x的函数，代入x，t的值唯一确定）；soft 就是不确定的（当x=某个值时，t为0的概率有10%，为1的概率有90%）。
@@ -242,6 +248,8 @@ population 对数损失的计算公式如下（按x求期望)：
 
 ## Supervised Learning 监督学习
 
+### 监督学习简介
+
 推理和学习的主要区别在于 p(x, t) 是否已知。下面的天气例题说明了这一点。
 
 模型不可靠或者太复杂的时候，如果知道输入数据和期望输出我们可以用监督学习。
@@ -269,7 +277,7 @@ no free lunch theorem 没有免费的午餐定理: **没有一种通用的学习
 
 
 
-### 常见符号解释
+#### 常见符号解释
 
 训练集：D，内含N个数据。training set D with N training data points 
 $$
@@ -289,9 +297,9 @@ H=\{\hat t(\cdot|\theta):\theta\in\Theta\}
 $$
 如果选择的模型类是多项式函数，一般用 degree M 表示其项数。
 $$
-\hat t(x|\theta)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_Mx^M=\theta^Tu(x)\\
+\hat t(x|\theta)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_Mx^M=\theta^Tu(x)
 $$
-其中的 u(x) 可不是阶跃函数，而是 feature vector 表示 [1, x, x\^2, x\^3...x\^M]\^T 这个列向量。
+其中的 u(x) 可不是阶跃函数，而是 feature vector 表示 $$[1, x, x^2, x^3...x^M]^T$$ 这个列向量。
 
 这个模型类被称为线性预测器（不是因为 t 和 x 呈线性关系，很明显不是。而是因为 t 和 θ 呈线性关系）。
 
@@ -303,7 +311,26 @@ $$
 $$
 L_D(\theta)=\frac{1}{N}\sum^{N}_{n=1}l(t_n,\hat t(x_n|\theta))=\sum_{x,t}p_D(x,t)l(t,\hat t(x|\theta))
 $$
-### ERM 经验风险最小化预测
+### Inductive Bias Selection 归纳偏差选择
+
+选择模型类 / 预测器的过程也是确定归纳偏差的过程。
+
+#### 三种预测器
+
+Population-optimal unconstrainded predictor 总体最优无约束预测器：最小化总体损失且无视模型，所以叫做无约束预测器，因为不受模型类的限制。但是我们不知道标准概率分布所以很难实现。
+$$
+t^*(\cdot)=arg\,\mathop{min}\limits_{t(\cdot)}L_p(t(\cdot))
+$$
+Population-optimal within-class predictor 总体最优类内预测器：首先确定模型类，在这种模型类的前提下选择 θ 最小化损失。
+$$
+\theta ^*_M=arg \mathop{min}\limits_{\theta \in R^{M+1}}L_p(\theta)
+$$
+Trained ERM predictor 经验风险最小化训练预测器：确定模型类，且使用有限的训练数据集来计算损失。
+$$
+\theta_M^{ERM}==arg \mathop{min}\limits_{\theta \in R^{M+1}}L_D(\theta)
+$$
+
+#### ERM 经验风险最小化预测
 
 针对这个损失函数，一种训练原则是 Empirical Risk Minimization 经验风险最小化（ERM），即找到使得 LD(θ) 最小的 θ 作为预测器参数。
 $$
@@ -328,22 +355,7 @@ $$
 $$
 如果第一部分的矩阵乘积是不可逆的，舍去这一部分即可。
 
-### 三种预测器
-
-Population-optimal unconstrainded predictor 总体最优无约束预测器：最小化总体损失且无视模型，所以叫做无约束预测器，因为不受模型类的限制。但是我们不知道标准概率分布所以很难实现。
-$$
-t^*(\cdot)=arg\,\mathop{min}\limits_{t(\cdot)}L_p(t(\cdot))
-$$
-Population-optimal within-class predictor 总体最优类内预测器：首先确定模型类，在这种模型类的前提下选择 θ 最小化损失。
-$$
-\theta ^*_M=arg \mathop{min}\limits_{\theta \in R^{M+1}}L_p(\theta)
-$$
-Trained ERM predictor 经验风险最小化训练预测器：确定模型类，且使用有限的训练数据集来计算损失。
-$$
-\theta_M^{ERM}==arg \mathop{min}\limits_{\theta \in R^{M+1}}L_D(\theta)
-$$
-
-### ERM 相关的两个定理
+#### ERM 相关的两个定理
 
 对于学习，有两个定理：
 
@@ -358,7 +370,7 @@ $$
 
 ![image-20241012181732276](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png)
 
-### 最优预测器和经验风险最小化预测器的对比
+#### 最优预测器和经验风险最小化预测器的对比
 
 例：
 
@@ -392,6 +404,28 @@ M=3 时，模型预测如图，可以看出 ERM 在欠拟合和过拟合中间�
 ![image-20241014132520199](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141325430.png)
 
 但是我们如何判断模型是否过拟合？我们不一定知道正确的模型公式。因为我们到目前为止只是用训练数据在测试，就算训练出了完全拟合训练数据的预测器（如上面第二个图，M=9 的例子）我怎么知道这是适用于所有数据的预测器呢？
+
+#### Probabilistic Models 软预测器的概率模型
+
+软预测器用已知 t 和 θ 的条件概率表示。第三章的时候用 q 符号表示，这章用 p 符号，反正意思到位了。
+$$
+\mathcal H=\left\{p(t|x,\theta):\theta \in \Theta \right\}
+$$
+
+
+概率模型的训练采用软预测，因为其中的概率不确定性。
+
+事实上很多确定性模型也可以用概率模型的特例来看待，也同样可以应用其公式。
+
+总体损失：
+$$
+L_p(\theta)=E_{(x,t)~p(x,t)}[-log\,p(t|x,\theta)]
+$$
+ERM训练损失：
+$$
+L_D(\theta)=\frac{1}{N}\sum^{N}_{n=1}(-log\,p(t_n|x_n,\theta))
+$$
+也叫 Maximum Likehood Learning (ML Learning) 最大似然学习。最小化 log 损失，最大化概率。
 
 ### Validation 验证
 
@@ -432,15 +466,15 @@ $$
 
 ERM 学习：现在假设我们先选择两个数据作为训练数据。假设我们选择了x=2 x=3. 那就完蛋了，用这两个数据我们训练得到的预测器是t(x)=2，t的值不受x的影响。
 $$
-\hat t(x|θ) = θ_0 + θ_1x. θ_0=2，θ_1=0.
+\hat t(x|\theta) = \theta _0 + \theta _1x. \theta _0=2, \theta _1=0.
 $$
 总体损失就是(2^2^+1^2^+0+0)/4=5/4，过拟合。
 
-### Bias vs Estimation Error
+#### Bias vs Estimation Error
 
 如何权衡偏差和估计错误？
 $$
-L_p(\theta _D)=\underbrace{L_p(\hat t^*(\cdot))}_\text{minimum\,unconstrained\,pop.\,loss}+\underbrace{(L_p(\theta^*_H)-L_p(\hat t^*(\cdot))}_\text{bias}+\underbrace{(L_p(\theta_D)-L_p(\theta^*_H))}_\text{estimation\,error}\\
+L_p(\theta _D) = L_p(\hat t^*(\cdot))^{\text{minimum unconstrained population loss}} + \left(L_p(\theta^*_H) - L_p(\hat t^*(\cdot))\right)^{\text{bias}} + \left(L_p(\theta_D) - L_p(\theta^*_H)\right)^{\text{estimation error}}
 $$
 第一部分：最优预测的损失。当然最优预测很难找到因为不知道概率。
 
@@ -464,7 +498,7 @@ $$
 
 *其实这里对模型容量，数据量的介绍有些过于简化其作用了，训练效果和要解决的问题，模型选择，训练算法等等都有影响。比如深度神经网络一般是大容量模型，并不一定适用“模型容量越大，越容易过拟合”的定理。当模型容量增加的时候，测试误差会首先增加（过拟合）然后下降，直到一个插值点 interpolation point。这个特性被称为“双降 double descent”，意思是 training loss 随着模型容量增加而下降的同时，population loss 也没有如过拟合预期的那样增加。*
 
-### Regularization 正交化
+#### Regularization 正交化
 
 一种让 ERM 模型变得更加泛化的方法。
 
@@ -478,7 +512,7 @@ $$
 
 λ：一个可以设定的参数，尽可能的在减小训练损失和准确度之间权衡。
 
-R：正交化θ。比如一维范式就是所有 θ 的值求和 ||θ||，二维范式是其平方求和 ||θ||^2。*一维范式被称作 LASSO Least Absolute Shrinkage and Selection Operator 最小绝对收缩和选择算子回归。*
+R：正交化θ。比如一维范式就是所有 θ 的值求和 ||θ||，二维范式是其平方求和 $$||θ||^2$$。*一维范式被称作 LASSO Least Absolute Shrinkage and Selection Operator 最小绝对收缩和选择算子回归。*
 
 θ 数量越多，第二项也会使得整体的值增加，作用相当于 loss 增加。
 
@@ -488,29 +522,9 @@ R：正交化θ。比如一维范式就是所有 θ 的值求和 ||θ||，二维
 
 建议提前拿出一组数据作为测试集，不参与训练和验证，用测试集评估总体损失且训练者不应该知道测试集的内容。
 
-### Probabilistic Models 概率模型
-
-软预测器用已知 t 和 θ 的条件概率表示。第三章的时候用 q 符号表示，这章用 p 符号，反正意思到位了。
-$$
-\mathcal H=\left\{p(t|x,\theta):\theta \in \Theta \right\}
-$$
 
 
-概率模型的训练采用软预测，因为其中的概率不确定性。
-
-事实上很多确定性模型也可以用概率模型的特例来看待，也同样可以应用其公式。
-
-总体损失：
-$$
-L_p(\theta)=E_{(x,t)~p(x,t)}[-log\,p(t|x,\theta)]
-$$
-ERM训练损失：
-$$
-L_D(\theta)=\frac{1}{N}\sum^{N}_{n=1}(-log\,p(t_n|x_n,\theta))
-$$
-也叫 Maximum Likehood Learning (ML Learning) 最大似然学习。最小化 log 损失，最大化概率。
-
-### Optimization 训练优化
+### Optimization 优化
 
 我们之前已经得出损失公式，以及训练的目标就是让损失最小化：
 $$
@@ -530,7 +544,7 @@ $$
 
 ![image-20241023063138746](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410230631921.png)
 
-θ向量是从1到D维的所有θ系数，而∇g(θ)是所有θ的导数的向量。
+θ向量是从1到D维的所有θ系数，而 ∇g(θ) 是所有θ的导数的向量。
 
 首先如果一个点是极值点 stationary point，这个点的一阶导一定=0，这是充分条件：一阶优化条件 first-order optimality condition。
 
@@ -544,7 +558,7 @@ $$
 
 其中的值全部=0说明是凸函数。
 
-### Gradient descent 梯度下降优化
+#### Gradient Descent 梯度下降优化
 
 是一种局部优化方法 Local optimization。
 
@@ -562,7 +576,7 @@ $$
 
 ![[深度学习优化算法入门：一、梯度下降 - 知乎](https://zhuanlan.zhihu.com/p/45365719)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270016642.webp)
 
-### 梯度下降的性质
+#### 梯度下降的性质
 
 - 如果 g(θ) 的二阶导全部<=L，可以说 g(θ) 是 L-smooth 的函数。
 
@@ -583,11 +597,11 @@ $$
 
 ​		也就是说下一次迭代的 θ 一定能让损失下降这么多。
 
-- - convergence to a stationary point：g(θ) 收敛，$\nabla g(\theta^{(i)})\rightarrow0$
+- - convergence to a stationary point：g(θ) 收敛，$$\nabla g(\theta^{(i)})\rightarrow0$$
 
 不过问题在于 L 不一定知道。我们可以通过验证，以及其他方法获取（后续章节介绍）。
 
-### Stochastic Gradient Descent 随机梯度下降
+#### Stochastic Gradient Descent 随机梯度下降
 
 计算整个数据集的梯度，对于大模型来说计算成本还是太高了。
 
@@ -603,13 +617,13 @@ $$
 $$
 第一部分保证了学习率不会太小以至于原地踏步，永远无法到达 stationary point；第二部分确保学习率不会太大，SGD 的方差是逐渐减小直到消失的，保证逐渐逼近 stationary point 而不会在极点附近来回徘徊。
 
-比如 $\gamma^{(i)}=1/i^{\alpha},\alpha \in (0.5, 1]$ 这个学习率满足这一条件。
+比如 $$\gamma^{(i)}=1/i^{\alpha},\alpha \in (0.5, 1]$$ 这个学习率满足这一条件。
 
-多项式学习率常常用 $ \gamma ^{(i)} = \gamma ^{(0)}/(1 + \beta i)^\alpha, \beta>0,\gamma^{(0)}>0,\alpha \in (0.5,1]$
+多项式学习率常常用 $$ \gamma ^{(i)} = \gamma ^{(0)}/(1 + \beta i)^\alpha, \beta>0,\gamma^{(0)}>0,\alpha \in (0.5,1]$$
 
 除了对学习率范围设限，另一种避免到达不了极点的方法是 S 样本量每次迭代都会增加。这两种方式可以结合使用。
 
-### 计算梯度的方式
+#### 计算梯度的方式
 
 Symbolic Differentiation：直接求导。
 
@@ -627,7 +641,7 @@ Automatic Differentiation：使用求导方法，但是只求出某个点的梯�
 
 ![image-20241027161151946](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271611213.png)
 
-### Computational Graph 计算图
+#### Computational Graph 计算图
 
 便于计算梯度的图。
 
@@ -645,9 +659,9 @@ $$
 
 已知 θ 序列求 g(θ) 非常简单，把参数带进去就可以。forward pass
 
-backward pass 是反向，假设 g(θ)=1，反推回来。所有 f() 的部分要对相应的 θ 求导。
+backward pass 是反向传播，假设 g(θ)=1，反推回来。所有 f() 的部分要对相应的 θ 求导。
 
-例题： $g(\theta)=\theta^2_1+2\theta^2_2-\theta^2_3$ ，求 [1,-1,1] 点处的梯度。
+例题： $$g(\theta)=\theta^2_1+2\theta^2_2-\theta^2_3$$ ，求 [1,-1,1] 点处的梯度。
 
 首先进行 forward pass，代入三点数值到计算图中求 g(θ) 在[1,-1,1] 处的数值，这一步的主要作用是确定计算图：
 
@@ -659,15 +673,15 @@ backward pass 是反向，假设 g(θ)=1，反推回来。所有 f() 的部分�
 
 [2, -2, 2] 部分是对 forward pass 中三个函数求导再代入 [1,-1,1] 的值得到的。
 
-最终得到的 $\nabla g(\theta)=[2,-4,-2]^T$
+最终得到的 $$\nabla g(\theta)=[2,-4,-2]^T$$
 
-例题2：如下图，f1-f3都是 $(x_1+2x_2)^2$，f4=logx。
+例题2：如下图，f1-f3都是 $$(x_1+2x_2)^2$$，f4=logx。
 
 求[1, -2, 1] 点处的梯度下降值。
 
 ![image-20241027183553508](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271835911.png)
 
-首先 forward pass 求出 g(θ)，并且在此过程中把每个函数对于 x1 x2 的求导也算出来：
+首先 forward pass 求出 g(θ)，并且在此过程中把每个函数对于 x1 x2 的求导也算出来（并带入输入 x1 x2 值）：
 
 ![image-20241027183825574](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271838872.png)
 
@@ -675,4 +689,316 @@ backward pass 是反向，假设 g(θ)=1，反推回来。所有 f() 的部分�
 
 ![image-20241027184236357](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271842537.png)
 
-$\nabla \theta=[-4/3, -8/3,0]^T$
+$$\nabla \theta=[-4/3, -8/3,0]^T$$
+
+## Binary Classification 上述方法在二元分类中的应用
+
+如下图，给了一个新点判断这个点可能是圈还是叉。
+
+![image-20241112021653157](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120216352.png)
+
+目标t值：0或者1.
+$$
+t^{\pm}=2t-1=\left\{
+\begin{aligned}
+1,\,if\;t=1\\
+-1,\,if\;t=0
+\end{aligned}
+\right.
+$$
+
+
+整体流程还是和之前讲的差不多：
+
+- inductive bias selection
+- training
+- validation
+- revise inductive bias
+- test
+
+模型主要分为线性模型和神经网络模型。
+
+### Linear Models 线性模型
+
+#### 预测器
+
+还是经典公式：
+$$
+\theta^T u(x)= \sum^{D'}_{d=1}\theta_du_d(x)
+$$
+特征向量 u(x) 也不一定只是x的多次幂列向量，比如可能是“一个句子中不同词的出现次数”。
+
+硬预测器的计算结果：如果公式值>0则t预测=1，如果<0则预测=0. 公式值=0的情况不考虑也很难发生。
+$$
+\hat t(x|\theta)=step(\theta^Tu(x))
+$$
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120228255.png" alt="image-20241112022804087" style="zoom:67%;" />
+
+软预测用指数函数处理：
+$$
+\begin{aligned}
+p(t=1|x,\theta)&=\sigma (\theta^T u(x))\\
+p(t=0|x,\theta)=1&-p(t=1|x,\theta)\\
+\sigma (x)=(&1+e^{(-x)})^{-1}
+\end{aligned}
+$$
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120232281.png" alt="image-20241112023239039" style="zoom: 67%;" />
+
+多项式计算结果区间位于0到5时，概率>0.5，说明更有可能发生。所以软预测器选择>0.5的那一项结果作为预测值。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120233740.png" alt="image-20241112023354565" style="zoom:67%;" />
+
+#### 损失函数
+
+考虑下面这个式子，就是 classification margin：
+$$
+y=t^\pm \cdot \theta^T u(x)
+$$
+这个式子为正值时预测结果为正确，为负值时预测结果为错误。
+
+所以硬预测的 Detection-Error Loss Function 损失函数（还是指示符函数，预测正确=0，预测错误=1）可以写作：
+$$
+\begin{aligned}
+l(t,\hat t(x|\theta))&=\mathbb{1} (t\neq \hat t(x|\theta))\\
+&=step(-y)
+\end{aligned}
+$$
+但是这个函数没法应用 GD 降维（损失函数图像类似矩阵函数，只有0和1，没法降维）。所以我们可以应用其他的损失函数：
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120632479.png" alt="image-20241112063219179" style="zoom:67%;" />
+
+Exponential loss 指数损失：$$l(y)=e^{-y}$$
+
+hinge loss 铰链损失：$$l(y)=max(0,1-y)$$
+
+hinge-at-zero loss 零损失铰链函数：$$l(y)=max(0,-y)$$
+
+logistic loss 对数损失：$$l(y)=log(1+e^{-y})$$
+
+这些函数都可以用，相比 detection-error loss 都可以应用 GD 降维。
+
+软预测损失：$$l(t,\hat t(x|\theta))=log(1+e^{-y})$$
+
+#### Perceptron Algorithm 感知器算法
+
+应用了 ERM，hinge-at-zero loss，SGD 的算法。
+
+损失函数：$$l(y)=max(0,-y)$$
+
+梯度函数：
+$$
+\nabla l(t^\pm \cdot (\theta^T u(x)))=\left\{
+\begin{aligned}
+0\;\;\;if\;prediction\;is\;correct\\
+-t^\pm \cdot u(x)\;\;if\;prediction\;is\;wrong
+\end{aligned}
+\right .
+$$
+
+
+例题：
+
+![image-20241112074401735](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120744954.png)
+
+首先假设选取 (2.1, 1) 点计算梯度下降。
+$$
+\begin{aligned}
+\theta_2&=\theta_1-\gamma g(\theta_1)\\
+g(\theta_1)&=-1 \cdot 1 \cdot 2.1\,(prediction\;is\;wrong,\,-2.1 \neq 1)\\
+\theta_2&=-1+0.1\cdot 2.1=-0.79
+\end{aligned}
+$$
+然后选取 (-1.5, 0) 点计算梯度下降。
+$$
+\begin{aligned}
+\theta_2&=\theta_1-\gamma g(\theta_1)\\
+g(\theta_1)&=-1 \cdot -1 \cdot -1.5\,(prediction\;is\;wrong\,-1.5\cdot -0.79=1.185\neq 0)\\
+\theta_2&=-0.79+0.1\cdot 1.5=-0.64
+\end{aligned}
+$$
+计算每个步骤中的 classification margin 会发现值是逐渐接近于0的。
+
+对于 log loss 软预测器的梯度下降函数：
+$$
+\nabla l(t^\pm \cdot (\theta^T(u(x)))=(\sigma(\theta^T u(x))-t)\cdot u(x)
+$$
+$$\sigma$$ 函数之前有介绍，=(1+exp\^(-x))\^-1.
+$$\sigma(\theta^T u(x))-t$$ 部分又用 $$\delta(x,t) $$ 表示，表示 mean error，=0 的时候说明预测完全准确。
+
+当 mean error = 0 时，如果 t=1，则 $$\theta^T(u(x))\rightarrow \infty$$ ；如果 t=0，则 $$\theta^T(u(x))\rightarrow -\infty$$ 
+
+软预测器梯度下降公式：
+$$
+\theta^{i+1}\leftarrow \theta^{(i)}-\gamma^{(i)}\frac{1}{S^{(i)}}\sum_{n\in S^{(i)}}(\sigma((\theta^{(i)})^Tu(x_n))-t^n)\cdot u(x_n)
+$$
+例题：还是形如上一道题的数据，初始预测器 $$\theta_1=-1, \lambda=0, \gamma=0.1$$, minimum batch size S=1
+
+![image-20241112222114793](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122221190.png)
+
+### Neural Network Model 神经网络模型
+
+主要用于处理非线性情况。
+
+u(x) 并不像线性模型一样一开始是确定的，可能在模型训练过程中还有改动。对于难以建立先验的情况来说比较适用。
+
+之前线性模型中我们常用 u(x) 来描述特征向量 feature vector，而神经网络模型中用 x 表示输入的特征向量，u(x) 是其一种表示形式。
+
+另外，神经网络模型专注于概率计算问题。
+
+![image-20241112223032270](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122230604.png)
+
+中间的每一层都叫做 feature extraction layers 特征提取层。
+
+第一层输入 x 输出 D^1^ 维度的 h^1^ 向量。后面的每一层都用前一层的向量输入，输出一个 D^l-1^ 维度的 h^l-1^ 向量。最后一层叫做 classification layer 分类层，把 h 作为 u(x) 输入到预测器里计算概率。
+
+每一层的处理公式如下：
+$$
+\begin{aligned}
+a^l=W^lh^{l-1}\\
+
+\end{aligned}
+$$
+W：权重向量，分配不同项之间的权重。
+
+a：本层的 pre-activations 预激活向量。
+
+h：列向量，用本层的 a 向量通过一个激活函数激活后得到。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122312272.png" alt="image-20241112231053215" style="zoom:67%;" />
+
+典型的几种激活函数：
+
+- sigmoid：$$\sigma (a)$$
+- hyperbolic tangent: $$tanh(a)$$
+- Rectified Linear Unit: $$max(0,a)$$
+- Leaky ReLU: $$max(\alpha a,a),\,\alpha\in[0,1]$$
+
+下面是这四者的图像：
+
+![image-20241113182349898](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411131823276.png)
+
+梯度消失问题：见 Sigmoid 函数，其的导数特征在于：在±5范围之外，导数全部=0；在中间导数先增长为1再下降。这就导致a必须落在[-5,5]的区间内，梯度值才会有效；在某些层传播中，梯度值很容易消失变为0.
+
+梯度爆炸：tanh 中间的梯度值都快到∞了，梯度范围浮动非常大，不稳定。
+
+所以 ReLU 在这两点上优于 tanh 和 Sigmoid 函数，有效避免梯度下降和梯度消失问题。
+
+最后一层获取 u(x|θ) 的公式：
+
+![image-20241126033703135](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260337845.png)
+
+每一层的作用都是提取一些信息化表示的特征，为最终通过x分类t做准备。
+
+其中，W 是权重矩阵向量。W^l^ 是一个 D^l^ \* D^l-1^ 形状的向量，作用是和前一层传入的 D^l-1^ 长度的行向量相乘后输出 D^l^ \* 1 长度的符合下一层形状的向量。**注意矩阵乘法的时候，W在前，D在后。**
+
+一个比较通俗易懂的图解如下：
+
+![img](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260348069.png)
+
+![img](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260348830.png)
+
+> 来源：[神经网络——最易懂最清晰的一篇文章-CSDN博客](https://blog.csdn.net/illikang/article/details/82019945)
+
+而 θ 则这样表示：
+
+![image-20241126034944517](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260349886.png)
+
+*如果 h 是线性函数，那么整个预测器就是一个线性预测器。*
+
+![image-20241126035141459](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260351906.png)
+
+例题：
+
+![image-20241126035428151](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260354580.png)
+
+![image-20241126035756581](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260357979.png)
+
+给定题目后，我们大概可知神经网络图像如下，两层（注意神经网络算出来的默认结果是预测值=1 的概率）：
+
+![image-20241126035824630](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260358132.png)
+
+用输入向量逐层与权重相乘后激活计算得到：
+
+![image-20241126040527762](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260405256.png)
+
+p(0|x,θ) 就1-0.12=0.88 即可。
+
+#### SGD
+
+又到了最喜欢的梯度下降优化环节。
+
+首先还是要找一个计算损失的方法：
+
+![image-20241126040841418](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260408835.png)
+
+最后一层：
+
+![image-20241126041133897](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260411210.png)
+
+梯度：只说结论的话：
+$$
+\delta^l=\sigma(a^L)-t
+$$
+
+
+![image-20241126041317020](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260413415.png)
+
+比如：还是之前那道题，计算 t=0 时的梯度。首先是前向传播：
+
+![image-20241126043115009](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260431343.png)
+
+输入损失函数后，t^±^=-1（那个公式=2t-1，预测值 t =0，t^±^=-1），a^2^ 是该层（第二层所以有个2的上标，不是平方）的输出=-2，两者相乘=2，代入公式计算得到0.13 为损失值。
+
+然后假设结尾=1，开始后向传播：
+
+![image-20241126043929691](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260439190.png)
+
+首先根据 t 和 a^2^ 计算出 δ=0.12，用1\*0.12再\*第二层权重回推。
+
+第一层的梯度公式是h对a^1^求导，h是一个 ReLU 函数，所以当a>0时求导结果=1，a<0 时求导结果=0. （参考 ReLU 公式）所以得到这一层的向量是 [1,0]，回推出反向传播误差。
+
+![image-20241126044627761](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260446136.png)
+
+
+
+最终，我们给输入值*反向传播误差计算权重梯度，用原权重-权重梯度\*学习率更新权重。这里貌似学习率视作1了吧？
+
+![image-20241126044923671](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260449094.png)
+
+下图是不同层数，随着迭代次数增加训练损失下降情况图。可以看出3层反而是最有效进行二元分类的训练方法。
+
+![image-20241126045100763](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260451091.png)
+
+## Transformer
+
+一种常常用于自然语言处理的深度学习架构。
+
+输入可以被划分为 subset 子集或者 token：
+
+![image-20241126045944516](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260459045.png)
+
+![image-20241126045956864](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260459330.png)
+
+对于输入数据，创建N个Tokens，每一个都有D*1的维度：
+
+![image-20241126050158513](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260501909.png)
+
+transformer 的一个重要机制在于 self-attention。
+
+![image-20241126051531266](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260515316.png)
+
+softmax 是形如下图的公式，这只是一种计算方法：
+
+![image-20241126052420915](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260524551.png)
+
+在自注意力公式中，我们发现初始词嵌入出现了3次。前两次是作为句中词向量与其他词（包括它自己）点积得到权重；第三次再与权重相乘得到最终带上下文的词嵌入。这三个地方出现的词嵌入我们给他们三个术语：查询(Query), 键(Key), 值(Value)。
+
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260529285.png)
+
+> [【万字长文】深度解析 Transformer 和注意力机制（含完整代码实现）_transformer架构注意力机制-CSDN博客](https://blog.csdn.net/jarodyv/article/details/130867562)
+
+Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过来不同。比如“伦敦国王学院”和“大学”关联度很高，但”大学“和”伦敦国王学院“关联度不高，大学有那么多所呢。
+
+#### MultiHead Attention 多头注意力
+
+除了一个句子中不同词之间的关联，可能还有其他因素（如一词多义，语序问题等）。

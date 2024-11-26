@@ -329,7 +329,7 @@ PCA 既方便数据存储，也降低了学习难度。
 
 如果有一个向量乘这个矩阵后等于这个向量的一定倍数的向量，那么这个向量被称作 an eigenvector of the matrix M（M 矩阵的特征向量），倍数是 eigenvalue 特征值。
 $$
-M \cdot \boldsymbol v = \lambda \boldsymbol v
+M \cdot \bold{v}= \lambda \bold{v}
 $$
 
 ### PCA 具体算法
@@ -341,7 +341,7 @@ $$
 2. 我们沿每个特征方向上求平均值，并且用原矩阵减去这个平均值把所有数据都调整到原点附近，这样更方便看出大致方向：
 
 $$
-B=\boldsymbol X - \boldsymbol{\overline{X}}
+B=\bold X - \bold{\overline{X}}
 $$
 
 大概效果如图：
@@ -351,7 +351,7 @@ $$
 3. 再计算协方差矩阵，协方差矩阵主要作用是反应特征之间的相关性（获得一个d×d矩阵）。
 
 $$
-\boldsymbol C=\frac{1}{n}\boldsymbol{B}^T \boldsymbol B
+\bold C=\frac{1}{n}\bold{B}^T \bold B
 $$
 
 4. 选取前k大的特征向量 v_1到 v_k. 这部分好像比较难，本课程不涵盖，一般 python 直接解决。
@@ -362,7 +362,7 @@ $$
 6. 用 W 和 x 数据点得到在新的维度上的 y 数据点：
 
 $$
-\boldsymbol y_i=\boldsymbol W^T \cdot \boldsymbol x_i
+\bold y_i=\bold W^T \cdot \bold x_i
 $$
 
 y 是 1×d 的向量。

@@ -414,3 +414,144 @@ bid team 需要做的有：
 - analysing lessons learnt and recording them 吸取教训
 - updating the commercial opportunity data 更新商业机会数据，后续投标有用（这个公司这次采纳了我们的xx项目投标，说不定下次也很有机会继续合作）
 - handover!
+
+## Managing Risks and Estimates 风险和评估
+
+![image-20241116042026518](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411160420760.png)
+
+### Risks 风险
+
+风险是不确定是否真的会发生但是可以预见的事件。
+
+风险管理的整体步骤：
+
+- risk identification：找到可以影响项目的事件。
+- Risk Analysis & Prioritisation：分析风险严重性（潜在影响和发生可能性 potential impact and likelihood）
+- Risk Handling (Actions)：制定行动计划，记录了解决 risk 的 action 和其实现方式，相关开销，以及 risk register.
+- Risk Monitoring & Control：观察风险，采取缓解措施 mitigation actions，控制 actions 管理风险，并且检验记录这些方法对解决风险和风险产生的根本原因的有效性。
+
+#### 建立风险管理策略
+
+- establishing the risk management strategy 建立风险管理策略：通过一个结构化且连贯的方法来**动态地**管理风险；深入到具体细节（如股东，技术等）；定期根据项目的近期发展，重新评估方法以及采取新方法。
+- Compiling a Risk Register 风险登记单：记录了风险源，风险严重程度，风险类型（技术类，顾客金融类等），相应的解决措施；而且定期重新审阅风险登记单，删除不再有效的风险。
+
+#### Identification of Risks 识别风险
+
+主要分为四步：
+
+1. BM 和 RM **reviews** 项目的关键元素，比如客户的技术和非技术需求，法律法规，不确定的部分，过去经验等。
+2. BM PM 把相关领域的专家，同行，股东拉过来一块做风险识别。
+3. BM RM 通过一系列方法筛选出能影响项目的开销，周期，资源的风险。
+4. 记录识别的风险。
+
+收集风险信息的方法有：头脑风暴，砖家判断，股东建议， Root Cause Analysis 根本原因分析，常见公司风险表，以及未证实的 assumption analysis.
+
+风险源有：
+
+![image-20241116180027359](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411161800507.png)
+
+![image-20241116180032263](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411161800333.png)
+
+#### Risk Prioritisation 风险优先级分析
+
+基于：发生概率，影响（如经济损失，时间损失，项目表现结果下降，公司形象受损）进行分类评级。两个维度是独立事件，求交集是分别的概率直接相乘。
+
+![image-20241116180239736](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411161802801.png)
+
+#### Risk Handling 风险处理
+
+避免 avoid，转移 transfer，减少 reduce，接受 accept / tolerate。
+
+一般 low 用 tolerate 处理方式，high 和 medium 用 reduce 处理方式。以防万一，还有 contingency plan 紧急预案。
+
+我们使用 Risk Register 记录风险和要采取的措施：
+
+![image-20241116224702124](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411162247195.png)
+
+Severity = Impact \* Likelihood
+
+#### Risk Monitoring and Control 风险检测控制
+
+由 RM PM 负责。
+
+制定标书阶段，要制定出缓解风险措施和相应预算。
+
+项目执行阶段，监控风险，检查其是否处于控制之下；采取风险应对措施并检测其效果；定期重新审阅并更新风险，风险处理方案等内容。
+
+### Estimate 评估
+
+在项目整个生命周期都会进行，评估成本、时间周期、资源等。
+
+1. 选取合适的评估方法和参数。
+2. 估算评估值，尽可能减少不确定性。
+3. 在项目过程中记录成本，时间周期，资源等，完成项目估算。
+4. 复盘评估，分析置信度 confidence level of estimates.，总结。
+
+#### 待评估项
+
+- resources：人力资源，材料，设备，供应等。使用 work breakdown structure 分解每个结构。
+
+- time：从活动信息和活动资源开始考虑，将其拆为 wp 或者 tasks 以及相应需要使用的工具。人们一般都会过度乐观，高估自己完成任务的速度，所以建议是找没做过类似工作的人评估时间，并且考虑只有80%的时间是有效工作的，再加上对突发事件的容错。
+- costs：人力，材料，设备，风险等直接开销；公共资源（如电话费，邮费等）开销，非直接员工开销，非直接设备开销（如电费，房费，保险）等非直接开销。
+
+#### 准备评估
+
+需要选出一个 estimate manager 评估经理。先确定评估范围，然后逐步细化到项目每个阶段每个部分，项目外部依赖等，给每个 WP 创建一个 Estimate Package，并且发给对应的 WP leaders。
+
+#### 评估方法
+
+- top-bottom 自顶向下：适合项目具体细节不清楚或者需要在短时间内完成评估的场景，不太精细，大致算出总体的花费和总体解决方式即可。图像大致呈倒三角。
+- bottom-top 自下向上：具体细化到每一个 WP，Tasks 的花费。正三角。
+
+这两种方法都可以应用一些评估技术：
+
+![image-20241117090615613](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411170906695.png)
+
+参数 Parametric；专家建议 Expertise；整合专家建议 consensus or Delphi；对比 analogy；拆解 engineering
+
+参数化：自顶向下常用，基于一些项目参数进行评估（如代码行数，产品重量……）缺点在于参数太多可能过于复杂，也总需要随着参数改变而更新；参数太少评估又不一定准确。
+
+专家判断：某领域的专家的看法，主观意见不一定准确。
+
+类比：如果存在和本项目相似的以往项目就比较适合使用。但是缺点在于不同团队运营起来效果不同，而且可能影响因素随着时间推移发生了变化。
+
+共识：由 co-ordinator 协调员和多位专家一起制定。协调员单独和每位专家提供信息，专家之间彼此不沟通，制定出自己的评估计划。然后专家们依次展示分享自己的评估和原因，互相学习后再继续单独评估再讨论，直到达成共识。可能比较费时间，而且共识也可能带有偏见。
+
+Playing Poker 打扑克：也是一种共识方法，用于估计项目工作量规模。专家们抽取面朝下的扑克牌，基于抽取结果进行讨论，避免偏见。
+
+工程评估：基于工程知识进一步细分，比如开发板的原材料的具体开销，工时具体到开发某一部分软件的花费等。需要开发者的基础知识足够扎实，输入信息准确且充分才能实施，而且也要花很多时间完成。
+
+#### Aggregate & Review 汇总
+
+汇总总数据，记录以便后续项目过程中回顾。
+
+#### 三点评估法（处理不确定性）
+
+当然肯定我们的评估预测不可能百分之百准确。三点评估法是一种处理工期和成本不确定性的方法，基于：输入数据的不确定性；历史数据的不确定性；评估过程中的方法的不准确性进行预测。
+
+预测最终目的是找到三个点：
+
+1. optimistic 乐观点：所有预测都准确情况下的工期。
+2. pessimistic 悲观点：大多数预测都不准确，有较大误差。
+3. most likely 最可能点：最可能发生的情况。
+
+基于这三点，有许多种评估值计算方法：
+
+- triangular distribution 三角评估：三者求期望。
+- beta distribution (PERT - Program Evaluation and Review Technique) 加权平均：$$PERT\,Estimate\,=\,[(Optimistic+(4*Most\,Likely)+Pessimistic]/6$$
+
+- PERT Standard Derivation 标准差：正态分布的 activity 在 PERT 的平均值左右两侧n个标准差范围内。n 被称作 confident level 可信度。
+  $$
+  \begin{aligned}
+  \sigma&=(Pessimistic – Optimistic) / 6\\
+  \mu&:\,mean\\
+  Task \,Activity\, Duration &= Estimated\,PERT ± (n * \sigma);
+  \end{aligned}
+  $$
+  ![image-20241117210457670](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172104797.png)
+
+#### 蒙特卡洛法
+
+信息非常有限时使用，否则优先使用三点评估法。
+
+根据事件发生的概率生成随机事件计算评估值，最后再整合。
