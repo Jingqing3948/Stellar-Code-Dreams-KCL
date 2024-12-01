@@ -1002,3 +1002,199 @@ Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过
 #### MultiHead Attention 多头注意力
 
 除了一个句子中不同词之间的关联，可能还有其他因素（如一词多义，语序问题等）。
+
+## Unsupervised Learning 无监督学习
+
+相比监督学习没有一个“标准答案”，比如对于输入 x 我们没有期望 t 输出值。有很多问题是没有期望答案的，比如分类问题，或者异常检测（某个 x 的 p 值过小，很可能是异常）。
+
+![image-20241129222404799](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292224162.png)
+
+一种常用的方法是自监督学习，把问题转化为监督学习。比如将预测所有 token 的问题转换为条件概率。
+
+![image-20241129223915118](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292239366.png)
+
+### Density Estimation 密度估计
+
+Compression 压缩：对于 x 向量中所有可能元素的表示，概率大的用简洁形式表示，概率小的用复杂形式表示更节省存储空间。比如摩斯电码。
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292244100.png" alt="image-20241129224409861" style="zoom:67%;" />
+
+#### 直方图
+
+很简单的无参密度估计方法，就是统计x出现次数除以总数据数。
+
+![image-20241129232115088](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292321324.png)
+
+首先我们定义区间 quantizer，一定区间范围内 x 一起统计。
+
+公式：
+
+![image-20241129232454535](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292324839.png)
+
+也就是说概率高度是 x 在这个区间内出现次数除以(区间长度\*总区间数)。
+
+例题：
+
+![image-20241129232528242](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292325573.png)
+
+区间范围是 -2.5到-2 有一个，-1.5到-1有一个，1到1.5有一个，1.5到2有一个，2到2.5有一个。
+
+区间密度单位=1/5*0.5=0.4.
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292326794.png" alt="image-20241129232656548" style="zoom:67%;" />
+
+可以看出区间的选取对直方图无监督学习影响很大。选太大了，bias 就很大，因为比较贴近正常值的异常值也可能被划进正常区间范围内；选太小了，估计误差可能又大了，因为每个区间的点数少了，就像上图，每个有样本的区间内都是一个样本数，怎么判断哪个是异常。
+
+#### Kernel Density Estimation 核密度估计
+
+如果分布假设是平滑的而不是类似直方图的离散状，误差应该会小一些。比如假设每个样本点（相当于一个阶跃函数的图像）都变成一个高斯函数 k_h(x)= N(x|0,h)，概率密度函数如下：
+
+![image-20241129233226965](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292332293.png)
+
+![image-20241129233239939](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292332272.png)
+
+h 越小，高斯函数越窄，但是就像直方图中暴露出来的问题一样，bias 下降，estimation error 上升。
+
+例题：
+
+![image-20241129233534301](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292335529.png)
+
+首先先用阶跃函数的形式画出样本点，然后延伸宽度为0.1：
+
+![image-20241129233614341](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292336576.png)
+
+如果设置 kernel width=0.5，也就是每个点都变成 0.5 宽度的矩形函数:
+
+![image-20241129233637487](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292336721.png)
+
+#### Curse of Dimensionality 维度诅咒
+
+前两种方法缺陷在于 h 和 △ 选择必须合适，而且对于多维度数据误差可能很大（除非数据量够大）。这就是维度诅咒。
+
+由此引入了参数密度估计方法，相较于非参数密度方法不会受到维度诅咒。但是对概率模型有限制，必须是可以通过参数模型得到的概率模型。
+
+#### Contrastive Density Learning 对比监督学习
+
+目标是将相似样本拉近，不相似样本离远。
+
+生成噪声点：
+
+![image-20241130001630884](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411300016154.png)
+
+![image-20241130005113280](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411300051547.png)
+
+#### Latent Variable Models 潜在变量模型
+
+找到一些隐变量进行分类。
+
+主要有四种应用方式：
+
+![image-20241130012016683](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411300120934.png)
+
+a：z 产生 x。
+
+b：x 产生 z。比如 x 是不同书籍，z 是其分类（历史，科幻……）
+
+c：从 x 中提取 z，比如混频信号分离。
+
+d：x 转换为 z 后再重建，比如图片 AI 高清化。
+
+z 需要通过无监督学习找寻。
+
+##### Autoencoders 自动编码器
+
+一种 x->z->x 潜在变量模型。依赖于模型参数 θ：
+
+![image-20241130225337322](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411302253564.png)
+
+比如z是图片x的压缩形式，解压得到x（可能会有损失）。
+
+###### Training Autoencoders 自动编码器
+
+将无监督问题转化为监督问题的一种案例。选定期望输出 x 值或者原始 x 值作为预期结果，这样就可以计算损失了。
+
+比如：期望加密解密后的输出 x 值和原值相等：
+
+![image-20241201013202025](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010132334.png)
+
+下面介绍一些自动编码器的案例：
+
+**Principal Component Analysis (PCA) 主成分分析**：
+
+在 AI 课里学过：
+
+https://stellaris.graysea.cn/kcl/artificial-intelligence-and-decision-making-6ccs3ain-lv6/note#principle-component-analysis-zhu-cheng-fen-fen-xi
+
+对于 D 维度数据可以很好地提取出 M 个特征向量，M<D.
+
+解码器：
+
+![image-20241201015855524](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010158780.png)
+
+这里的 W 就是 θ。
+
+![image-20241201021049642](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010210022.png)
+
+编码器：![image-20241201021135941](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010211177.png)
+
+要去除 inductive bias，就需要从原数据中去掉平均值。
+
+计算损失的方法：
+
+![image-20241201021357559](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010213093.png)
+
+例：USPS Data Set 手写识别数据集，一张图片的维度是256维（每个像素点的颜色可能性）。
+
+![image-20241201023353263](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010233576.png)
+
+现在我们考虑这样两个 w 作为主成分，具体是什么主成分我不太理解，下图的灰度值只是便于理解的呈现（在16*16的矩阵方向上对应每个点的灰度值）：
+
+![image-20241201023423644](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010234994.png)
+
+我们用这两个主成分和原16*16像素的图片相乘，得到对应两个主成分维度上的所有点的灰度值求和，作图后得到：
+
+![image-20241201023806911](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010238271.png)
+
+可以比较明显的看出这两个主成分的选择还是蛮正确的，可以有效将数字01分开。
+
+这样这个例子就有效的把原来的256维度转换为2维度（当然这个例子 pick 的太简单了，手写识别里的只考虑01情况所以才会降维得这么厉害）。
+
+**Neural Autoencoders 神经自动编码器**：
+
+加密解密都是神经网络模型，使用前后向传播方法。
+
+![image-20241201024108989](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010241248.png)
+
+#### Directed Generative Models 直接生成模型
+
+一种 z->x 模型。
+
+##### K-means K 聚类算法
+
+把 n 个 x 数据分配给 k 个聚类。z 是分配结果，$$z_{k,n}=1$$ 代表第n个数据分配给了第k簇，$$z_{k,n}=0$$  代表不在这个簇里。所有的 z_{k,n} 组成列向量 z。 
+
+分法本质上是每个簇的中心点离该簇内所有 x 数据点的欧几里得距离和最小。
+
+![image-20241201025222348](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010252586.png)
+
+但是我们并不知道怎么选质心点。
+
+所以最开始可以先选择几个 x 点作为质心点，先进行簇分类，然后计算每个簇中所有点的质心。
+
+再根据新质心，重新分类，直到质心不变为止。
+
+损失：
+
+![image-20241201033514124](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010335392.png)
+
+例题：注意给定了初始 k 质心了。
+
+![image-20241201040319104](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010403368.png)
+
+首先给这几个点就近分类：
+
+![image-20241201040336751](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010403073.png)
+
+然后求平均找质心：
+
+![image-20241201040408808](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010404051.png)

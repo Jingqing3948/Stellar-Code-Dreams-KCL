@@ -515,3 +515,55 @@ $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 ![image-20241126083054455](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260830645.png)
 
 两线交点处是 rational choice of mixed strategy。也就是 P(a1)=0.2，那么 P(a2)=0.8
+
+## Software Agent 软件代理
+
+### Agent Communications Languages (ACL)
+
+我们希望代理可以独立、自动化地完成任务。
+
+主要分为两种：
+
+- Knowledge Query and Manipulation Language (KQML) 
+
+- IEEE Foundation for Intelligent Physical Agents ACL  (FIPA ACL)
+
+这些 ACLS 都包括两层交流信息：
+
+1. 话题 topics
+2. 其涉及到的 utterances 话语（比如：下雨了吗？下雨了）
+
+#### FIPA ACL
+
+语句类型包括：询问查询，通知，赞同，否认，请求等（下雨了吗？下雨了。没下雨吧……）knowledge-sharing and automated contract negotiations
+
+这类语句比较简单，但是缺少论证、验证过程，自我转换过程 self-transformation。
+
+#### ACL 的语义 Semantics
+
+- Axiomatic 公理语义：阐述真理前提/结论。比如 A 告诉 B 下雨了，说明 A 相信下雨了且希望 B 相信下雨了，B 也知道 A 相信下雨了且希望自己相信下雨了（当然 B 不一定相信）. 或者计算机请求密码, A 相信 S 有密码且会给自己. 但是这并不一定发生。
+- Operational 操作语义：状态的变化，比如“未登录状态”输入密码后变成“登录状态”。
+- Game-theoretic 博弈语义：一些 players 之间相互对战，比如 AB 对战，语义为真当且仅当 A 总有获胜策略的情况下。
+- Denotational 指称语义：比如 possible world Semantics，所有可能的状态散落在大世界中，一些状态可以推导出其他状态。
+
+![image-20241126171733845](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411261717009.png)
+
+#### Dialogue Game Protocols 对话博弈协议
+
+FIPA ACL 的缺点是不够结构化。比如发起 query 不一定能受到响应。所以对话博弈协议用于规范化这一过程，比如假设会收到的答复，验证会收到的答复的准确性等（有点像 HTTPS）。
+
+如下图：
+
+![image-20241126172336773](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411261723891.png)
+
+A 发起问话，B 可能给予 A 请求的内容或者给予不是A请求的内容，或者U代表没法回复。
+
+随后 A 收到消息要质疑其有效性 Challenge 或者 accept 接受。如果接受了，对话就终止了。
+
+如果质疑，B 就要拿出相应的 S 解释自己为什么这样回复。
+
+然后回到 3 重复。
+
+## Clustering 集群
+
+比如分类问题。
