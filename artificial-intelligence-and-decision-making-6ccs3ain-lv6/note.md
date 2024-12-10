@@ -567,3 +567,143 @@ A 发起问话，B 可能给予 A 请求的内容或者给予不是A请求的内
 ## Clustering 集群
 
 比如分类问题。
+
+### K-means
+
+在机器学习课程中有了解：
+
+https://stellaris.graysea.cn/kcl/machine-learning-7ccemmle/note#unsupervised-learning-wu-jian-du-xue-xi
+
+将数据集分为 k 类。分类情况要求每个类的质心离该类中所有点欧几里得距离之和最小。
+
+算法：随机选k个聚类点，将所有x分类到离其最近的聚类点的类中，计算每个类中所有 x 点的质心，所有质心更新为新的聚类点重复如上操作，直到质心不变为止。
+
+但是可能会存在一些情况，尽管质心不变，但仍然不是最优解。比如如下的两张图聚类点都是该类的质心，但是距离总和不同。
+
+![image-20241201053758545](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010537704.png)
+
+![image-20241201053807351](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010538468.png)
+
+### k-Means++
+
+用于解决如上问题。
+
+选择一些输入点x作为初始聚类点。
+
+### K-median
+
+不是求均值，而是中位数。
+
+![image-20241201054018749](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010540874.png)
+
+### DBSCAN
+
+一种基于密度的聚类算法。
+
+两个参数：m 和 ε，m 是核心聚类点范围内的最少点数，ε 是核心聚类的半径。
+
+- 首先统计所有的点周围 ε 半径的其他点。
+- 统计完所有点的邻居信息后，如果这个点的邻居数大于 m，那么其就是一个核心聚类点。
+- 核心聚类点保留，非核心聚类点内的点如果属于周围某些核心聚类点的 ε 半径内的点，就把这个点分配到那个聚类邻居中。否则，视作噪声点，舍弃。
+
+### 确定合适的 k 值
+
+如何确定 k 的数量多少合适？我们先画出不同 k 数量下 k-means 求得的欧几里得距离总和图：
+
+![image-20241201055141855](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010551020.png)
+
+根据肘部定理，我们选择“肘部”的这个第一个下降得不再变快的点。因为这个点的 score 已经很低了，而且再增加 k 数量，score 不会下降多少。
+
+### Flat Clustering 平坦聚类法
+
+不是按距离来分的了。
+
+比如我们将N篇文档分为k类（如科幻小说，历史小说……）分类结果满足特定的要求。最终挑选出最优的分类结果。比如四本书分3类，”计算机 物理 体育 体育“的分法不错，”科学 科学 网球 足球“的分法不好，因为感觉阶级乱了。
+
+### Hierarchical Clustering 层级聚类
+
+按一定层级进行分类。
+
+例：
+
+![image-20241201060019569](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010600681.png)
+
+那么层级聚类如何划分？通过两种方法。
+
+#### Agglomerative 层次聚类（自下向上）
+
+首先我们建立一个树形图来说明点与点之间的相似性。
+
+对于相似度高的节点应该属于同一集群。也就是距离比较相近的一些组合点为同一集群。
+
+两个集群之间距离的几种判别方式：
+
+![image-20241201060922988](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010609097.png)
+
+Single 就是找距离最近的，最相似的一对点。
+
+Average 是彼此之间相连的所有点的距离平均值。
+
+Complete 是找距离最远最不像的两个点。
+
+例：下例是通过 Single 建立集群的方式：
+
+![image-20241201061154364](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010611559.png)
+
+![image-20241201061202473](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010612576.png)
+
+![image-20241201061225952](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010612053.png)
+
+这个过程可以建立一个层级树形图 dendogram：
+
+![image-20241201061311377](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010613539.png)
+
+
+
+#### Divisive Heuristics 自顶向下聚类
+
+接下来，对于 k 个聚类的划分，我们自顶向下依次划分。
+
+比如首先可以分为 acebd 和 fghi 两个大类。以此类推。
+
+切割的稀疏性 sparsity 用如下公式计算：
+
+![image-20241201061750960](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010617044.png)
+
+分子是 S 和 S- 两个集合之间的连线的相似度之和。分母是他们两个内部的最小相似度。我们最终的聚类结果要让稀疏性最小。
+
+## AI and Ethics AI 伦理问题
+
+需要关注的问题：
+
+- fairness 公平：不能带有偏见。
+- transparency 透明度：输入数据，判断逻辑应当公开。
+- explainability 可解释性：系统应该可以解释为什么这么做。
+- rectification 可反转
+- human involvement 是否可以由人类干预决策。
+- governance of ai systems 政策。
+
+责任分配：
+
+- 开发人员编写的程序
+- 开发人员的道德准则
+- 开发人员的道德培训
+
+### identify bias 识别偏见问题
+
+比如以前银行贷款曾经试用过 AI 判断客户是否值得贷款，导致有一些客户穿着打扮长相可能会影响机器的判断。
+
+在第一节课中介绍过，AI 有两种，数据驱动型（比如深度学习）和模型驱动型。数据驱动型没法解释为什么这样做，而模型驱动型可以，所以数据驱动型识别偏见很困难，所以可以专注于识别数据流和代码的正确性。
+
+### 透明度问题
+
+一般可能都需要我们建立一个仿照源模型逻辑的模型来呈现其内部透明逻辑。
+
+模型驱动 AI 一般很好解释，就像 if else 结构（if 患者失去嗅觉 and 喉咙疼，then 可能是新冠……）
+
+但是数据驱动型还是很难解释，因为它对于一些要处理的数据可能完全没有概念。而且当下机器学习深度学习方法仍然不成熟，需要大量数据。
+
+### Humans in the loop 人类参与问题
+
+什么情况下的应用需要人类参与，什么情况下不需要？参与的人类是什么职位结构呢？等等一系列问题。
+

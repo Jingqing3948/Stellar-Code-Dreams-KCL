@@ -555,3 +555,407 @@ Playing Poker 打扑克：也是一种共识方法，用于估计项目工作量
 信息非常有限时使用，否则优先使用三点评估法。
 
 根据事件发生的概率生成随机事件计算评估值，最后再整合。
+
+## Structuring and Scheduling 组织计划
+
+项目结构包括：
+
+- introduction
+- management / implementation
+- technical
+- other complimentary sections
+- summary and conclusions
+
+### Work
+
+指明了项目中必做的 tasks and jobs
+
+####  Work Breakdown Structure (WBS)
+
+把工作进行细分：
+
+project, sub-project, work package, task, activity （之前了解过，这些是逐步细化的）。
+
+WPs 在逻辑上依靠前一个 WPs，比如：场地准备，购买材料，建造，清理，这种细分程度是4个 WPs。
+
+WPs 是成本和进度的基础，每个 WPs 对一定的资源和管理责任负责。在项目执行过程中用项目预定进度和每个 WPs 的实际进度进行对比核实，并以 WPs 为单位采取相应的调整措施。
+
+### Scheduling
+
+将项目计划转换成图表等形式，典型的例子是甘特图。
+
+甘特图可以显示项目的起止日期，相互之间的依赖情况，以及所需资源等。
+
+#### Project schedule
+
+项目管理人员通过 Project schedule 来计划和审查项目。
+
+呈现出主要的项目活动，但是不会具体展开其细节。自顶向下地制定，自下向上（从细节到整体）地修改。
+
+比如：WP Schedule，
+
+#### Scheduling Process & Challenges 流程和挑战
+
+scheduling 的过程包括：
+
+1. Organize tasks concurrently 并发组织任务，有点像小时候做过的那种“淘米需要x分钟，煮饭需要x分钟，洗菜需要x分钟，如何让做好饭的总时间最短”问题。
+2. Minimize task dependencies 最小化任务之间的依赖，减少依赖后很多任务就不用等着其他任务先完成再做了。
+3. Estimated duration and resources 评估每个 tasks 所需时间和资源。
+
+挑战：
+
+1. 任务优先级划分；
+2. 任务重叠问题；
+3. 资源有限；
+4. 复杂任务的处理。
+
+#### Schedule Development Activities 制定计划的12步活动
+
+1.  Identify the WPs/tasks 判断此项目中哪些是 WP，哪些是 tasks。
+
+2. Identify the project’s Milestones/Deliverables 确定里程碑节点和最终可交付物。
+
+   里程碑的概念不要和其他概念混淆。WPS 和 Tasks 是需要完成的消耗资源的任务；events 是某一个时刻的事；interface event 接口事件是指前一个 tasks 完成，后一个 tasks 开始的时刻。里程碑标志着项目的重要节点，比如完成了一系列重大任务的阶段，就某些重要事情达成共识，以及获取到了重要资源等。如果里程碑没有按预期完成，后果会比较严重，可能会影响后续计划预算。
+
+3. Identify Customer Milestones 客户提出的里程碑节点。
+
+4. Detail the schedule at different levels
+
+5. Estimate Activity/Task Durations 评估活动所需时间，使用前面提到的评估方法，包括处理不确定性的蒙特卡洛法
+
+6. Estimate Resources Needed 评估资源需求
+
+7. Activity Network Diagram 创建活动网络图。如下图：
+
+​	![image-20241207001424352](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412070014474.png)
+
+其中，总用时最长的路径被称作 Critical Path 关键路径，因为其决定了整个项目最早什么时候才能完成。这条路径上的任务如果没有按时完成，延期了，那么整个项目都会延期。所以可以分配给关键路径上的活动更多资源来确保其能够风险最小地尽快完成。
+
+*sub critical paths 是第二长用时的路径。*
+
+而后再使用 PERT 方法进行评估（最优时间+最差时间+最可能情况*4）/6。
+
+下图是每个项目的具体浮动时间情况：
+
+![image-20241207002346054](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412070023167.png)
+
+Total Float，或者叫 Slack，就是该活动的最长可延迟时间（在不影响**该活动结束日期**的前提下）。用最晚可开始时间-最早可开始时间，或者最晚可结束时间-最早可结束时间得到。ES-LS=EF-LF
+
+Duration 是项目的持续时间，用 EF-ES+1 得到。
+
+Free Float：该项目不影响**后续项目**的情况下最大可延迟时间。计算公式是 FF=该活动后续活动的 ES 的最小值 - 该活动的 ES - 该活动的 DU。
+
+比如 Activity P，FF(P)=min(6,8)-1-5=0
+
+Negative Float NF：该项目已经落后了，需要提前几天完成。
+
+8. Incorporate Risk Analysis (Estimates) 分析
+
+9. Incorporate resource constraints – Critical Chain Technique 关键链方法设置资源约束
+
+   找到关键路径的资源和活动依赖，增加其他非工作活动的持续时间（来把其他不要紧的活动的资源分配给关键路径）。
+
+   之前的关键路径方法我们要计算 Float，目的是判断每个项目最晚可以晚完成的时间；关键链方法则是设置缓冲区来留有一些余地。比如下图，非关键路径会设置 Feeding Buffer，这样在项目执行过程中如果发生了一些延迟也不一定会影响原计划。
+
+   Project Buffer 设置在关键路径上，代表因为意外情况整个项目可以推迟完成的时间。
+
+   除此之外还有 Resource Buffer，设置在关键路径上，叫做关键资源，这些资源相当于备用待命确保项目缺少资源的时候不会告急。
+
+   ![image-20241207052220311](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412070522402.png)
+
+   总结来说，Float 是关键路径和非关键路径之间的时间差，代表可以晚完成非关键路径多少天（关键路径不可以推迟完成）。而缓冲 buffer 是估计预留出一个安全期来确保项目的鲁棒性。
+
+10. Incorporate schedule constraints, imposed dates, or other schedule updates： Duration Compression 压缩技术压缩项目总用时。具体做法是：Fast Tracking 尽可能并行执行连续性任务；Crashing 以最小的成本增量获得最大的时间压缩，比如让工人加班（什么地狱笑话）。
+11. Resource Levelling 考虑资源因素调整活动的起止时间；常用甘特图，对于有共享资源的项目比较一目了然。
+12. Final Approval：制定 schedule baseline；把 schedule 上交给高级管理者批准，后续嵌入到项目中。
+
+## Managing Project 管理计划
+
+### Completing Bid & Proposal
+
+首先我们需要完成投标。包括召开听证会给客户答疑，制定合同，交接到项目执行阶段，以及投标阶段的复盘与关闭。
+
+### Initialise
+
+将从投标阶段递交过来的数据整理存入项目数据库，检查有无缺少部分等。PM 审核后批准项目章程。
+
+PM 需要做的有：
+
+- 开放预算线 budget lines, 团队可以预订项目预算。
+- 开启所有的 planned management activities 管理活动，比如文档，配置，数据等。
+- 确定管理工具 tools。
+- 建立项目数据库。
+- 监控项目初始化 monitor and control。
+
+召开会议，确定股东和项目达成一致；解释项目目标；介绍项目的各个主要阶段。
+
+Present the project main parts in particular 呈现项目的主要部分，比如章程，组织，schdule，机制等等，并记录会议时长和事件。
+
+如果可能的话，还需要对项目进一步修改。
+
+### Project Manager Responsibilities
+
+PM 负责的内容：
+
+- organization：管理项目，资源，时间等，预防会导致项目延期或预算不够的风险，决定是否向高级领导汇报进度，**绝对不能让 top management surprised**。
+
+- Project：确保项目完整性；消除误解 misunderstandings；满足客户需求；按时按规定完成项目。
+- Project Team：让团队高效工作；倾听团队成员意见；关心团队成员的个人发展和未来规划。
+  - 人是一个项目中最重要的资产。PM 的人际交往应该做到：Consistency 一致性，一视同仁；Respect 尊重不同人的技能、文化、性格等；Inclusion 考虑到所有人的想法；Honesty 对项目现状要如实禀报。
+
+PM 必须是一个很好的谈判者，无论是谈判获取资源，和项目成员沟通，和股东，高级管理者汇报进度，解决障碍，这些都需要良好的沟通能力。
+
+风险问题一般源自于低估项目所需资源以及资源分配得不好。如果出现障碍，PM 需要及时提出解决方案并和客户沟通，并吸取经验。
+
+### Project Execution, Monitoring & Control 
+
+#### Start  WPs & WGs
+
+启动 WP 工作包和 WG 工作小组。WP 工作包必须要详细确定好其计划，组织，资源分配，和其他工作包的接口。
+
+#### Control Project
+
+防止出现偏差；定期更新记录；一旦出现偏差采取补救措施。
+
+#### Progress Reviews
+
+与团队成员召开内部会议检查 WPS 进度；
+
+确保沟通质量；
+
+分享遇到的问题，预期解决方式，并在解决问题的过程中持续跟进；
+
+记录工作，采取的措施等；
+
+定期向高层汇报工作。
+
+![image-20241207173309122](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071733296.png)
+
+#### Manage Customer
+
+定期与客户交换信息达成一致；商务信息必须和商务经理沟通分析。
+
+#### Manage QA
+
+确保品质；定期检查应用质量和客户评价。
+
+### Project Closure
+
+PM 确保项目按合同完成所有需求，产出相应交付物，并取得合规文件（如海关出口许可），让财务提出最终费用 final invoices 后准备关闭项目。需要获取客户同意，以及更新项目数据库，Lesson Learnt：在团队成员的帮助下总结项目的优缺点。
+
+### Project Management Methods
+
+#### Methods
+
+Project Management Institute (PMI)：一种项目管理标准。
+
+![image-20241207175311009](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071753104.png)
+
+ PRINCE2：一个面向商业化的项目管理方法，基于产品，强调将项目分为可管理和可控制的阶段。而且非常灵活，可以被应用于相似的项目。
+
+![1733594380554](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071759598.png)
+
+![image-20241207175949934](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071759021.png)
+
+#### Tool
+
+比如微软的 Microsoft Project Management，还有 Chorus 2.0。
+
+Chorus 2.0 是一个流程框架 process  & procedures framework，所有工具都需要与其兼容。
+
+![image-20241207183515914](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071835032.png)
+
+B1 是电商套件；Primavera 是 schedule 工具，类似微软 Project 工具（相比微软工具，Primavera 量级更大，需要填写的细节更多，适合大型项目）；OTL Oracle Time and Labour 是时间和考勤管理工具；mTools 接受上述输入，并提供实际进度、预测花费等信息。
+
+## Project Extcution 项目执行
+
+下面介绍一些项目执行模型。
+
+### waterfall 瀑布模型
+
+就像瀑布顺着台阶留下来一样，一级一级地执行。
+
+![image-20241207185052414](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071850536.png)
+
+优点在于模型很简单，也很好实现。缺点在于，如果在后续活动执行的时候很难再回去改之前的部分。而且不适用于太复杂的项目。
+
+Change Request 很常见，可能原因有：客户有新的需求；客户希望使用新技术；目前项目耽搁太多时间了；检测到新风险需要避免；等等。PM 在收到 Change Request Form 后必须评估改变请求对项目造成的影响。
+
+### Agile 敏捷开发
+
+实际上在项目过程中，保持需求不变几乎是不可能的。所以没办法在最开始就确保整个项目的所有需求。
+
+敏捷开发是快速，轻量级的项目管理过程，**当项目的目标确定但中间的执行过程不确定时使用**。项目被拆为许多个短而小的的迭代周期，争取每一次迭代都产生一个可以交付给客户的小版本。
+
+敏捷开发有12个原则：
+
+1. 满足客户需求是最高优先事项 satisfy the  customer needs。
+2. 大胆地修改需求，哪怕是在项目开发过程晚期 change the requirements.
+3. 频繁交付 deliver working software frequently
+4. 业务人员 business people 和开发人员 developers 在项目过程中必须每天合作 work together。
+5. 信任有动力的员工可以完成工作，给予他们合适的环境和支持 trust。
+6. 最有效的沟通方式是面对面交流 face-to-face conversation。
+7. working software 是进度的首要衡量标准。
+8. 可持续开发，开发者应当维持恒定开发速度 sustainable development。
+9. 持续关注优秀的技术和设计方案可以提高敏捷性 agility。
+10. 保持简单，最大化未完成工作量 simplicity。
+11. 最好的设计来自自组织团队 self-organizing teams.
+12. 定期反思 reflects.
+
+4条敏捷宣言：
+
+- individuals and interactions > processes and tools 个体和交互胜过过程和工具
+- working > comprehensive documentation 可工作的软件胜过复杂的文档
+- customer collaboration > contract negotiations 客户合作胜过客户合同谈判
+- responding to change > following a plan 相应变化胜过遵守计划
+
+敏捷开发的优势在于持续快速的工作软件的交付；开发者和客户的关系更近；在项目开发过程中仍然可以更改需求，持续改进项目；高度透明化。
+
+缺点在于：可能相比线性模型更难理解；碎片化交付不一定适合所有项目；如果不恰当地使用敏捷开发，可能会导致更低的效率；文档的重要性被忽视。
+
+两种常见的敏捷开发框架是 Scrum and Kanban。开发流程如下：
+
+1. project planning，但是相比其他模型计划的没有那么详细，因为后续可能会做很多改动。
+2. Product Roadmap Creation：将最终产品拆成许多部分，分在不同周期中执行。以及根据需求制定一个 product backlog 产品待办事项列表，一项项执行。
+3. (Product) Release Planning 发布计划：在每个周期（sprints）开始都会发布一个新的计划。
+4. (Work) Sprint/cycle Planning：每个 Sprint 开始之前股东分配工作到各个团队/个人；以及实时记录工作流状态。
+5. Daily Meetings：每天召开15分钟左右的小会议，讨论昨天工作。
+6. Sprint Review and Retrospective：Review 是和股东，项目拥有者，团队等人开会检查产品是否达到需求。retrospective 是回顾总结项目开发过程中的问题，改进方案等。
+
+![image-20241207201252884](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412072012009.png)
+
+#### Scrum
+
+Product Owner：客户。
+
+Scrum Master：PM。
+
+Development Team：项目团队。
+
+Scrum 需要召开的会议如下：
+
+- Sprint Planning Meeting 将任务分配到周期中。
+
+  Sprint Planning PM 必须出席，而且容不得拖延；质量问题不可以协商……
+
+  周期推荐长度为3周。
+
+  sprint planning 需要确定每个周期的 story points 故事点数，故事点数是一个单位，一般4-12小时的活为一个故事点。Velocity 是下一个 sprint 的故事点数，estimated velocity 是预期完成这个 sprint 需要多少故事点，actually 是实际用的。
+
+- Backlog Refinement Meeting 待办事项会议：定义待办事项。
+
+![image-20241207202522353](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412072025447.png)
+
+- Daily Scrum：每日15分钟的小会，汇报进度。
+- Sprint Review / Demo：每个周期结束的时候开，调整待办事项列表。
+- Sprint Retrospective：在 Sprint Review 之后开，改进工作方法。
+
+![image-20241207202241097](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412072022191.png)
+
+- sprint review：重审后就可以发布计划了。
+
+#### Kanban
+
+看板是一种管理产品创建的方法，强调持续交付且不给开发团队带来太大的负担。
+
+下图是 kanban board：
+
+![image-20241210021841013](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412100218175.png)
+
+上面有多列内容，每一列同时存在的任务数量有限制 Work-in-Progress Limit，并且前置任务有前置平均时间限制 Lead Time（来保证持续地进行转移）。
+
+看板和 scrum 相似之处在于图表中呈现了任务内容和足够的透明度。
+
+| 比较条目     | Scrum                                                        | Kanban                                               |
+| ------------ | ------------------------------------------------------------ | ---------------------------------------------------- |
+| 角色和职责   | 每个团队成员都有预定义的角色                                 | 没有预定义的角色（除了 PM），鼓励团队合作            |
+| DDL          | 可交付成果由 Sprint 决定                                     | 产品和过程在需要的基础上持续交付                     |
+| 授权优先级   | 每次迭代拉取一批新任务                                       | 完成前一个任务再拉取下一个任务                       |
+| 修改         | 不建议                                                       | 允许                                                 |
+| 生产力的量度 | velocity，每个 sprint 的完成时间都依赖于前一个 sprint 的完成 | cycle time：从开始到结束完成项目的一个完整部分来度量 |
+| 最佳应用场景 | 有稳定优先级的工作和团队，优先级不会修改                     | 有广泛不同优先级的项目                               |
+
+#### Scrummerfall
+
+混合了瀑布模型和 Agile。
+
+![image-20241210022630433](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412100226532.png)
+
+## Control And Monitoring 检查控制
+
+执行过程中要持续监视项目状态并加以调控。这样让项目在有限的时间等资源范围内，在预期范围内发展，也可以减小风险，提高项目产出质量。
+
+但是需求和目标在项目执行过程中不断变化，控制不及时可能赶不上最佳时间。而且对于复杂项目来说控制难度更大。
+
+### Control Steps
+
+1. 确定要控制的量度 criteria/metrics：选择要被衡量的指标
+2. 建立标准 standards for performance analysis
+3. 利用测量方法衡量 actual performance
+4. 比较计划表现和实际表现
+5. 识别不可接受的差异 identify unacceptable variance
+6. 评估差异造成的影响 impact of variance
+7. 找到差表现的根源 source of poor performance
+8. 挑选合适的控制措施 control actions
+9. 实施措施
+10. 确保差表现不再出现 does not re-appear
+
+### 控制重点
+
+- Scope Control 控制范围：不要超出项目负责的范围，因为会浪费时间预算。
+- Schedule 控制时间：和计划的时间表对比，不能超时（如甘特图）。可以在计划阶段加入 time buffers，避免一心多用 multi-tasking，频繁收集活动状态，公布提前完成的好处和晚完成的惩罚。
+- cost 控制成本：消除未授权或者不恰当的花费。
+- quality 控制质量：采取预防措施，遵循质量计划。
+- Procurement 控制采购：控制对采购负责的承包商 contractor；提前列出应急解决措施。
+
+### 控制可能存在的问题
+
+1. 不及时的控制措施可能跟不上变化；
+2. 成员对控制了解不到位；尽量人手一本手册。
+3. 发生问题时过度反应或者不采取措施。
+4. 及时报告问题。
+
+### performance analysis 分析表现
+
+#### EVPM 分析时间金钱成本
+
+Earned Value Performance Management 挣值绩效管理方法
+
+三个基本变量:
+
+BCWS：budgeted cost of the work scheduled 计划预算
+
+BCWP：budgeted cost of the work performed 实际预算
+
+ACWP：Actual cost of the work performed 实际开销
+
+例题：
+
+Definition : A company signed £200K fixed cost contract to install 1,000 new parking meters. Cost of removing old parking meters and replacing them with new ones: £200 per meter. 25 meters can be installed each day. Project should take 40 working days to complete.
+
+a) BCWS：就是在规定时间内建造所有新停车计时器的预算，200\*18\*25
+
+b) 假设第18天装了400m，求 BCWP：实际工作量的预算，200\*400（Sv = BCWP – BCWS 相减可知，现在的进度低于预期进度50m，2天的工作量）
+
+c) 实际上每米花费 210 英镑，求 ACWP：210\*400
+
+- 进度偏差：Schedule Deviation **Sv = BCWP – BCWS**，正值表示提前了，负值表示落后了（相当于：固定了单位工作量的开销和理想情况一致的前提下，总工作量低于预期）。
+
+- 花费偏差：Cost Deviation **Cv= BCWP – ACWP**，正值表示实际开销小了，负值表示大了。（SV CV 的正值都是我们期望的结果，都是用 BCWP 作为被减数）
+
+- 进度指数 Schedule Index **SI = BCWP/BCWS**，>1 表示在计划进度之前。
+- 花费指数 cost index **CI = BCWP/ACWP**，>1 表示实际开销更小。
+- 临界比 Critical Ratio **CR=CPI*SPI**，代表这个项目整体来看（时间和开销）怎么样，>1 表示还可以。
+
+但是如果出现了项目以外的开销影响（比如间接开销太大，影响 CV 为负数，但是对项目性能没影响）或者有没及时更新的数据，EVPM 方法就不一定准确。
+
+### Forcasting 预测是否即将完成/是否完成
+
+BAC：budget at Completion 完成时（计划）预算。**BCWP/BAC 表示工作量完成百分比**
+
+WR：work remaining 剩余工作量，用预算衡量。**WR=BAC-BCWP**
+
+ETC：Estimate to complete 剩余工作成本，**ETC = WP / CI**
+
+EAC：Estimate at Completion 完成时工作成本，**EAC=ACWP+ETC**，相当于现在的成本+按照现在的花费速度，完成剩余部分需要的成本。**EAC=BAC / CI**
+
