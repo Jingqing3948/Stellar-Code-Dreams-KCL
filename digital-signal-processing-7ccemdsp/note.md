@@ -46,7 +46,7 @@ $$
 $$
 x[n]=\sum^{\infty}_{k=-\infty}x[k]\delta[n-k]
 $$
-对于任何序列，这个公式都适用。也就是说在每个采样点，我用δ[n]的1与这个采样点的x值相乘，得到的序列和原序列一样。也就相当于x[n]=x[n]*1嘛！
+对于任何序列，这个公式都适用。也就是说在每个采样点，我用δ[n]的1与这个采样点的x值相乘，得到的序列和原序列一样。也就相当于 $$x[n]=x[n]*1$$ 嘛！
 
 后面再讲其具体作用。
 
@@ -69,7 +69,7 @@ $$
 $$
 \delta[n]=u[n]-u[n-1]
 $$
-**指数序列：**形如x[n]=Aα^n^。下图是0<α<1的形状：
+**指数序列：**形如 $$x[n]=Aα^n$$。下图是 $$0<α<1$$ 的形状：
 
 ![image-20240914231532621](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409142315667.png)
 
@@ -321,7 +321,7 @@ X(z)和ROC共同确定x[n]. 两个不同的x[n]可能X(z)一样，ROC不同。�
 
 ![image-20241015112614881](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410151126207.png)
 
-- ROC在图上表现为一个圆环或者圆。**当单位圆（z=e^{-jw}^）包含在内时，X(z) 是稳定的，**x[n]的傅里叶变换存在（因为z=e^{-jw}^ 时就是傅里叶变换的公式，说明收敛）
+- ROC在图上表现为一个圆环或者圆。**当单位圆（z=e^{-jw}^）包含在内时，X(z) 是稳定的，**x[n]的傅里叶变换存在（因为 $$z=e^{-jw}$$ 时就是傅里叶变换的公式，说明收敛）
 
 - 当x[n]由有限个非零值组成时，z[n]的取值就非常随意了，基本除了0和无穷都可以取（z可以取到无穷的）。
 
@@ -369,25 +369,37 @@ $$
 $$
 x_s(t)=x_c(t)s(t),s(t)=\sum^\infty_{n=-\infty}\delta(t-nT)
 $$
-采样的频率表示：
+采样的频域表示：
 $$
 X_s(j\Omega)=X_C(j\Omega)*S(j\Omega)=\frac{1}{T}\sum^{\infty}_{k=-\infty}X_c(j(\Omega-k\Omega_s))
 $$
 
-如果采样频率过低，可能会导致对原信号的推测不准确，比如下图：
+从公式来看，采样后的频域函数其实就是原来的频域函数进行一定频移后求和。
+
+如果采样频率过低，可能会导致对原信号的推测不准确，比如下图，原信号是红色部分，采样出的结果是蓝色部分：
 
 ![[什么是混叠? - 知乎](https://zhuanlan.zhihu.com/p/23923059)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410292020213.jpeg)
 
-这种现象叫做混叠 aliasing，主要就是采样频率不够大造成的。
+这种现象叫做混叠 aliasing，主要就是采样频率不够大造成的，频域图像发生一定程度的重叠导致无法正确推测回原信号。如下图（信号的最大频率用 Ω\_N 表示，采样频率用 Ω\_s 表示）：
+
+![image-20241213033100982](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412130331196.png)
 
 ### 奈奎斯特采样定律
 
-信号的最大频率用 Ω_N 表示，如果频域满足如下两个条件：
+如何确保不发生混叠？从上图我们可以看出，当 $$\Omega_s-0>2\Omega_N$$ 的时候信号不发生混叠。这就是奈奎斯特采样定律。
 
-- 对于 $|\Omega|>\Omega_N$ ，$X_c(j\Omega)=0$ （也就是说 x_c(t) 是 bandlimited 的）
-- T 小到 $\Omega_s>2\Omega_N$ , 取样频率是原频率的2倍以上
+如果频域满足如下两个条件：
 
-那么 $X_c(j(\Omega-k\Omega))$ 就不发生混叠，并且我们可以用一个 filter h_r(t) 和 x_s(t) 卷积重构的 x_c(t) （采样频率够高，可以从采样后的信号恢复原信号）. 过滤公式和过滤器的傅里叶变换如下：
+- 对于 $$|\Omega|>\Omega_N$$ ，$$X_c(j\Omega)=0$$ （也就是说 x_c(t) 是 bandlimited 的）
+- T 小到 $$\Omega_s>2\Omega_N$$ , 取样频率是原频率的2倍以上
+
+那么 $$X_c(j(\Omega-k\Omega))$$ 就不发生混叠，并且我们可以用一个 filter h_r(t) 和 x_s(t) 卷积重构的 x_c(t) （采样频率够高，可以从采样后的信号恢复原信号）. 
+
+原理如下图，首先采样频率够大，可以确保频域图像不发生混叠；然后我们用滤波器只提取出 ±Ω_N 范围内的部分，就是原信号，这样得到的采样后的离散信号的频域图和连续信号的频域图完全一致，可以还原。
+
+![image-20241213033452373](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412130334536.png)
+
+过滤公式和过滤器的傅里叶变换如下：
 $$
 \begin{aligned}
 x_r(t)=\int^{\infty}_{-\infty}x_s(\xi)h_r(t-\xi)d\xi=\sum^{\infty}_{n=-\infty}x_c(nT)h_r(t-nT)\\
@@ -397,13 +409,13 @@ T &  |\Omega|<\Omega_c \\
 \end{cases}
 \end{aligned}
 $$
-其中Ω_c 是低通滤波器 H 的频率， $\Omega_N<\Omega_c<\Omega_s-\Omega_N$
+其中Ω_c 是低通滤波器 H 的频率， $$\Omega_N<\Omega_c<\Omega_s-\Omega_N$$ （确保只采样到原始频域信号）
 
 没有混叠发生时，有：
 $$
 X(e^{j\omega})=\frac{1}{T}\sum^{\infty}_{k=-\infty}X_c(j(\frac{\omega}{T}-\frac{2\pi k}{T}))
 $$
-这就是奈奎斯特采样定律，其中 $\Omega_s=2\Omega_N$ 的采样频率就是奈奎斯特采样率（Ωc=Ωs/2=π/T）。从图像上看的效果就是刚好每次采样的频域信号是相接的。
+这就是奈奎斯特采样定律，其中 $$\Omega_s=2\Omega_N$$ 的采样频率就是奈奎斯特采样率（Ωc=Ωs/2=π/T）。从图像上看的效果就是刚好每次采样的频域信号是相接的。
 
 下图可以清晰解释为什么采样频率过低会导致混叠，频率估计错误。上下两个图像的周期明显不同。
 
@@ -419,7 +431,7 @@ $$
 
 如果设置合适的 h 函数，即理想低通滤波器就可以无损恢复原信号。
 
-截止频率设置为：$\Omega_C=\Omega_s/2$
+截止频率设置为：$$\Omega_C=\Omega_s/2$$
 
 则有：
 $$
@@ -442,7 +454,7 @@ $$
 $$
 Y(j\Omega)=H_r(j\Omega)H(e^{j\Omega T})X_c(j\Omega)
 $$
-第一个 H 是重建连续信号用的，上面我们已经讲过其公式就是在 $\pm \frac{\Omega_s}{2}$ 范围内都=T，超过这个范围都=0.
+第一个 H 是重建连续信号用的，上面我们已经讲过其公式就是在 $$\pm \frac{\Omega_s}{2}$$ 范围内都=T，超过这个范围都=0.
 
 第二个 H 是离散时间系统的频率响应。
 
@@ -459,19 +471,19 @@ $$
 
 ### 降低采样率
 
-Sampling Rate Reduction，实现起来很简单，周期变成 MT，$x[n]=x[nM]$
+Sampling Rate Reduction，实现起来很简单，周期变成 MT，$$x[n]=x[nM]$$
 
-如果 x[n] 带宽小于 $\frac{\pi}{M}$，那么不会发生 information loss.
+如果 x[n] 带宽小于 $$\frac{\pi}{M}$$，那么不会发生 information loss.
 
-如果 x[n] 带宽= $\frac{\pi}{M}$，那么会发生 aliasing.
+如果 x[n] 带宽= $$\frac{\pi}{M}$$，那么会发生 aliasing.
 
-如果 x[n] 带宽大于 $\frac{\pi}{M}$，那么会发生 information loss. 可以应用低通滤波器降低频率到带宽为 $\frac{\pi}{M}$ 来降低损失。
+如果 x[n] 带宽大于 $$\frac{\pi}{M}$$，那么会发生 information loss. 可以应用低通滤波器降低频率到带宽为 $$\frac{\pi}{M}$$ 来降低损失。
 
 ![image-20241105095556692](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411050955949.png)
 
 ### 提高采样率
 
-和降低类似，$x[n]=x[\frac{n}{L}]$。一般周期用 $\frac{MT}{L}$ 表示，M 是降低采样率的系数，L 是提高采样率的系数。
+和降低类似，$$x[n]=x[\frac{n}{L}]$$。一般周期用 $$\frac{MT}{L}$$ 表示，M 是降低采样率的系数，L 是提高采样率的系数。
 
 ![image-20241105095431610](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411050954849.png)
 
