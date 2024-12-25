@@ -168,6 +168,104 @@ D. Controls
 
 **22.**   SMART objectives are specific, measurable, achievable, realistic and time-bounded. **True**
 
-> 中国教材常用的 R 是 relevant，好像外国人用 realistic.
-
 **23.** For Quality Assurance Management companies follow ISO 9001. **True**
+
+## Tutorial 4
+
+### 多选题
+
+**1. Which of the following factors can trigger the need for defining and planning a new  project?**   
+
+A. Meet regulatory, legal, or social needs and requirements of the society   
+
+B. Satisfy stakeholder requests or needs initiated through an RFP  
+
+C. Implement the roadmap and technological strategy of the company  
+
+**D. All of the above**  
+
+> 看着没啥大问题
+
+**2. “Project management processes” are mainly organized into which of the following  correct order of processes?**   
+
+A. Initiating, designing, planning, directing, controlling, and closing  
+
+B. Designing, developing, innovating, testing, and implementing  
+
+**C. Initiating, planning, executing, monitoring and controlling, and closing**   
+
+D. Initiating, planning, executing, distributing, exploiting and closing   
+
+> 如题
+
+**3. As the project manager, you have the highest degree of authority, you are working full-time for your project, and you manage the budget for your project. Which organization structure you have been following in your company?**   
+
+A. Collaborative   
+
+**B. Pure project**   
+
+C. Functional  
+
+D. Matrix   
+
+> 详见：[我的笔记](https://stellaris.graysea.cn/kcl/project-management-7ccempro/note#project-organization-structure-xiang-mu-zu-zhi-jie-gou)。只为当前一个项目工作，说明不是职能结构或者矩阵结构。
+
+**4. Being a project manager, how will you deal with a stakeholder who has high power  and high interest in your project?**   
+
+A. Keep Satisfied   
+
+B. Keep Informed   
+
+**C. Manage Closely**   
+
+D. Monitor   
+
+> 详见：[我的笔记](https://stellaris.graysea.cn/kcl/project-management-7ccempro/note#xiang-mu-ren-yuan-zu-cheng). 只有兴趣的股东，跟他通知到位，画饼就行。只有权力的股东，要让他们满意，但是不用给他们通知，他们又不关心我们项目干了什么，只砸钱。两者兼而有之的股东要好好对待，manage closely。两者都没有的股东 monitor 着就行。
+
+**5. Which one of the following statements best describes a project?**   
+
+A. A project is a set of tools and techniques often used to deliver organisational tasks  
+
+B. A project is the sum of activities needed to remove risks and uncertainty from a piece of work 
+
+**C. A project is time-bounded single focused endeavour undertaken to achieve one or  more desired outputs**  
+
+D. A project is a time-bounded routine task with a planning phase 
+
+> 最重要的特点：在有限的时间，金钱等资源内，实现特定目标
+
+**6. Which one of the following best describes a project stakeholder?**  
+
+A. A group who is concerned and solely accountable for the project progress and  outcome  
+
+**B. A party with an interest or effective role in the project or is impacted by the project**  
+
+C. An organisation which has a vested interest and influence toward project execution  and delivery of project results  
+
+D. A person who has a financial stake in the organisation managing the project  
+
+> 如题，那个矩阵的两个维度嘛，兴趣和影响力。
+
+**7. A key aspect included in the project proposal is:**   
+
+A. Defining which operational systems to put in place  
+
+B. Identifying routine tasks  
+
+C. Ensuring on-going operations are maintained and executed  
+
+**D. Planning to achieve a set of defined objectives**  
+
+> 如题，目标永远是最重要的。
+
+**8. Who are project team members accountable to?**   
+
+A. External stakeholders including end-users  
+
+B. The company top management  
+
+C. The company finance and commercial directors  
+
+**D. The project manager**
+
+> 如题。
