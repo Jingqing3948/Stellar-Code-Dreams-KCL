@@ -959,3 +959,120 @@ ETC：Estimate to complete 剩余工作成本，**ETC = WP / CI**
 
 EAC：Estimate at Completion 完成时工作成本，**EAC=ACWP+ETC**，相当于现在的成本+按照现在的花费速度，完成剩余部分需要的成本。**EAC=BAC / CI**
 
+## Project Outputs and Managing IP 项目产出；知识产权管理
+
+### Project Outputs 项目产出
+
+首先需要区分一下 Outputs 和 Outcomes 的概念。Outputs 是有形或无形的产出物，而 Outcomes 更接近于“间接价值”，比如价值，社会影响，有用性等。
+
+所以我们讨论的 Outputs 更接近于“产出物”注重结果而不是“意义”。比如有形的有硬件，设备等；无形的有代码，算法等。outputs 被用于衡量项目是否成功。*大多数 Outputs 都有相关联的 reports。*
+
+因此，对于不同类型的产出，也需要定义相关联的指标来衡量其优劣。这部分内容在定义 WP/Tasks 的时候制定。
+
+开发软件指标：
+
+- 方法论 methodology：开发过程需要遵循软件研发方法论，比如计划-分析-设计-实现-测试-维护等流程。
+- 合规性 Compliance：符合行业规范。
+- 鲁棒性 Risks and vulnerabilities：有风险评估并嵌入使能器 embed enablers。*这里我对于使能器的理解：嵌入式开发的时候经常看到有很多端口需要使能才能启用，给不同的部分嵌入使能器后，当出现风险故障的时候可以确保未使能的部分受影响减轻。*
+- 编程 Coding：选择合适的实现平台（linux, windows...）
+- 兼容性 Compatibility：软件更新迭代应向旧版本兼容。*延伸：向前兼容的意思是新版本的软件仍然可以与旧版本的硬件、文件格式等兼容；向后兼容则是旧版本的软件可以与新版本的硬件、软件或文件格式兼容。*
+- 可升级性 upgradability
+- 维护支持 maintenance and support
+
+开发硬件类似，要遵循一定的硬件开发原则、代码编写规范等，并产出相应文档说明。
+
+#### Intangible  Outputs 无形产出
+
+专利发明、创新这一类都属于无形的产出。不是一种技术，而是价值 value。
+
+### Intellectual Property IP
+
+IP 是一种财产，比如人类智力的无形创造。有很多种形式的 IP 用于保护创意，比如“商标” trade marks 用于保护品牌形象 brand；“版权” copyright 用于保护文件，图片，音乐等；专利保护发明；设计权保护产品外观……
+
+如果没有 IP，那么别的公司花费大量时间人力物力研制出新技术应用到产品中，我一声不吭就偷过来了，那没有什么公司想自己耗费时间精力研制新技术了，都等着偷别人的就行。IP 保护了别人不可以从公司的努力、专业知识、投资等 inputs 中获利，确定了该公司的地位，也保护了其技术和未来市场。
+
+在项目执行过程中，要事先调查好是否已经有人生成了相关 IP，如果没有，那本项目成员才应该继续设计新技术方法来解决问题，并且**在这个过程中保护好 IP 不泄露**，避免被他人捷足先登。
+
+对于合作项目，也需要明确其他公司的 IP 范围并保护项目的未来 IP。
+
+业务销售部需要确定哪些关键技术需要 IP 保护，是否被保护了，以及能否使用这些 IP 攻击竞争对手。而法务部则避免发生此类情况（之前的中国乔丹，“乔丹是一种花名”，“我们的中国乔丹拿的是乒乓球拍”一案）。
+
+#### IP 保护方法
+
+- 商标 trade marks：比如图标，口号等。
+- 设计 Designs：分为外部可见的和内部设计两种。外部可见的设计（比如头盔，网页前端）保护其整体外观，最长注册时间25年，注册成功会有®标志。
+- 版权 Copyright：常用于保护文学、艺术、音乐、软件等作品。©符号，不用注册，有效期50年到我挂后70年不等，禁止其他人未经许可复制作品或一种概念的表达方式。另一种版权是著佐权 Copyleft，符号是一个左右相反的 Copyright 符号，意思是：只要遵循一定的规定，就可以使用、修改该作品。
+- 专利 Patent：一种地域性权利，主要保护物理设备对象，软件，信号，协议等。专利包含这些东西的功能，是怎么具体实现的，所需材料……禁止其他人未经许可制造、使用、进口、出售你的产品。最长20年。
+  - *软件只要对**技术**问题有所改进，比如能耗、效率等，就可以申请专利。但不包括非技术性的管理等方面。*
+- 商业机密 Trade Secret：比如配方，设计方法，工具等。相较其他知识产权，商业机密不公开。雇员可以签署合同来保证不泄露商业机密地使用。
+
+### Agreements and Liscences 协议和许可
+
+- 在多方合作项目中，所有人需要达成一致，制定保密协议 Non Disclosure Agreement 明确哪些部分是保密的，并且遵守保密义务。最终，在 B&P 阶段结尾，需要制定**联盟协议 Consortium Agreements (CA)**。
+
+​	Memorandum of Understanding MoU 谅解备忘录：诸方达成一致后的记录文本，没有法律效力，但是代表大家差不多达成一致准备签定合约了。
+
+- Background *& Foreground IP：项目执行前后的 IP，项目开始时就要声明好，不能损害 BIP，并保护好 FIP。
+- 软件保护：除了之前提到的 Copyright（复制），Patent（其他人抄袭，创造出同样的软件），Design（界面，图标等），Trademark（商标），还有 License 许可，比如开源软件，闭源软件等，下图往左是开源，往右是闭源。
+
+![image-20241225180148283](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412251801392.png)
+
+### Dissemination &  Exploitation 传播推广
+
+Dissemination：确定目标受众 target audience，传播途径 dissemination channels，关注 Stackholders 确保有效传播。
+
+Expliotation：首先确定不同的推广策略，主要分为商业 Commercial、知识 Knowledge、学术 Research/Academic 三种。然后找到其使用场景 Real-life Usage Scenarios 并投放使用，优先确定将有效利用结果的关键参与者  the players who will exploit the results。
+
+## Project Closure 项目关闭
+
+完结撒花！
+
+### Project Success or Failure
+
+对于客户和 PM 来说的项目成功性是有区别的。客户只需要考虑是否达到自己的需求就可以了，PM 要考虑的可就多了。比如预算，时间期限，产品质量，客户满意度，团队关系，公司地位。
+
+### Project Closing
+
+PM 的最后一个任务。关闭项目包括：
+
+- output 被交给 stackholders
+- Contractual agreements 合同被正确履行
+- 项目记录在库
+
+#### Project Termination 项目终止
+
+首先需要停止项目。
+
+- integration 集成终止：常用于成功结束的项目。房地产等资源交还给父组织，项目最终产出作为组织运营的标准组成部分。
+- add 添加终止：把项目资源加到其他项目上。
+- starvation 饥饿终止：项目因资源枯竭，预算削减或政治因素而结束。
+- extinction 灭绝终止：高层管理层停止项目，因为没有达到预期目标，或者觉得效益不好。
+
+#### Project Closure Process/Actions
+
+PM 完成项目的其他阶段后，开始准备：
+
+- Conducting project Closure Debrief/Review for closure 项目结案汇报 and Post-mortem 事后分析
+- Creating a Project Archive 项目归档
+
+- 如果项目是后续还会持续提供支持，应该新开一个支持项目 support project。
+- 记录风险。
+- 确保客户验收，获得客户和测试人员的同意。在这个过程中一直记录。
+- 通过会议或者电邮通知其他负责人。
+- CM 商务经理应当检查是否还有需要解决的商业问题，并执行财务结算。
+- PM 释放所有项目成员并将其分配到其他工作中。
+
+当所有要求都完成后，CM 应批准关闭项目。
+
+### Post-Mortem Analysis 事后分析
+
+对项目的成功和不成功点进行总结分析，吸取教训。
+
+- 项目产出质量？
+
+- 时间，花费，行政管理问题是否恰当？
+
+- 开发过程中工具是否有效？遇到了什么技术问题？
+- 团队成员表现？
+
+- ……

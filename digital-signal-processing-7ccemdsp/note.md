@@ -361,9 +361,17 @@ $$
 
 ## 连续时间信号取样
 
-这节课是叫离散信号处理没错，所以我们避免处理连续信号，可以把连续信号取样为离散信号处理。
+这节课是叫离散信号处理没错，我们避免处理连续信号，可以把连续信号取样为离散信号处理。
 
 ![image-20241027184733652](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271847897.png)
+
+变量解释：
+
+T：采样周期
+
+$$\Omega_s$$：信号频率，比如 cos(400πn) 就是400π
+
+$$\omega$$：角频率，$$\Omega=\frac{\omega}{T}$$
 
 效果上相当于乘了 δ 函数。
 $$
@@ -384,6 +392,10 @@ $$
 
 ![image-20241213033100982](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412130331196.png)
 
+或者可能会出现下面这种情况：信号只有采样范围外的高频部分而没有采样部分内的低频部分时，高频部分会落在其他区间里被视作低频部分：
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412130510700.png" alt="image-20241213051006408" style="zoom:67%;" />
+
 ### 奈奎斯特采样定律
 
 如何确保不发生混叠？从上图我们可以看出，当 $$\Omega_s-0>2\Omega_N$$ 的时候信号不发生混叠。这就是奈奎斯特采样定律。
@@ -399,7 +411,7 @@ $$
 
 ![image-20241213033452373](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412130334536.png)
 
-过滤公式和过滤器的傅里叶变换如下：
+过滤公式和过滤器的傅里叶变换如下（简单说就是时域卷积频域乘积）：
 $$
 \begin{aligned}
 x_r(t)=\int^{\infty}_{-\infty}x_s(\xi)h_r(t-\xi)d\xi=\sum^{\infty}_{n=-\infty}x_c(nT)h_r(t-nT)\\
@@ -411,17 +423,11 @@ T &  |\Omega|<\Omega_c \\
 $$
 其中Ω_c 是低通滤波器 H 的频率， $$\Omega_N<\Omega_c<\Omega_s-\Omega_N$$ （确保只采样到原始频域信号）
 
-没有混叠发生时，有：
+没有混叠发生时，有如下公式：
 $$
 X(e^{j\omega})=\frac{1}{T}\sum^{\infty}_{k=-\infty}X_c(j(\frac{\omega}{T}-\frac{2\pi k}{T}))
 $$
 这就是奈奎斯特采样定律，其中 $$\Omega_s=2\Omega_N$$ 的采样频率就是奈奎斯特采样率（Ωc=Ωs/2=π/T）。从图像上看的效果就是刚好每次采样的频域信号是相接的。
-
-下图可以清晰解释为什么采样频率过低会导致混叠，频率估计错误。上下两个图像的周期明显不同。
-
-信号的最大频率是 Ω_N，则频域图上超过±Ω\_N 部分应该都=0. 采样频率够大才可以确定这一点，采样频率不够大的话没法确定频域图上下界是 Ω\_N 因为没有摸到左右边界，就没法确定左右边界在哪了。
-
-![image-20241029200654475](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410292006792.png)
 
 ### 带限信号的重建
 
@@ -436,8 +442,8 @@ $$
 则有：
 $$
 \begin{aligned}
-h_r(t)=\frac{sin(\pi t/T)}{\pi t/T}\\
-x_r(t)=\sum^{\infty}_{n=-\infty}x[n]\frac{sin(\pi (t-nT)/T)}{\pi (t-nT)/T}
+h_r(t)&=\frac{sin(\pi t/T)}{\pi t/T}\\
+x_r(t)&=\sum^{\infty}_{n=-\infty}x[n]\frac{sin(\pi (t-nT)/T)}{\pi (t-nT)/T}
 \end{aligned}
 $$
 ![[没有幻灯片标题](https://realtimetech.ustc.edu.cn/_upload/article/files/5f/71/77450bde46de832d7f14ae714039/e16a2953-6949-4393-997d-8dede2a612d7.pdf)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410301417957.png)
@@ -452,38 +458,75 @@ $$
 
 那么整个过程的公式就可以写作：
 $$
-Y(j\Omega)=H_r(j\Omega)H(e^{j\Omega T})X_c(j\Omega)
+Y_r(j\Omega)=H_r(j\Omega)H(e^{j\Omega T})X(e^{j\Omega T})
 $$
 第一个 H 是重建连续信号用的，上面我们已经讲过其公式就是在 $$\pm \frac{\Omega_s}{2}$$ 范围内都=T，超过这个范围都=0.
 
 第二个 H 是离散时间系统的频率响应。
 
+根据离散和连续信号的频域关系，可以进一步化简;
+$$
+\begin{align}
+Y_r(j\Omega)=H_r(j\Omega)H(e^{j\Omega T})\frac{1}{T}\sum^{\infty}_{k=-\infty}X_c[j(\Omega-\frac{2\pi k}{T})]\\
+
+=\begin{cases}
+&H(e^{j\Omega T})X_c(j\Omega), &|\Omega|\lt\pi/T \\
+&0, &|\Omega|\ge\pi/T
+\end{cases}
+\end{align}
+$$
+
+
+Hr(jΩ) 和 1/T 系数约掉了。
+
 那么整个连续系统的频率响应可以写作：
 $$
-H_{eff}(j\Omega)=H(e^{j\Omega T}),|\Omega|<\frac{\pi}{T}
+H_{eff}(j\Omega)=\begin{cases} &H(e^{j\Omega T}),&|\Omega|<\frac{\pi}{T}\\
+&0,&|\Omega|>\frac{\pi}{T}
+\end{cases}
 $$
-*这里应该是要乘T的吧，省略了？*
-
 离散信号的连续时间处理：令：
 $$
 h[n]=Th_c(nT)
 $$
 
-### 降低采样率
+### 降采样 downsampling
 
-Sampling Rate Reduction，实现起来很简单，周期变成 MT，$$x[n]=x[nM]$$
+奈奎斯特采样率的描述是：必须高于这个采样率，频域信号才不会发生混叠。
 
-如果 x[n] 带宽小于 $$\frac{\pi}{M}$$，那么不会发生 information loss.
+但是实际上，并不是“发生混叠就会损失信息”。对于有些情况来说即使采样率不够大，信号会发生混叠，但我们仍然可以还原出原来的信号。比如我们用滤波器把三角形频域信号混叠的部分削减一下：
+
+![[对信号做降采样处理时，需要先滤波，后抽取（降采样）；升采样操作与之相反-CSDN博客](https://blog.csdn.net/qq_42233059/article/details/128693344)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412132229264.png)
+
+也就是说如果降低采样率变为 MT（T 是原采样率，不是原信号周期），**要么原采样率是奈奎斯特率的 M 倍，降低 M 倍也不会混叠；要么先用低通滤波器削减信号防止混叠，再降采样**；这两点满足一点，也不会发生混叠。
+
+Sampling Rate Reduction 减小采样率，实现起来很简单，周期变成 MT，$$x[n]=x[nM]$$
+
+如果 x[n] 带宽（2$$\omega$$）小于 $$\frac{\pi}{M}$$，那么不会发生 information loss.
 
 如果 x[n] 带宽= $$\frac{\pi}{M}$$，那么会发生 aliasing.
 
 如果 x[n] 带宽大于 $$\frac{\pi}{M}$$，那么会发生 information loss. 可以应用低通滤波器降低频率到带宽为 $$\frac{\pi}{M}$$ 来降低损失。
 
+如下图所示的系统叫做抽取器 decimator，先用低通滤波器压缩后再减采样的过程叫做抽取 decimaton.
+
 ![image-20241105095556692](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411050955949.png)
 
-### 提高采样率
+### 升采样 upsampling
 
-和降低类似，$$x[n]=x[\frac{n}{L}]$$。一般周期用 $$\frac{MT}{L}$$ 表示，M 是降低采样率的系数，L 是提高采样率的系数。
+把采样周期变为 T/L，$$x[n]=x[\frac{n}{L}]$$。一般周期用 $$\frac{MT}{L}$$ 表示，M 是降低采样率的系数，L 是提高采样率的系数。
+
+降采样的过程类似 C/D 转换，升采样的过程就类似离散信号还原 D/C 转换。
+
+但是升采样怎么从一个比自己频率低的离散信号中用更高频率采集出更多信息？原离散信号本身就携带这么多信息啊。所以我们只能给其中插入零值，这个过程叫做内插 interpolation。
+
+![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412210844348.png)
+
+但是这样会导致周期变大，所以要用低通滤波器滤波，去除采样信号之外的信号。
+
+![image-20241221085028280](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412210850466.png)
+
+如下图所示，该系统左边的部分被称为扩展器 expander. 右边的低通滤波器效果相当于离散信号重建中的理想 DC 转换器，作用是重建该序列。整体被叫做内插器 interpolator。
 
 ![image-20241105095431610](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411050954849.png)
 
@@ -591,6 +634,8 @@ DSP 处理时有时我们需要找到一个稳定因果无逆系统的逆系统�
 ### 最小相位和全通分解
 
 如果稳定因果系统 H(z) 在单位圆上没零点，它就可以拆成一个 ap 系统和一个 mp 系统的乘积。
+
+要把一个系统拆分为最小相位系统和全通系统，最小相位系统部分要求零极点必须全部在单位圆内；全通系统要求必须共轭，所有零极点关于实轴对称。
 
 ![image-20241117221844867](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172218421.png)
 
