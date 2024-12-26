@@ -94,6 +94,8 @@ Utility-based agents：穷举出当前情况的所有actions，以及其效用�
 
 S没发生，R发生的情况下，P(W|S,R)=0.9>0.2，所以W发生。
 
+**记住：是我们随机生成的概率小于该概率，该情况才发生。**
+
 那么这次采样结果就是：C, not S, R, W。
 
 多采样几次总结出序列 P(c, not s, r, w) 的发生概率，采样越多越精确。
@@ -116,7 +118,7 @@ S没发生，R发生的情况下，P(W|S,R)=0.9>0.2，所以W发生。
 
 ![image-20241009165638431](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410091656513.png)
 
-也就是说，现在观测到下雨 Rain了，那么Cloudy和WetGrass=true的发生概率有多大？
+也就是说，现在观测到下雨 Rain了，那么 Cloudy 和 WetGrass=true 的发生概率有多大？
 
 还是按顺序推导。首先设权重w=1.
 
@@ -124,7 +126,7 @@ S没发生，R发生的情况下，P(W|S,R)=0.9>0.2，所以W发生。
 
 S没要求（not a evidence variable）所以=多少都行，不用改权重值。假设S=false。
 
-R也是同理，不是条件，假设R=true.
+R也是同理，不是条件，假设 R=true.
 
 想让W=true，w=0.5*0.9=0.45.
 
