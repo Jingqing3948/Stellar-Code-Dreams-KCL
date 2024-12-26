@@ -1,3 +1,7 @@
+## Preface
+
+由于考试只考选择题，所以我懒得做案例分析，见谅。
+
 ## Tutorial 3
 
 ### 单选题
@@ -269,3 +273,139 @@ C. The company finance and commercial directors
 **D. The project manager**
 
 > 如题。
+
+## Tutorial 8
+
+### 多选题
+
+**1. During project executing, a team member comes to the project manager because he is  not sure of what detailed works he needs to do to accomplish the project objectives. Which  of the following documents contain detailed descriptions of work packages?**   
+
+**A. WP definition**   
+
+B. Responsibility assignment matrix  
+
+C. Project scope statement  
+
+D. Project charter   
+
+**2. Which of the following techniques are conducted for validating whether work and  tangible deliverables meet the requirements and product acceptance criteria?**   
+
+A. Workshops  
+
+B. Surveys  
+
+C. Historical data and expert opinion  
+
+**D. Testing and evolution**   
+
+**3. Specify in which of the “risk management processes” the project’s risks will be  determined.**  
+
+A. Risk monitoring & control  
+
+B. Risk handling (actions)  
+
+C. Risk analysis & prioritisation  
+
+**D. Risk identification**  
+
+> 前三题都比较ez，感觉都能猜到。
+
+**4. During the project execution, a possible risk is identified by a team member. This risk is currently not in the Risk Register. As a Project Manager, what is the first action you  would take?**   
+
+A. Discuss the risk with the team member to mitigate the risk   
+
+**B. Analyse the risk**   
+
+C. Hold a meeting with the team to determine how to monitor the risk  
+
+D. Update the risk register  
+
+> 见：[我的笔记](https://stellaris.graysea.cn/kcl/project-management-7ccempro/note#risks-feng-xianc)，往下拉一点到 **Identification of Risks 识别风险** 的章节。BM RM 先自己评估，然后开会讨论，最后记录在册。
+
+**5. While estimating the cost of project’s work in a completely new technology, being a project manager which of the following concerns you will have the most?**   
+
+A. The cost associated with subcontractors   
+
+B. Lack of communications management plan  
+
+C. The size of the project  
+
+**D. Lack of historical information**   
+
+> 如题，我也没太找到原课件描述，但是题干意思大概能推测出应当先查找有无相似的评估案例。
+
+**6. A project manager intends to use expert opinion in quantifying estimates for his project. His related experts are located in different geographical places. What method he should use to develop/quantify the estimates?**   
+
+A. Using Monte Carlo analysis online   
+
+B. Applying the critical path method   
+
+C. Determining options for managing the risks and estimate accordingly   
+
+**D. Applying the Delphi technique**   
+
+> 见：[我的笔记](https://stellaris.graysea.cn/kcl/project-management-7ccempro/note#estimate-ping-gu). bc 有点答非所问，A 蒙特卡洛法适用于对项目不熟悉的情况下（一般不作为最优先选择）。共识法比较适合分布在不同地理位置的专家们，大家一人出一个报告，然后交换讨论，对线下面对面高效交流需求不高，我是这样理解的。
+
+**7. “Crashing” is a technique to accelerate/speed up a project by doing which of the following actions?**   
+
+**A. Assigning additional resources to the project to decrease the time for activities in the critical  path**  
+
+B. Overlapping activities which were originally planned to be done in sequence  
+
+C. Reducing the number of features of the product in order to reduce development work  
+
+D. Reducing the duration estimates for activities to increase the pressure applied to the staff 
+
+> 见：[我的笔记](https://stellaris.graysea.cn/kcl/project-management-7ccempro/note#managing-project-guan-li-ji-hua)，Crashing 是最小的成本增量获得最大的时间压缩（缩短关键路径）。
+
+## Tutorial 9
+
+### 多选题
+
+**1. During the Sprint Retrospective, an Agile team is most likely to:**  
+
+A. Demonstrate the product increment to the stakeholders to receive feedback  
+
+B. Plan the scope of work for the upcoming Sprint  
+
+**C. Discuss what went well in the Sprint, identify improvements, and make plans to  implement these changes in the next Sprint**  
+
+D. Assign tasks to team members for the next phase of the project  
+
+> Sprint Retrospective 就是回顾整个项目的问题和改进方案等。
+
+**2. Which of the following statements best captures a key difference between Waterfall and  Agile project management methodologies?**  
+
+A. Waterfall methodology emphasizes flexibility and customer collaboration over comprehensive documentation, whereas Agile sticks to a fixed plan and rarely changes  
+
+**B. In Waterfall methodology, testing is typically conducted after the full product is  developed, while Agile methodology encourages testing throughout the development  process**  
+
+C. Agile methodology requires complete and detailed product specifications at the beginning  of the project, whereas Waterfall allows for evolving requirements over time  
+
+D. Waterfall methodology encourages daily communication and continuous feedback within  cross-functional teams, while Agile methodology is more sequential and departmentalized  
+
+> 很简单的概念，瀑布模型是前一个阶段完成才能做下一个阶段，所有阶段完成才能产出。敏捷开发是尽快有一个个的小产出。
+
+**3. In a Waterfall project management approach, which of the following statements best  describes the sequence of phases and the flexibility for changes during the execution?**  
+
+A. Project phases overlap, and changes can be accommodated easily at any point due to the  iterative nature of the model  
+
+**B. Each project phase begins only after the previous phase is completed, and significant changes are difficult to implement once a phase has begun**  
+
+C. Changes to the project scope are expected and encouraged during the Testing phase to  ensure the final product meets evolving stakeholder needs  
+
+D. The project manager has discretion to revisit and revise any phase at any time, which often  leads to project delays but ensures a more adaptable end product 
+
+> 瀑布模型很难回去做改动的。
+
+**4. In an Agile approach project, which ceremony is essential for the team to synchronize their work and address any blockers that might affect their weekly sprint goals?**  
+
+A. Sprint Planning  
+
+B. Code Reviews  
+
+C. Weekly Demonstrations  
+
+**D. Daily Stand-up Meetings**
+
+> 每天的小会是影响每周目标实现的重要因素。
