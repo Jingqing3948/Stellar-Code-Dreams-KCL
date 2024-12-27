@@ -264,7 +264,7 @@ E. For all $$i \in \{1,2,...,n\}$$ , xi has to be an integer.
 
 ---
 
-**13.  In the context of Markov decision processes, a policy: **
+**13.  In the context of Markov decision processes, a policy:**
 
 **A. Generates the maximum expected utility.** 
 
@@ -372,7 +372,7 @@ E. None of the above
 
 ---
 
-**18. **
+**18.**
 
 ![Figure 18](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271346518.png)
 
@@ -390,7 +390,7 @@ E. None of the above
 
 ---
 
-**19. Which of the following statements are correct.  **
+**19. Which of the following statements are correct. **
 
 **A. A Pareto optimal solution can minimise social welfare, but it doesn’t have to.** 
 
@@ -406,7 +406,7 @@ E. None of the above
 
 ---
 
-**20. Consider a game with payoff matrices A (to i) and B (to j). Let (x\*, y\)* be a mixed strategy that is a Nash equilibrium. Which of the following statements are correct:**
+**20. Consider a game with payoff matrices A (to i) and B (to j). Let (x\*, y\*) be a mixed strategy that is a Nash equilibrium. Which of the following statements are correct:**
 
 ![Figure 20](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271354113.png)
 
@@ -479,7 +479,7 @@ D. The set a2a4 is conflict-free.
 
 ---
 
-**23. **
+**23.**
 
 ![Figure 23](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412272207474.png)
 
@@ -507,7 +507,7 @@ E. The set a2 is a complete extension.
 
 ---
 
-**24. **
+**24.**
 
 ![Figure 24](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271536553.png)
 
