@@ -139,9 +139,9 @@ Salience Model:  power, legitimacy, urgency 三个维度。（权力，比如我
 - Dormant stakeholders 休眠股东: no need for major communication，给钱就完事了，少交流。
 - Discretionary stakeholders 可自由支配的股东：regular project updates . 也不需要过多交流，给他们项目更新进度就行。
 - Demanding stakeholders 需求股东：Only keep them informed，他们比较急。
-- Dominant stakeholders主要股东：consider their communication and their involvement **needs at all times** 
-- Dangerous stakeholders 危险股东：有钱有权，Must meet their needs.
-- Dependent stakeholders 相关股东：Keep them informed when I need their resources
+- Dominant stakeholders主要股东：consider their communication and their involvement **needs at all times** 要保持沟通和参与。
+- Dangerous stakeholders 危险股东：有权，且需求很急，所以很危险。Must meet their needs. 
+- Dependent stakeholders 相关股东：Keep them informed when I need their resources 需要他们爆金币的时候才通知他们。
 - Definitive stakeholders 明确股东：Always keep them informed, satisfied and involved。
 
 #### Monitoring 评估股东
