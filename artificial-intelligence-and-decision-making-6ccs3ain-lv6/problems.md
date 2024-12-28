@@ -10,9 +10,9 @@
 
 A. Prediction
 
-**B. Filtering**
+B. Filtering
 
-C. Smoothing 
+**C. Smoothing** 
 
 D. Flattening
 
@@ -20,7 +20,7 @@ E. None of the above
 
 > 课程中没有学过隐式马尔科夫链，但是学过推理的几种类型，这道题相当于举了一个推理例子让我们猜它是什么类型的推理。
 >
-> 我认为答案是 Filtering。根据教材（570页）：
+> 我认为答案是 Smoothing。根据教材（570页）：
 >
 > ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412262043428.png)
 >
