@@ -18,6 +18,8 @@ D. Flattening
 
 E. None of the above
 
+> 感谢 ERt 校正
+>
 > 课程中没有学过隐式马尔科夫链，但是学过推理的几种类型，这道题相当于举了一个推理例子让我们猜它是什么类型的推理。
 >
 > 我认为答案是 Smoothing。根据教材（570页）：
@@ -531,15 +533,15 @@ E. None of the above.
 
 A. This is the responsibility of my employer, not me. I was just doing what I was told by my boss. 
 
-B. The choice made by the self-driving car was a difficult ethical trade-off, with potential negative consequences no matter what choice was made. 
+**B. The choice made by the self-driving car was a difficult ethical trade-off, with potential negative consequences no matter what choice was made.** 
 
 C. The owner of the self-driving car was a passenger in the car at the time, so she should have over-ruled the AI driving the car and stopped it. 
 
-**D. Any driver, whether they be human or an AI program, has to make such a decision on the spur of the moment,and so neither myself nor my company can be held responsible for a decision made so quickly. The AI should be judged by the same standards as would apply if a human were driving the car.** 
+D. Any driver, whether they be human or an AI program, has to make such a decision on the spur of the moment,and so neither myself nor my company can be held responsible for a decision made so quickly. The AI should be judged by the same standards as would apply if a human were driving the car. 
 
 E. As part of the software development for the car design, my team had run extensive game theory simulations. Based on these simulations, we expected the other driver to chicken out and swerve aside before the two vehicles crashed. It is not our fault that the human driver did not behave according to our simulations.
 
-> 待定，B还是D呢。
+> 感谢 ERt 校正，ppt上说法庭不接受“无法在短时间内做出决定”的说法。
 
 ---
 
