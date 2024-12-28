@@ -287,19 +287,24 @@ $$
 
 2. 如果x[n]从负无穷到正无穷的全部绝对值求和不是无穷（也就是说，可加的 summable）那么X(e^jω^) 就是收敛 Convergence 的。
 
-   ![image-20241001113738011](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410011137328.png)
+   下面是一种特殊的 convergence：uniform convergence
+   $$
+   \forall \epsilon \gt 0, \exists N_0=N_0(\epsilon)\,s.t,\,\forall N\ge N_0\\
+   |X(e^{j\omega})-\sum^{N}_{n=-N}x[n]e^{-j\omega n}|\le \epsilon \,for\,all\,\omega\in (-\pi, \pi)
+   $$
 
-3. x[n]的平方求和也可加，那么其傅里叶变换也收敛。也就是说其总能量有限。相比之下，x[n]可积只是傅里叶变换收敛的一个强条件。
+3. x[n]的平方求和可加 square-summable，那么其傅里叶变换也收敛。也就是说其总能量有限。相比之下，x[n] 可积只是傅里叶变换收敛的一个强条件。
 
-   引理：
-
-   ![image-20241001114027735](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410011140011.png)
-
-4. ![image-20241001114819652](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410011148953.png)
+4. $$
+   if~functions~X_1(e^{j\omega})~and~X_2(e^{j\omega})~satisfy:\\
+   \int^\pi_{-\pi}|X_1(e^{j\omega})-X_2(e^{j\omega})|^2d\omega=0,~\Rightarrow x_1[n]=x_2[n],~\forall n \in Z\\
+   x_i[n]=\frac{1}{2\pi}\int ^{\pi}_{-\pi}X_i(e^{j\omega})e^{j\omega n }d\omega,~i=1,2
+   $$
 
 5. 如果 x[n] 是一个实序列，那么：
-
-   ![image-20241001122300639](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410011223958.png)
+   $$
+   X_R(e^{-j\omega})=X_R(e^{j\omega}), X_I(e^{-j\omega})=-X_I(e^{j\omega})
+   $$
 
 6. 如果x[n]是实序列且对称 real and symmetric, 那么其傅里叶变换也有着同样的性质。
 
@@ -329,9 +334,11 @@ X(z)和ROC共同确定x[n]. 两个不同的x[n]可能X(z)一样，ROC不同。�
 
 - ROC在图上表现为一个圆环或者圆。**当单位圆（z=e^{-jw}^）包含在内时，X(z) 是稳定的，**x[n]的傅里叶变换存在（因为 $$z=e^{-jw}$$ 时就是傅里叶变换的公式，说明收敛）
 
-- 当x[n]由有限个非零值组成时，z[n]的取值就非常随意了，基本除了0和无穷都可以取（z可以取到无穷的）。
+- **当z=+∞被包含在 ROC 内时，X(z) 是因果的**。也就是说 ROC 的公式类似：$$|z|>\alpha$$ 的形态，而不能是 $$\alpha < |z| < \beta$$ 形态。
 
-- X(z)=0的z解叫zeros, X(z)=infinite 的解叫poles. 如果 X(z)可以表示为P(z)/Q(z)，**P(z)的根是zeros，Q(z)的根是poles.**
+-  当x[n]由有限个非零值组成时，z[n]的取值就非常随意了，基本除了0和无穷都可以取（z可以取到无穷的）。
+
+- X(z)=0的z解叫zeros, X(z)=infinite 的解叫poles. 如果 X(z)可以表示为P(z)/Q(z) 的分式，**P(z)的根是zeros，Q(z)的根是poles.** 比如 $$X(z)=\frac{z-3}{z-2}$$，z=3 是 zero point, z=2 是 pole point.
 
 ### z逆变换
 
@@ -339,17 +346,15 @@ $$
 x[n]=\frac{1}{j2\pi}\oint_Cz^{n-1}X(z)dz=\frac{1}{2\pi}\int_{-\pi}^{\pi}X(e^{j\omega n})d\omega,\,z=e^{j\omega}
 $$
 
-1/j被de^{jw}出来的j约掉了。中间的式子相当于绕原点转一圈，求圆环面积。
+1/ j被de^{jw}出来的 j 约掉了。中间的式子相当于绕原点转一圈，求 ROC 圆环面积。
 
-如果X(z)不好变换，可以拆成几个好求x[n]的Xi(z)的和，分别求解。
+如果X(z)不好变换，可以拆成几个好求 x[n] 的 Xi(z) 的和，分别求解。
 
 如果X(z)可以被化简为下面的形式，那么就可以直接求出x[n].
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410151152213.png" alt="image-20241015115229852" style="zoom:67%;" />
 
-如果遇到两个多项式做除法的形式，解法如下（有点逆天。这会考吗？）
-
-![image-20241015211351195](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410152113373.png)
+如果遇到两个多项式做除法的形式，先因式分离成可以直接逆变换的形式，再处理（常用z变换对在下面）。
 
 ### z变换的性质
 
@@ -375,11 +380,13 @@ $$
 
 T：采样周期
 
-$$\Omega_s$$：信号频率，比如 cos(400πn) 就是400π
+$$\Omega_s$$：采样角频率，比如 cos(400πn) 就是400π
 
-$$\omega$$：角频率，$$\Omega=\frac{\omega}{T}$$
+$$\Omega_N$$：原连续信号频率
 
-效果上相当于乘了 δ 函数。
+$$\omega$$：离散信号角频率，$$\Omega=\frac{\omega}{T}$$
+
+采样效果上相当于原连续信号乘了多个 δ 函数求和。
 $$
 x_s(t)=x_c(t)s(t),s(t)=\sum^\infty_{n=-\infty}\delta(t-nT)
 $$
@@ -411,7 +418,7 @@ $$
 - 对于 $$|\Omega|>\Omega_N$$ ，$$X_c(j\Omega)=0$$ （也就是说 x_c(t) 是 bandlimited 的）
 - T 小到 $$\Omega_s>2\Omega_N$$ , 取样频率是原频率的2倍以上
 
-那么 $$X_c(j(\Omega-k\Omega))$$ 就不发生混叠，并且我们可以用一个 filter h_r(t) 和 x_s(t) 卷积重构的 x_c(t) （采样频率够高，可以从采样后的信号恢复原信号）. 
+那么 $$X_c(j(\Omega-k\Omega))$$ 就不发生混叠，并且我们可以用一个 filter h_r(t) 和 x_s(t) 卷积重构的 x_c(t) （采样频率够高，可以从采样后的信号恢复原信号）. 滤波器就是形如矩形的 H(e^jw^)，相当于只提取出 X(e^jw^) 中的特定频域范围的信号进行处理。
 
 原理如下图，首先采样频率够大，可以确保频域图像不发生混叠；然后我们用滤波器只提取出 ±Ω_N 范围内的部分，就是原信号，这样得到的采样后的离散信号的频域图和连续信号的频域图完全一致，可以还原。
 
@@ -427,7 +434,7 @@ T &  |\Omega|<\Omega_c \\
 \end{cases}
 \end{aligned}
 $$
-其中Ω_c 是低通滤波器 H 的频率， $$\Omega_N<\Omega_c<\Omega_s-\Omega_N$$ （确保只采样到原始频域信号）
+其中 Ω_c 是低通滤波器 H 的频率， $$\Omega_N<\Omega_c<\Omega_s-\Omega_N$$ （确保只采样到原始频域信号）
 
 没有混叠发生时，有如下公式：
 $$
