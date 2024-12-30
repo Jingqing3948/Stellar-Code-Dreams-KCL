@@ -2,7 +2,7 @@
 
 结合：离散信号处理第三版（奥本海姆）、KCL DSP 课件以及：
 
- 【《数字信号处理》考研基础强化课(讲义齐全)【13h】适配通信考研离散时间信号处理考研期末速成】 https://www.bilibili.com/video/BV1Uw411U7un/?p=6&share_source=copy_web&vd_source=dcdc734e318da0cd82bcccb180b12b40
+[《数字信号处理》考研基础强化课(讲义齐全)【13h】适配通信考研离散时间信号处理考研期末速成](https://www.bilibili.com/video/BV1Uw411U7un/?p=6&share_source=copy_web&vd_source=dcdc734e318da0cd82bcccb180b12b40)
 
 **离散时间信号处理是什么东西**？
 
@@ -316,7 +316,7 @@ $$
 
 注意条件，有些序列的格式或者域不对是求不了傅里叶变换的。
 
-![image-20241015110753953](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410151107262.png)
+![常用傅里叶变换表](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410151107262.png)
 
 ## z变换
 
