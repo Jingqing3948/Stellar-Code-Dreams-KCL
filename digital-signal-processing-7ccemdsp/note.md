@@ -715,25 +715,25 @@ FIR 滤波器的设计方法是用窗函数（类似于一个滤波器的滤波�
 
 和之前连续信号到离散信号的采样内容一样：
 
-![image-20241228222154265](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282221575.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282221575.png)
 
 由于 IIR 长度无限，混叠不可避免。因此我们只能尽可能在满足滤波器设计需求的前提下，让混叠产生的影响减小。
 
 对于最终得到的离散信号滤波器 $$H(e^{j\omega})$$，我们的需求是：
 
-![image-20241228222345684](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282223903.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282223903.png)
 
 *见本章开头*
 
 因此延伸得到连续信号滤波器要满足的需求有：
 
-![image-20241228222511232](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282225458.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282225458.png)
 
 满足此需求后，通过 $$h_d[n]=T_d h_c(nT_d)$$ 采样获得离散滤波器的时域信号。
 
 z 平面上的变换公式为：
 
-![image-20241228222721738](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282227943.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282227943.png)
 
 性质：如果原连续滤波器是稳定的，那么得到的离散滤波器也是稳定的。不稳定的连续滤波器得到的离散滤波器也是不稳定的。
 
@@ -745,39 +745,37 @@ z 平面上的变换公式为：
 
 通过将 s 平面整个虚轴映射到 z 平面单位圆上避免发生混叠。我暂时不太理解。
 
-![image-20241228224222691](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282242001.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282242001.png)
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282242487.png" alt="image-20241228224254149" style="zoom:50%;" />
 
 设计流程：
 
-![image-20241228224600650](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282246984.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282246984.png)
 
 ### FIR By Windowing 窗设计
 
 矩形窗函数：很简单：
 
-![image-20241228225021999](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282250280.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412282250280.png)
 
 但是这样的硬生生的截断窗设计会导致误差增加，更加得不到理想的频率响应。
 
 矩形窗函数的频域表示：
 
-
-
-![image-20241229003329409](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290033669.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290033669.png)
 
 一些其他的常见窗函数：
 
-![image-20241229004321961](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290043188.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290043188.png)
 
 Keiser window：用于求出窗函数合适的长度和形状。
 
-![image-20241229004517968](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290045275.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290045275.png)
 
 广义线性相位滤波器：在 w[n] 基础上稍作改动。假设 w[n] 关于 M/2 对称，则：
 
-![image-20241229004653872](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290046087.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290046087.png)
 
 ## 离散傅里叶变换
 
@@ -785,7 +783,7 @@ Keiser window：用于求出窗函数合适的长度和形状。
 
 也就是说我们可以用如图所示的近似值表示标准离散信号的傅里叶变换：
 
-![image-20241229130910579](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291309803.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291309803.png)
 
 这里我们给出的 x[n] 定义是只有在 0~N-1 范围内有值，或者以 N 为周期，我们只拿出 0~N-1 部分表示。
 
@@ -793,21 +791,21 @@ Keiser window：用于求出窗函数合适的长度和形状。
 
 线性，时移性，可以看出和之前章节学的傅里叶变换性质很像。
 
-![image-20241229131220952](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291312188.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291312188.png)
 
 卷积性质：图中出现的卷积符号是循环卷积，大概意思是超过 0 和 N-1 的范围要 mod N 进行卷积运算。
 
-![image-20241229131327687](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291313016.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291313016.png)
 
 ![image-20241229131503013](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291315321.png)
 
 帕斯维尔定理：面积相等。
 
-![image-20241229131609755](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291316963.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291316963.png)
 
 共轭对称性：
 
-![image-20241229131651281](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291316503.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291316503.png)
 
 ### Overlap-Add
 
@@ -815,13 +813,13 @@ Keiser window：用于求出窗函数合适的长度和形状。
 
 如果 h[n] 的长度是 P，那么每次分段卷积需要计算的长度就是 L+P-1.
 
-![image-20241229133723791](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291337036.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291337036.png)
 
 ## DFT 相关计算
 
 直接计算：
 
-![image-20241229134252136](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291342421.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291342421.png)
 
 快速傅里叶变换：利用对称性快速计算。
 
@@ -831,12 +829,12 @@ Keiser window：用于求出窗函数合适的长度和形状。
 
 首先我们将原傅里叶变换公式划分为奇偶两部分：
 
-![image-20241229135638121](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291356344.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291356344.png)
 
 即：
 
-![image-20241229135721308](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291357550.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291357550.png)
 
 二分后还可以进一步四分，八分……从下图中可以看出有很多计算结果不需要重复计算，可以一次计算后直接加到对应的 X[k] 处。
 
-![image-20241229150219526](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291502792.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412291502792.png)

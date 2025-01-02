@@ -45,9 +45,29 @@ $$
 6. 怎样采样不发生混叠。经典奈奎斯特采样问题：采样频率要达到原信号频率2倍以上，所以角速度应当达到 2000π rad/s，周期=2π/2000π=1ms。
 7. 第7题的采样频率正好是原来信号的频率。采取特定采样频率后的频域图像如下（这也有助于理解奈奎斯特采样定律）：
 
-![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412110823925.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501021705118.png)
 
 x(e^jw^) 截取 ±π 之间的部分，就是全1的矩形函数吧。
+
+8. 首先系统处理得到：$$Y(e^{j\omega})=500e^{-j\omega}$$，范围是 -pi/2 到 pi/2.
+
+   然后还原到连续信号：$$Y(j\Omega)=e^{-j\Omega}$$，范围是 -250pi 到 250pi。
+
+   最后用公式求反傅里叶变换：
+   $$
+   y(t)=\frac{1}{2\pi}\int^{\infty}_{-\infty}Y(j\Omega)e^{j\Omega t}d\Omega\\
+   =\frac{1}{2\pi}\int^{250\pi}_{-250\pi}e^{-j\Omega}\cdot e^{j\Omega t}d\Omega\\
+   =\frac{1}{2\pi}\int^{250\pi}_{-250\pi}e^{j\Omega (t-1)}d\Omega\\
+   =\frac{1}{2j\pi\cdot (t-1)}\cdot e^{j\Omega (t-1)}\textbar^{250\pi}_{\Omega=-250\pi}\\
+   =\frac{1}{2j\pi\cdot (t-1)}\cdot (e^{j\cdot 250\pi \cdot(t-1)}-e^{-j\cdot 250\pi \cdot(t-1)})\\
+   =\frac{1}{2j\pi\cdot (t-1)}\cdot [2j\cdot 250\pi \cdot sin((t-1))]\\
+   =\frac{sin(250\pi(t-1))}{\pi(t-1)}
+   $$
+   
+
+其中用到了一个公式：$$e^{j\omega}-e^{-j\omega}=2jsin\theta$$
+
+*有点难，希望不是我做错了*
 
 ## January 2023 File
 
@@ -111,4 +131,4 @@ d) ROC 包含单位圆和正无穷的逆系统。
 
 求 DFT 的知识点。
 
-![WhatsApp 图像2024-12-30于14.30.47_3972a1db](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301700421.jpg)
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301700421.jpg)
