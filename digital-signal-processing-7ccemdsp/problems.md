@@ -65,15 +65,21 @@ x(e^jw^) 截取 ±π 之间的部分，就是全1的矩形函数吧。
 
 ![January 2024 q1](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301213344.png)
 
-![image-20241230121416920](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301214980.png)
+![January 2024 q1](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301214980.png)
+
+如果我到现在为止没理解错的话：
+
+- $$X(j\Omega)$$ 表示的是连续信号 x(t) 的傅里叶变换；$$X(e^{j\omega})$$ 表示的是离散信号 x[n] 的傅里叶变换。
+- 采样后傅里叶变换的图像变化：$$\omega=\Omega T$$，幅度值变为原幅度值/T. 考虑混叠情况后最终只保留 ±π 范围内的图像。
+- 恢复采样过程相反。
 
 a) 和 January 2022 6-8 有点相似。首先我们计算不会发生混叠的奈奎斯特采样周期：$$\frac{2\pi}{2\Omega_N}=1ms$$，正好=T1，也就是说采样后的频域图像正好不发生混叠，一个个三角形紧挨着。
 
 c) 和 January 2022 7又一样。
 
-![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412302117583.jpg)
+b) d) 先与 $$H(e^{j\omega})$$ 相乘后还原信号。
 
-b) d) 待定
+![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501021600046.jpg)
 
 ### 第2题
 
