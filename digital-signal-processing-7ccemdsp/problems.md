@@ -78,17 +78,21 @@ x(e^jw^) 截取 ±π 之间的部分，就是全1的矩形函数吧。
 先求出 H(z)
 $$
 Y(z)=X(z)-z^{-1}X(z)+\frac{5}{6}z^{-1}Y(z)-\frac{1}{6}z^{-2}Y(z)\\
+\\
 H(z)=\frac{Y(z)}{X(z)}=\frac{1-z^{-1}}{1-\frac{5}{6}z^{-1}+\frac{1}{6}z^{-2}}=\frac{1-z^{-1}}{(1-\frac{1}{2}z^{-1})(1-\frac{1}{3}z^{-1})}
 $$
 系统是因果的所以推断出 ROC 延伸到正无穷，ROC 是 |z|>1/2
 
-9. 逆系统：$$\frac{(1-\frac{1}{2}z^{-1})(1-\frac{1}{3}z^{-1})}{1-z^{-1}}$$，极点在单位圆上所以不稳定。
+9. 逆系统：$$\frac{(1-\frac{1}{2}z^{-1})(1-\frac{1}{3}z^{-1})}{1-z^{-1}}$$，极点在单位圆上所以不稳定。*其实我不太确定极点在圆上算不算稳定，gpt说不算。应该是不算的吧？ROC not includes unit circle.*
 
 10. ROC |z|>1 即可。
     $$
-    H(z)=\frac{(1-\frac{1}{2}z^{-1})(1-\frac{1}{3}z^{-1})}{1-z^{-1}}\\
-    =-\frac{1}{6}z^{-1}+\frac{2}{3}+\frac{\frac{1}{3}}{1-z^{-1}},\ ROC:\ |z|>1\\
-    h[n]=-\frac{1}{6}\delta[n-1]+\frac{2}{3}\delta[n]+\frac{1}{3}u[n]
+    \begin{align}
+    H(z)&=\frac{(1-\frac{1}{2}z^{-1})(1-\frac{1}{3}z^{-1})}{1-z^{-1}}\\
+    &=-\frac{1}{6}z^{-1}+\frac{2}{3}+\frac{\frac{1}{3}}{1-z^{-1}},\ ROC:\ |z|>1\\
+    \\
+    h[n]&=-\frac{1}{6}\delta[n-1]+\frac{2}{3}\delta[n]+\frac{1}{3}u[n]
+    \end{align}
     $$
     
 
@@ -121,7 +125,7 @@ $$
 
 ![January 2023 3](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301701649.png)
 
-也是第五章常出现的问题。判断 stable 我不太确定，因为我做题的时候不怎么遇到极点在1上的情况，我不知道极点在1上的话算不算 stable。
+也是第五章常出现的问题。判断 stable 还是极点在1上的情况。
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301701925.jpg)
 
@@ -159,9 +163,9 @@ c) 求出逆系统的 ROC 范围并确定是否包含单位圆。
 
 d) ROC 包含单位圆和正无穷的逆系统。
 
-这道题我不太确定
-
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412310428528.jpg)
+
+*好复杂，希望不是做错了！*
 
 ### 第3题
 
