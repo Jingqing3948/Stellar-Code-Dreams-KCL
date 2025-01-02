@@ -55,13 +55,15 @@ x(e^jw^) 截取 ±π 之间的部分，就是全1的矩形函数吧。
 
    最后用公式求反傅里叶变换：
    $$
-   y(t)=\frac{1}{2\pi}\int^{\infty}_{-\infty}Y(j\Omega)e^{j\Omega t}d\Omega\\
-   =\frac{1}{2\pi}\int^{250\pi}_{-250\pi}e^{-j\Omega}\cdot e^{j\Omega t}d\Omega\\
-   =\frac{1}{2\pi}\int^{250\pi}_{-250\pi}e^{j\Omega (t-1)}d\Omega\\
-   =\frac{1}{2j\pi\cdot (t-1)}\cdot e^{j\Omega (t-1)}\textbar ^{250\pi}_{\Omega=-250\pi}\\
-   =\frac{1}{2j\pi\cdot (t-1)}\cdot (e^{j\cdot 250\pi \cdot(t-1)}-e^{-j\cdot 250\pi \cdot(t-1)})\\
-   =\frac{1}{2j\pi\cdot (t-1)}\cdot [2j\cdot 250\pi \cdot sin((t-1))]\\
-   =\frac{sin(250\pi(t-1))}{\pi(t-1)}
+   \begin{align}
+   y(t)&=\frac{1}{2\pi}\int^{\infty}_{-\infty}Y(j\Omega)e^{j\Omega t}d\Omega\\
+   &=\frac{1}{2\pi}\int^{250\pi}_{-250\pi}e^{-j\Omega}\cdot e^{j\Omega t}d\Omega\\
+   &=\frac{1}{2\pi}\int^{250\pi}_{-250\pi}e^{j\Omega (t-1)}d\Omega\\
+   &=\frac{1}{2j\pi\cdot (t-1)}\cdot e^{j\Omega (t-1)}\vert^{250\pi}_{\Omega=-250\pi}\\
+   &=\frac{1}{2j\pi\cdot (t-1)}\cdot (e^{j\cdot 250\pi \cdot(t-1)}-e^{-j\cdot 250\pi \cdot(t-1)})\\
+   &=\frac{1}{2j\pi\cdot (t-1)}\cdot [2j\cdot 250\pi \cdot sin((t-1))]\\
+   &=\frac{sin(250\pi(t-1))}{\pi(t-1)}
+   \end{align}
    $$
    
 
