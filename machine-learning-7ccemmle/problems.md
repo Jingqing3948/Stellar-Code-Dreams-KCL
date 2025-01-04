@@ -1,8 +1,8 @@
 记录往年题。
 
-## January 2024 File
+# January 2024 File
 
-### 1
+## 1
 
 ![January 2024 q1](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501031831362.png)
 
@@ -24,7 +24,7 @@ c) 硬预测当 x=1 条件给出时，y 的预测值。从原表格中可以看�
 
 d) 最小误差概率：发生预测出错的概率情况。y 硬预测器很明显，当 x=0 时预测值=1，当 x=1 时预测值 =2. 而发生预测出错的两种情况是 x=0, y=0 的情况和  x=1, y=0 的情况，联合概率加起来 =0.1，这就是最小误差概率。
 
-### 2
+## 2
 
 ![January 2024 q2](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501031841108.png)
 
@@ -66,7 +66,7 @@ L_p(q(t|x))=\underbrace{L_p(q^*(t|x))}_\text{最优分布损失}+\underbrace{\un
 $$
 没太看懂，先待定。
 
-### 3
+## 3
 
 ![January 2024 q3](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501040015888.png)
 
@@ -83,7 +83,7 @@ c) L-smooth：g(θ) 的二阶导永远小于等于 L. 从 a) 可推断出 g(θ) 
 
 d) 根据公式，两者差值最小值= $$\frac{\gamma}{2}\nabla g^2(\theta^{(1)})$$ ，梯度下降的平方值。$$\gamma=1/L$$ ，代入 θ_1=0 后计算得到差值最小值=11.56
 
-### 4
+## 4
 
 ![January 2024 q4](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501040101609.png)
 
