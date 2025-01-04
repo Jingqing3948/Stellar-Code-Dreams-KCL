@@ -1,32 +1,28 @@
-atch size S 
-
-## Probability 概率论基础
+# Probability 概率论基础
 
 在正式开始机器学习方法之前，我们先学习一些概率论的知识以便后面进入算法正题。
 
-### Random Variables 随机变量
+## Random Variables 随机变量
 
-#### Discrete 离散随机变量
+### Discrete 离散随机变量
 
 随机变量x可能在集合X的范围内取值，比如投掷硬币的概率随机变量x，取值集合X={正面，反面}。随机变量实质是函数。
 
 投硬币是一个离散的例子，X还可能是连续的集合。
 
-注意区分随机变量x和它的取值 realization *x*的区别，x=*x* 意思是随机向量x取值为*x*（类似于投硬币事件x投出了*正面*结果吧。）rv x takes value *x*.
+注意区分随机变量x和它的取值 realization *x*的区别，x=*x* 意思是随机向量x取值为*x*（类似于投硬币事件x投出了"正面"结果吧。第二个 x 是斜体）rv x takes value *x*.
 
 对于每个不同的*x*值，都有它在这个随机变量x里的概率，用函数表示就是：
 
 **x~p(*x*)=Pr[x=*x*]**
 
-p(x)的范围肯定是0到1的，概率不可能大于1.rv x中的所有概率求和=1.
+p(x)的范围肯定是0到1的，概率不可能大于1.rv x 中的所有概率求和=1.
 
-- Binary/Bernoulli variable 二元随机变量：x中只有两个值，类似投硬币的正反。那么这两个值概率互补。比如投硬币正反概率各50%。
+- Binary/Bernoulli variable 伯努利二元随机变量：x中只有两个值，类似投硬币的正反。这两个值概率互补，比如投硬币正反概率各50%。
 
-- categorical/multinoulli variable 分类随机变量：有多个结果。
+- Categorical/Multinoulli variable 分类随机变量：有多个结果。
 
 <div align="center">
-
-
 $$
 \begin{aligned}
 X&={0, 1, ... , C-1}\\
@@ -43,7 +39,9 @@ $$
 
 ![image-20240930122901541](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301229711.png)
 
-#### Continuous 连续随机变量
+类似嵌入式的位掩码，只有一个元素生效（会发生）。
+
+### Continuous 连续随机变量
 
 连续随机变量通常用概率密度函数表示，x~p(*x*)，同样p(x)在域上求积分=1.
 
@@ -53,36 +51,36 @@ p(x)= N(x|\mu,\sigma ^2) = \frac{1}{\sqrt{2\pi \sigma ^2}}exp(-\frac{(x-\mu)^2}{
 $$
 ![image-20240930123225957](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301232062.png)
 
-### Expection 期望
+## Expection 期望
 
 也叫平均值，最有可能的结果。离散随机变量的期望：
 $$
-E_{\mathbb{x}\sim p(x)}[\mathbb{x}]=\sum_{x\in\mathcal{X}}p(x)\bullet x
+E_{\mathbb{x}\sim p(x)}[\mathbb{x}]=\sum_{x\in\mathcal{X}}p(x)\cdot x
 $$
-离散变量的**函数**的期望：给定 x 的，f(x) 的期望值是多少。可以理解为首先x有多大的概率等于这个值，然后再用x的这个值代入f(x)得到的结果，我们要计算这个结果的期望值。
+离散变量的**函数**的期望：给定 x 和其概率分布，求 f(x) 的期望值是多少。可以理解为首先x有多大的概率等于这个值，然后再用x的这个值代入f(x)得到的结果，我们要计算这个结果的期望值。
 $$
-xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})]=\sum_{x\in \mathcal{X}}p(x)\bullet f(x)
+xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})]=\sum_{x\in \mathcal{X}}p(x)\cdot f(x)
 $$
-比如下题，cat 是分类分布，表示 x 有0.1的概率=1,0.2的概率=2,0.7的概率=3，求f(x)的期望值：
+比如下题，cat 是分类分布，表示 x 有0.1的概率=0,0.2的概率=1,0.7的概率=2，求f(x)的期望值：
 $$
 \begin{aligned}
 x\sim Cat([0.1,0.2,0.7])\,and\,f(x)=x^2\\
-E_{x\sim Cat(q)}[x^2]=0.1 \cdot 0^2+0.2\cdot 1^2+0.3\cdot 3^2=3
+E_{x\sim Cat(q)}[x^2]=0.1 \cdot 0^2+0.2\cdot 1^2+0.7\cdot 2^2=3
 \end{aligned}
 $$
-连续函数类似，求积分而已。
+连续函数求期望的方式类似，求积分而已。
 $$
 xE_{\mathbb{x}\sim p(x)}[f(\mathbb{x})]=\int_{-\infty }^{+\infty }p(x)f(x)dx
 $$
 高斯随机变量 N(µ, σ^2^) 的期望，对于f(x)=x函数来说=µ，对于f(x)=x^2^函数来说=µ^2^+σ^2^.
 
-- 高斯随机变量的期望是线性的.
+- 高斯随机变量的期望是线性的. 也就是说满足 $$E(af(x)+bg(x))=aE(f(x))+bE(g(x))$$ 。
 
-### Vector 向量
+## Vector 向量
 
-这部分知识也多次出现了就不多赘述了。这里指的向量的表示形式是列向量（L×1长度）。
+基础向量操作矩阵乘法等不再赘述。这里指的向量的表示形式是列向量（L×1长度）。
 
-**inner product 内积**：两个长度相同的列向量每个元素相乘，x^T^y。内积一般用来衡量相似度 similarity.
+**inner product 内积**：两个长度相同的列向量每个元素相乘，x^T^y。内积一般用来衡量两个向量的相似度 similarity.
 
 比如下面这两对xy，内积都=6，说明其相似度差不多。
 
@@ -92,52 +90,58 @@ $$
 
 L1范数：x^T^x
 
-L2范数：L1范数再开根。
+L2范数：L1范数再开根，代表向量长度。
 
-比如上面的笑脸图，除了右上角的y的L1范数=6，其他向量L2范数=8.
+比如上面的笑脸图，除了右上角的 y 的 L2 范数=6，其他向量 L2 范数=8.
 
-$\widetilde{x}$：x的归一化，相当于一个和x方向相同但是长度=1的向量，用x/L2范数（||x||）就可以得到。
+$\widetilde{x}$：x的归一化，相当于一个和x方向相同但是长度=1的向量，用x/L2范数（‖x‖）就可以得到。
 
-### matrix 矩阵
+## Matrix 矩阵
 
-**diagonal matrix 对角矩阵**：只有对角线上的值非零（a_ii）
-
-![image-20240930132133255](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301321401.png)
-
+**Diagonal matrix 对角矩阵**：只有对角线上的值（$$a_{ii}$$）非零
+$$
+Diag(a)=
+\begin{bmatrix}
+   a_1 & 0 & {...} & 0 \\
+   0 & a_2 & \  & 0\\
+   {...} & \  & {...} & {...}\\
+   0 & 0 & {...} & a_L
+\end{bmatrix}
+$$
 L×1列向量的对角矩阵相当于把列向量中的元素均匀分到L×L矩阵的对角线上。两个列向量的乘积=一方的对角矩阵与另一方列向量的乘积。
 
-**Symmetric matrix 对称矩阵**：矩阵转置仍然等于其本身。
+**Symmetric matrix 对称矩阵**：矩阵转置仍然等于其本身。对角矩阵很明显就是对称的。
 
-### Random Vector 随机向量
+## Random Vector 随机向量
 
-随机变量中所有元素按列向量排列。其中某个元素的概率：Pr[x=x_i]
+随机变量中所有元素按列向量排列。其中某个元素的概率：$$Pr[x=x_i]$$
 
-**joint pmf p(x) 联合随机向量**：类似于：第一次硬币投出正面，第二次投出反面的概率。p(x)=Pr[x1 = x1 and x2=x2...and xL = xL]
+**Joint pmf p(x) 联合随机向量**：多个维度的事件同时发生的概率。类似于：第一次硬币投出正面，第二次投出反面的概率。 $$p(x)=Pr[x_1 = x_1\ and\ x_2=x_2\ ...\ and\ x_L = x_L]$$
 
 Bernoulli random vector 伯努利随机向量：只有两种情况，类似投硬币，一正一反。
 
-Jointly Bernoulli random vector 联合伯努利随机向量：2个维度。
+Jointly Bernoulli random vector 联合伯努利随机向量：2个维度的伯努利向量。
 
-| x1/x2 | 0           | 1           |
+| x1\x2 | 0           | 1           |
 | ----- | ----------- | ----------- |
 | 0     | p(0,0)=0.45 | p(0,1)=0.05 |
 | 1     | p(1,0)=0.1  | p(1,1)=0.4  |
 
-连续随机变量的联合表示就从二维的平面变为三维的空间了。比如下图是高斯随机变量的联合表示图，x y 坐标决定z坐标值：
+连续随机变量的联合表示从二维的平面变为三维的空间了，两个自变量 x 是两个维度，得到的最终概率值是一个维度。比如下图是高斯随机变量的联合表示图，x y 坐标决定z坐标值：
 
 ![image-20240930134543755](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202409301345912.png)
 
-**Marginal Distributions 边际分布**：只考虑多个变量中的部分变量的概率。比如上面的表格，x1\~Bern(0.5)，x2\~Bern(0.45)（伯努利的写法是 Bern(非0部分的概率)）
+**Marginal Distributions 边际分布**：只考虑多个变量中的部分变量的概率。比如上面的表格，x1\~Bern(0.5)，x2\~Bern(0.45)（伯努利的写法是 Bern(=1部分的概率)）
 
-**Conditional Distributions 条件概率**：当其他变量为xx的条件下，这个变量为xxx的概率是多少。比如上表格，x2=0的话x1的概率分布：P(x1=0 | x2=0)=0.45/0.55,P(x1=1 | x2=0)=0.1/0.55, (x1|x2=0)~Bern(0.18)
+**Conditional Distributions 条件概率**：给定其他变量为xx的条件下，这个变量为xxx的概率是多少。比如上表格，x2=0的话x1的概率分布：P(x1=0 | x2=0)=0.45/0.55,P(x1=1 | x2=0)=0.1/0.55, (x1|x2=0)~Bern(0.18)
 
 应用：比如生成式语言模型，已经生成了之前1k个词后下一个词为“xxx”的概率为多少。
 
-**Independence 独立性**：两个变量没有什么关系。那么两者同时发生的概率就是两者分别发生的概率的乘积，p(x1, x2)=p(x1)p(x2).
+**Independence 独立性**：两个变量没有什么关系。两者同时发生的概率就是两者分别发生的概率的乘积，p(x1, x2)=p(x1)p(x2).
 
 p(x1,x2) = p(x1)p(x2|x1).
 
-### 贝叶斯定理
+## 贝叶斯定理
 
 *贝叶斯定理被称为：改变信念 brief 的定理，大概是从概率角度上让人更改自己的偏好。所以也常用在机器学习中。*
 $$
@@ -161,7 +165,7 @@ $$
 
 生成式大模型，搜索引擎等常见其应用。
 
-## Inference 推理
+# Inference 推理
 
 现在我们已经有一定概率论基础了。我们开始学习“推理”，即：已知概率的情况下，根据输入 x 猜测输出 t。
 
@@ -169,9 +173,9 @@ $$
 
 模型的具体实现被称作预测器 predictor。
 
-推理问题主要分为两类，离散的 detection （比如晴天或者雨天）和连续的 estimation（比如温度）。
+推理问题主要分为两类，离散的 **detection** （比如晴天或者雨天）和连续的 **estimation**（比如温度）。
 
-而推理结果又分为两种：hard predictor 和 soft predictor，hard 就是有具体结果的（比如t是一个关于x的函数，代入x，t的值唯一确定）；soft 就是不确定的（当x=某个值时，t为0的概率有10%，为1的概率有90%）。
+而推理结果又分为两种：**hard predictor** 和 **soft predictor**，hard 就是只挑选某一个具体结果（比如预测 x=0 时 t=1，只确定一个固定结果）；soft 就是不确定的（当x=某个值时，t为0的概率有10%，为1的概率有90%）。
 
 下面的公式示例中，第一行是 hard 的写法，代表：x=0时t的预测结果=1。
 
@@ -183,11 +187,11 @@ q(1|0)=0.2
 \end{aligned}
 $$
 
-### Optimal Soft Prediction / Bayesian Inference 贝叶斯推理
+## Optimal Soft Prediction / Bayesian Inference 贝叶斯推理
 
-比如我们求出，q(t|0)=Bern(t|0.8)，那么可以说：ˆ t(1) = 1 with associated probability of error of 0.2（误差=0.2的硬推理）。这样设置是最优的。
+比如我们求出，q(t|1)=Bern(t|0.8)，那么可以说：$$\hat t(1) = 1$$ with associated probability of error of 0.2（误差 =0.2 的硬推理）。当 x=1 时 t=1 的硬预测器是最优的。
 
-### Loss Function 代价函数
+## Loss Function 代价函数
 
 代价函数用于计算预测器和正确值之间的偏差，进而后续决定如何修改预测器让代价更小。
 
@@ -197,9 +201,9 @@ $$
 $$
 k一般=2，也就是平方损失 quadratic error loss。
 
-一种损失函数：detection-error loss，也叫 0-1 loss。指实际值和预测值要么相等，要么差1.
+一种损失函数：detection-error loss，也叫 0-1 loss。指实际值和预测值要么相等，要么差1. 比如只有0和1两种结果的伯努利随机向量情况（猜猜明天是晴天还是雨天。猜对了损失=0，猜错了=1）。
 
-$\mathbb{1}$ 是指示符函数，条件为真时=1，否则=0.
+$\mathbb{1}$ 是指示符函数，预测结果正确时=1，否则=0.
 $$
 \begin{aligned}
  \mathcal{l} (t, \hat t) = \mathbb{1}(t= \hat t)\\
@@ -212,51 +216,57 @@ $$
 \end{aligned}
 $$
 
-什么情况下预测一定和真实值相等或者差1？比如只有0和1两种结果的伯努利随机向量情况（猜猜明天是晴天还是雨天。猜对了损失=0，猜错了=1）。
-
-如何评估硬推理的整体性能？一般用损失函数的平均值 population loss 计算。
+用什么损失评估硬推理的整体性能？一般用损失函数的平均值 population loss 计算。
 $$
 L_p(\hat t(\cdot))=E_{(x,t)\sim p(x,t)}[l(t,\hat t(x))]
 $$
 比如下题，预测器是令t永远=1，求 population loss。只需要计算算错部分的概率即可。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070004028.png" alt="image-20241007000444949" style="zoom: 50%;" />
+<div align="center">
 
-### Optimal Hard Prediction 最优硬预测
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070004028.png" alt=" " style="zoom: 80%;" />
+
+<div>
+
+## Optimal Hard Prediction 最优硬预测
 
 最优硬预测器的预测思路就是让 population loss 最小的预测函数。比如上图，很明显^t(1)=0, ^t(0)=1 的代价最小，=0.15。
 
-对于离散预测，我们只需要挑出概率最大的条件概率点作为预测值即可。
+对于硬预测，我们只需要挑出概率最大的条件概率点作为预测值即可。
 
-### Cross-Entropy Loss and Optimal Soft Prediction 最优软预测
-
-预测函数q一定用后验概率p最好吗？
+## Cross-Entropy Loss and Optimal Soft Prediction 最优软预测
 
 软预测的损失函数突然就上强度了，要算 log。cross-entropy loss：−log q(t|x)
 
 这是因为，对数损失的惩罚更高，迫使预测器做出更高概率更准确额预测：
 
-![image-20241007014247176](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070142271.png)
+<div align="center">
 
-population 对数损失的计算公式如下（按x求期望)：
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410070142271.png" alt=" " style="zoom:67%;" />
 
-![image-20241007014320347](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142205452.png)
+</div>
 
-[对数损失（Log Loss）详解（code） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/659617924)
+伯努利分布的 population 对数损失的计算公式如下（按x求期望)：
+$$
+Log\  Loss=-\frac{1}{N}\sum^N_{i=1}[y_i log(q(y_i|x))+(1-y_i)log(1-q(y_i|x))]
+$$
+
+
+即：每个预测结果 log 后与标准概率相乘，求平均值。
 
 最优软预测就是让 log loss 最小化的预测取值。
 
-## Supervised Learning 监督学习
+# Supervised Learning 监督学习
 
-### 监督学习简介
+## 监督学习简介
 
-推理和学习的主要区别在于 p(x, t) 是否已知。下面的天气例题说明了这一点。
+推理和学习的主要区别在于 p(x, t) 是否已知。比如天气预测问题，没有人知道根据当前条件明天到底会是什么天气，只能通过以往样本学习统计出估计值作为训练参考。
 
 模型不可靠或者太复杂的时候，如果知道输入数据和期望输出我们可以用监督学习。
 
 监督学习的步骤简单来说分为五步：
 
-1. Inductive bias selection 归纳偏置。首先我们假设一下**目标模型**是什么样的，比如：一次函数？二次函数？做了这个假设之后再代入训练（比如t=ax，代入训练数据后求出a）。当然，我们的假设可能会有偏差，毕竟不一定所有问题都能找到完全合适的问题解决，这个偏差就叫 bias。以及定义**损失函数**，损失函数用于计算预测值与训练数据之间的偏差以此调整模型；**正交函数**；**训练方法**（比如：让loss最小化）。
+1. Inductive bias selection 归纳偏置。首先我们假设一下**目标模型**是什么样的，比如：一次函数？二次函数？做了这个假设之后再代入训练（比如t=ax，代入训练数据后求出a）。当然，我们的假设可能会有偏差，毕竟不一定所有问题都能找到完全合适的问题解决，这个偏差就叫 bias。以及还要定义**损失函数**，损失函数用于计算预测值与训练数据之间的偏差以此调整模型；**正交函数**；**训练方法**（比如：让loss最小化）。
 2. Training 训练。下面会讲到，我们把已知的数据分为训练集和测试集，训练集用于训练我们的模型，测试集用于检验模型效果不用于训练。
 3. Validation 验证，利用训练集数据计算 loss 损失判断模型的合理性，比如二次函数用一次函数的模型，偏差就会很大。
 4. Revise inductive bias 可能考虑是否修改归纳偏置模型。
@@ -267,7 +277,7 @@ population 对数损失的计算公式如下（按x求期望)：
 - regression problem 回归问题，连续
 - classification problem 分类问题，离散
 
-*memoralizing 是记忆，记住训练数据中的x,t的键值对。learning是学习，找规律。*
+*memoralizing 是记忆，记住训练数据中的 x,t 的键值对。learning是学习，找规律。*
 
 no free lunch theorem 没有免费的午餐定理: **没有一种通用的学习算法可以在各种任务中都有很好的表现**。我们需要对数据进行先验假设 inductive bias ，在归纳过程中再做修改。最终得到一个预测器 predictor，连续问题是软预测器 soft，离散问题是硬预测器 hard。
 
@@ -277,7 +287,7 @@ no free lunch theorem 没有免费的午餐定理: **没有一种通用的学习
 
 
 
-#### 常见符号解释
+### 常见符号解释
 
 训练集：D，内含N个数据。training set D with N training data points 
 $$
@@ -291,7 +301,7 @@ $$
 $$
 q_D(t|x)
 $$
-硬预测模型类 model class：意为首先我们对预测器做一个大概的假设，这个预测器属于某一个模型类（比如一次函数的预测器类，二次函数的预测器类等）。θ 是模型的参数，属于一个特定范围，在训练过程中调整 θ 值。注意 θ 是一个向量代表一系列系数。
+硬预测模型类 model class：意为我们对预测器做一个大概的假设，这个预测器属于某一个模型类（比如一次函数的预测器类，二次函数的预测器类等）。θ 是模型的参数，属于一个特定范围，在训练过程中调整 θ 值。注意 θ 是一个向量代表一系列系数。
 $$
 H=\{\hat t(\cdot|\theta):\theta\in\Theta\}
 $$
@@ -311,11 +321,11 @@ $$
 $$
 L_D(\theta)=\frac{1}{N}\sum^{N}_{n=1}l(t_n,\hat t(x_n|\theta))=\sum_{x,t}p_D(x,t)l(t,\hat t(x|\theta))
 $$
-### Inductive Bias Selection 归纳偏差选择
+## Inductive Bias Selection 归纳偏差选择
 
 选择模型类 / 预测器的过程也是确定归纳偏差的过程。
 
-#### 三种预测器
+### 三种预测器
 
 Population-optimal unconstrainded predictor 总体最优无约束预测器：最小化总体损失且无视模型，所以叫做无约束预测器，因为不受模型类的限制。但是我们不知道标准概率分布所以很难实现。
 $$
@@ -330,7 +340,7 @@ $$
 \theta_M^{ERM}==arg \mathop{min}\limits_{\theta \in R^{M+1}}L_D(\theta)
 $$
 
-#### ERM 经验风险最小化预测
+### ERM 经验风险最小化预测
 
 针对这个损失函数，一种训练原则是 Empirical Risk Minimization 经验风险最小化（ERM），即找到使得 LD(θ) 最小的 θ 作为预测器参数。
 $$
@@ -341,7 +351,7 @@ $$
 L_D(\theta)=\frac{1}{N}||t_D-X_D\theta||^2
 $$
 
-*和之前提到的一样，连续问题（如 Regression）的损失函数是求次方偏差，离散问题（如 Classification）的损失函数是求0-1偏差。*
+*和之前提到的一样，连续问题（如 Regression）的损失函数是求次方偏差，离散问题（如 Classification）的损失函数是求 0-1偏差。*
 
 t_D：一个列向量，依次存储了所有目标值.
 
@@ -355,7 +365,7 @@ $$
 $$
 如果第一部分的矩阵乘积是不可逆的，舍去这一部分即可。
 
-#### ERM 相关的两个定理
+### ERM 相关的两个定理
 
 对于学习，有两个定理：
 
@@ -370,7 +380,7 @@ $$
 
 ![image-20241012181732276](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png)
 
-#### 最优预测器和经验风险最小化预测器的对比
+### 最优预测器和经验风险最小化预测器的对比
 
 例：
 
@@ -405,7 +415,7 @@ M=3 时，模型预测如图，可以看出 ERM 在欠拟合和过拟合中间�
 
 但是我们如何判断模型是否过拟合？我们不一定知道正确的模型公式。因为我们到目前为止只是用训练数据在测试，就算训练出了完全拟合训练数据的预测器（如上面第二个图，M=9 的例子）我怎么知道这是适用于所有数据的预测器呢？
 
-#### Probabilistic Models 软预测器的概率模型
+### Probabilistic Models 软预测器的概率模型
 
 软预测器用已知 t 和 θ 的条件概率表示。第三章的时候用 q 符号表示，这章用 p 符号，反正意思到位了。
 $$
@@ -427,7 +437,7 @@ L_D(\theta)=\frac{1}{N}\sum^{N}_{n=1}(-log\,p(t_n|x_n,\theta))
 $$
 也叫 Maximum Likehood Learning (ML Learning) 最大似然学习。最小化 log 损失，最大化概率。
 
-### Validation 验证
+## Validation 验证
 
 可以先拿出一部分已知数据作为验证集 validation 不参与训练。预测器用训练集训练，验证集再计算损失。计算损失的方法仍然是整体损失：
 $$
@@ -444,7 +454,7 @@ $$
 
 如何选择验证集？
 
-#### K-Fold Cross-Validation
+### K-Fold Cross-Validation
 
 首先将模型划分为K个类。每次迭代从每个类中选取一个值作为验证集，比如第3次就把3类作为验证集，把剩下的类作为训练集。
 
@@ -460,7 +470,7 @@ $$
 
 ![image-20241014171317611](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141713672.png)
 
-如果是总体最优预测模型：很简单，把所有数据都记录下来，并且如果只涉及到这四个数据，损失=0.
+如果是总体最优预测模型：很简单，把所有数据都作为训练数据，并且如果只涉及到这四个数据，损失=0.
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141717057.png" alt="image-20241014171717926" style="zoom:50%;" />
 
@@ -470,7 +480,7 @@ $$
 $$
 总体损失就是(2^2^+1^2^+0+0)/4=5/4，过拟合。
 
-#### Bias vs Estimation Error
+### Bias vs Estimation Error
 
 如何权衡偏差和估计错误？
 $$
@@ -495,10 +505,9 @@ $$
 L_p(\theta _D |x)=\underbrace{L_p(\hat t^*(x) |x)}_\text{aleatoric\,uncertainty}+\underbrace{(L_p(\theta^*_H|x)-L_p(\hat t^*(x)|x))}_\text{bias}+\underbrace{(L_p(\theta_D|x)-L_p(\theta^*_H|x))}_\text{epistemic\,uncertainty}\\
 $$
 
-
 *其实这里对模型容量，数据量的介绍有些过于简化其作用了，训练效果和要解决的问题，模型选择，训练算法等等都有影响。比如深度神经网络一般是大容量模型，并不一定适用“模型容量越大，越容易过拟合”的定理。当模型容量增加的时候，测试误差会首先增加（过拟合）然后下降，直到一个插值点 interpolation point。这个特性被称为“双降 double descent”，意思是 training loss 随着模型容量增加而下降的同时，population loss 也没有如过拟合预期的那样增加。*
 
-#### Regularization 正交化
+### Regularization 正交化
 
 一种让 ERM 模型变得更加泛化的方法。
 
@@ -516,15 +525,13 @@ R：正交化θ。比如一维范式就是所有 θ 的值求和 ||θ||，二维
 
 θ 数量越多，第二项也会使得整体的值增加，作用相当于 loss 增加。
 
-### Test 测试
+## Test 测试
 
 验证集多次迭代的过程是有偏估计，所以损失一般小于总体损失。
 
 建议提前拿出一组数据作为测试集，不参与训练和验证，用测试集评估总体损失且训练者不应该知道测试集的内容。
 
-
-
-### Optimization 优化
+## Optimization 优化
 
 我们之前已经得出损失公式，以及训练的目标就是让损失最小化：
 $$
@@ -558,25 +565,34 @@ $$
 
 其中的值全部=0说明是凸函数。
 
-#### Gradient Descent 梯度下降优化
+### Gradient Descent 梯度下降优化
 
 是一种局部优化方法 Local optimization。
 
 简单来说，每次迭代的时候沿损失梯度下降最快的方向走一定的步长，让下次迭代的θ序列损失更小。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270009617.png" alt="[神经网络基础理论与简单实践 | korilin's blog](https://korilin.com/posts/basic-theory-and-simple-practice-of-neural-network/image_21.png)" style="zoom:67%;" />
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270009617.png" alt="[神经网络基础理论与简单实践 | korilin's blog](https://korilin.com/posts/basic-theory-and-simple-practice-of-neural-network/image_21.png)" style="zoom: 80%;" />
+
+</div>
 
 公式如下，注意这里的θ不是指多项式中的每一个参数θ，而是每次迭代产生的一组θ。初始化第一组 θ 后，后面的每组 θ 都迭代计算。γ是学习率，步长，决定每次迭代要迈多大的步子。
 $$
 \theta^{(i+1)}=\theta^{(i)}-\gamma\nabla g(\theta^{(i)})
 $$
 
-
 如果 γ 设置的太大了，就容易迈过，再回头往反方向走。
 
-![[深度学习优化算法入门：一、梯度下降 - 知乎](https://zhuanlan.zhihu.com/p/45365719)](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270016642.webp)
+<div align="center">
 
-#### 梯度下降的性质
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270016642.webp" alt=" " style="zoom:80%;" />
+
+</div>
+
+> 图源：[深度学习优化算法入门：一、梯度下降 - 知乎](https://zhuanlan.zhihu.com/p/45365719)
+
+### L-Smooth 梯度下降
 
 - 如果 g(θ) 的二阶导全部<=L，可以说 g(θ) 是 L-smooth 的函数。
 
@@ -601,7 +617,7 @@ $$
 
 不过问题在于 L 不一定知道。我们可以通过验证，以及其他方法获取（后续章节介绍）。
 
-#### Stochastic Gradient Descent 随机梯度下降
+### Stochastic Gradient Descent 随机梯度下降
 
 计算整个数据集的梯度，对于大模型来说计算成本还是太高了。
 
@@ -623,7 +639,7 @@ $$
 
 除了对学习率范围设限，另一种避免到达不了极点的方法是 S 样本量每次迭代都会增加。这两种方式可以结合使用。
 
-#### 计算梯度的方式
+### 计算梯度的方式
 
 Symbolic Differentiation：直接求导。
 
@@ -631,7 +647,11 @@ Symbolic Differentiation：直接求导。
 
 Numerical Differentiation：利用导数定义近似求解。把 g(θ) 看作一个黑盒，不关心其内部结构，只考虑输入输出。
 
-![image-20241027154010115](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271540283.png)
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271540283.png" alt="image-20241027154010115" style="zoom:80%;" />
+
+</div>
 
 ![image-20241027154230734](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271542004.png)
 
@@ -641,7 +661,7 @@ Automatic Differentiation：使用求导方法，但是只求出某个点的梯�
 
 ![image-20241027161151946](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271611213.png)
 
-#### Computational Graph 计算图
+### Computational Graph 计算图
 
 便于计算梯度的图。
 
@@ -691,7 +711,7 @@ backward pass 是反向传播，假设 g(θ)=1，反推回来。所有 f() 的�
 >
 > $$\nabla \theta=[-4/3, -8/3,0]^T$$
 
-## Binary Classification 上述方法在二元分类中的应用
+# Binary Classification 上述方法在二元分类中的应用
 
 如下图，给了一个新点判断这个点可能是圈还是叉。
 
@@ -718,9 +738,9 @@ $$
 
 模型主要分为线性模型和神经网络模型。
 
-### Linear Models 线性模型
+## Linear Models 线性模型
 
-#### 预测器
+### 预测器
 
 还是经典公式：
 $$
@@ -748,7 +768,7 @@ $$
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120233740.png" alt="image-20241112023354565" style="zoom:67%;" />
 
-#### 损失函数
+### 损失函数
 
 考虑下面这个式子，就是 classification margin：
 $$
@@ -779,7 +799,7 @@ logistic loss 对数损失：$$l(y)=log(1+e^{-y})$$
 
 软预测损失：$$l(t,\hat t(x|\theta))=log(1+e^{-y})$$
 
-#### Perceptron Algorithm 感知器算法
+### Perceptron Algorithm 感知器算法
 
 应用了 ERM，hinge-at-zero loss，SGD 的算法。
 
@@ -835,7 +855,7 @@ $$
 
 ![image-20241112222114793](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122221190.png)
 
-### Neural Network Model 神经网络模型
+## Neural Network Model 神经网络模型
 
 主要用于处理非线性情况。
 
@@ -923,7 +943,7 @@ $$
 
 p(0|x,θ) 就1-0.12=0.88 即可。
 
-#### SGD
+### SGD
 
 又到了最喜欢的梯度下降优化环节。
 
@@ -969,7 +989,7 @@ $$
 
 ![image-20241126045100763](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260451091.png)
 
-## Transformer
+# Transformer
 
 一种常常用于自然语言处理的深度学习架构。
 
@@ -999,11 +1019,11 @@ softmax 是形如下图的公式，这只是一种计算方法：
 
 Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过来不同。比如“伦敦国王学院”和“大学”关联度很高，但”大学“和”伦敦国王学院“关联度不高，大学有那么多所呢。
 
-#### MultiHead Attention 多头注意力
+## MultiHead Attention 多头注意力
 
 除了一个句子中不同词之间的关联，可能还有其他因素（如一词多义，语序问题等）。
 
-## Unsupervised Learning 无监督学习
+# Unsupervised Learning 无监督学习
 
 相比监督学习没有一个“标准答案”，比如对于输入 x 我们没有期望 t 输出值。有很多问题是没有期望答案的，比如分类问题，或者异常检测（某个 x 的 p 值过小，很可能是异常）。
 
@@ -1013,13 +1033,13 @@ Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过
 
 ![image-20241129223915118](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292239366.png)
 
-### Density Estimation 密度估计
+## Density Estimation 密度估计
 
 Compression 压缩：对于 x 向量中所有可能元素的表示，概率大的用简洁形式表示，概率小的用复杂形式表示更节省存储空间。比如摩斯电码。
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292244100.png" alt="image-20241129224409861" style="zoom:67%;" />
 
-#### 直方图
+### 直方图
 
 很简单的无参密度估计方法，就是统计x出现次数除以总数据数。
 
@@ -1045,7 +1065,7 @@ Compression 压缩：对于 x 向量中所有可能元素的表示，概率大�
 
 可以看出区间的选取对直方图无监督学习影响很大。选太大了，bias 就很大，因为比较贴近正常值的异常值也可能被划进正常区间范围内；选太小了，估计误差可能又大了，因为每个区间的点数少了，就像上图，每个有样本的区间内都是一个样本数，怎么判断哪个是异常。
 
-#### Kernel Density Estimation 核密度估计
+### Kernel Density Estimation 核密度估计
 
 如果分布假设是平滑的而不是类似直方图的离散状，误差应该会小一些。比如假设每个样本点（相当于一个阶跃函数的图像）都变成一个高斯函数 k_h(x)= N(x|0,h)，概率密度函数如下：
 
@@ -1067,13 +1087,13 @@ h 越小，高斯函数越窄，但是就像直方图中暴露出来的问题一
 
 ![image-20241129233637487](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292336721.png)
 
-#### Curse of Dimensionality 维度诅咒
+### Curse of Dimensionality 维度诅咒
 
 前两种方法缺陷在于 h 和 △ 选择必须合适，而且对于多维度数据误差可能很大（除非数据量够大）。这就是维度诅咒。
 
 由此引入了参数密度估计方法，相较于非参数密度方法不会受到维度诅咒。但是对概率模型有限制，必须是可以通过参数模型得到的概率模型。
 
-#### Contrastive Density Learning 对比监督学习
+### Contrastive Density Learning 对比监督学习
 
 目标是将相似样本拉近，不相似样本离远。
 
@@ -1083,7 +1103,7 @@ h 越小，高斯函数越窄，但是就像直方图中暴露出来的问题一
 
 ![image-20241130005113280](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411300051547.png)
 
-#### Latent Variable Models 潜在变量模型
+### Latent Variable Models 潜在变量模型
 
 找到一些隐变量进行分类。
 
@@ -1101,7 +1121,7 @@ d：x 转换为 z 后再重建，比如图片 AI 高清化。
 
 z 需要通过无监督学习找寻。
 
-##### Autoencoders 自动编码器
+### Autoencoders 自动编码器
 
 一种 x->z->x 潜在变量模型。依赖于模型参数 θ：
 
@@ -1109,7 +1129,7 @@ z 需要通过无监督学习找寻。
 
 比如z是图片x的压缩形式，解压得到x（可能会有损失）。
 
-###### Training Autoencoders 自动编码器
+#### Training Autoencoders 自动编码器
 
 将无监督问题转化为监督问题的一种案例。选定期望输出 x 值或者原始 x 值作为预期结果，这样就可以计算损失了。
 
@@ -1165,11 +1185,11 @@ https://stellaris.graysea.cn/kcl/artificial-intelligence-and-decision-making-6cc
 
 ![image-20241201024108989](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010241248.png)
 
-#### Directed Generative Models 直接生成模型
+### Directed Generative Models 直接生成模型
 
 一种 z->x 模型。
 
-##### K-means K 聚类算法
+#### K-means K 聚类算法
 
 把 n 个 x 数据分配给 k 个聚类。z 是分配结果，$$z_{k,n}=1$$ 代表第n个数据分配给了第k簇，$$z_{k,n}=0$$  代表不在这个簇里。所有的 z_{k,n} 组成列向量 z。 
 
