@@ -4,7 +4,7 @@
 
 ### 1
 
-![image-20250103183144258](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501031831362.png)
+![January 2024 q1](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501031831362.png)
 
 a) 题中给了一个条件概率，想求联合概率很简单，给条件概率中每一项乘对应的 x 的概率即可。也就是全乘 0.5.
 
@@ -26,7 +26,7 @@ d) 最小误差概率：发生预测出错的概率情况。y 硬预测器很明
 
 ### 2
 
-![image-20250103184115042](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501031841108.png)
+![January 2024 q2](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501031841108.png)
 
 a) Empirical Distribution 就是不知道标准概率，根据经验判断。这里根据取样值推算概率即可。
 
@@ -68,7 +68,7 @@ $$
 
 ### 3
 
-![image-20250104001518783](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501040015888.png)
+![January 2024 q3](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501040015888.png)
 
 a) stationary point 极值点：求导=0 的点。
 $$
@@ -85,7 +85,7 @@ d) 根据公式，两者差值最小值= $$\frac{\gamma}{2}\nabla g^2(\theta^{(1
 
 ### 4
 
-![image-20250104010150531](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501040101609.png)
+![January 2024 q4](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501040101609.png)
 
 a) 首先通过权重层，W 与输入列向量 x 相乘，得到 [1,1]^T^。
 
@@ -101,6 +101,6 @@ b) 硬分类预测：因为 a) 中计算得出 P(t=1|x, θ) > 0.5，所以 $$\ha
 
 c) 先前向传播，传播过程中对每个 x 求导；然后后向传播，最终结果和 W w^2^ 分别相乘获取梯度。如果是求梯度更新后的权重，就让原权重值 W 和梯度值求和。
 
-![b691ea83bd82ba5ac907ac7ac1b2de8](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501040342442.jpg)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501040342442.jpg)
 
 *这道题因为前面和答案有分歧所以整个重做了，不确定对不对。*
