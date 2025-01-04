@@ -10,6 +10,7 @@
   * [Coursework](artificial-intelligence-and-decision-making-6ccs3ain-lv6/coursework.md)
 * [Machine Learning 7CCEMMLE](machine-learning-7ccemmle/README.md)
   * [Note](machine-learning-7ccemmle/note.md)
+  * [Problems](machine-learning-7ccemmle/problems.md)
 * [Project Management 7CCEMPRO](project-management-7ccempro/README.md)
   * [Note](project-management-7ccempro/note.md)
-  * [Problems](project-management-7ccempro/Tutorial.md)
+  * [Problems](project-management-7ccempro/problems.md)

@@ -164,6 +164,14 @@ if\;x_1[n]&=x[n-n_0]\\
 y_1[n]=y[n-n_0]&=T\{x_1[n]\}=T\{x[n-n_0]\}
 \end{aligned}
 $$
+> 例题：判断 y[n]=x[3n] 是否是 time invariant.
+>
+> 解答：先替换 n 为 n-n0，得到系统输出为 x[3n-3n0]
+>
+> 然后替换 x[n] 为 x[n-n0]，得到系统输出为 x[3n-n0]
+>
+> 两者不相等，所以 not time-invariant
+
 **压缩器系统**：从样本中跳过M-1个数据选一个作为输出。
 $$
 y[n]=x[Mn]

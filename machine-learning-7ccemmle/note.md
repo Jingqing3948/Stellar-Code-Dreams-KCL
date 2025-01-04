@@ -661,35 +661,35 @@ $$
 
 backward pass 是反向传播，假设 g(θ)=1，反推回来。所有 f() 的部分要对相应的 θ 求导。
 
-例题： $$g(\theta)=\theta^2_1+2\theta^2_2-\theta^2_3$$ ，求 [1,-1,1] 点处的梯度。
-
-首先进行 forward pass，代入三点数值到计算图中求 g(θ) 在[1,-1,1] 处的数值，这一步的主要作用是确定计算图：
-
-![image-20241027164947168](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271649432.png)
-
-接着假设 g(θ)=1，倒推回来：
-
-![image-20241027165203236](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271652421.png)
-
-[2, -2, 2] 部分是对 forward pass 中三个函数求导再代入 [1,-1,1] 的值得到的。
-
-最终得到的 $$\nabla g(\theta)=[2,-4,-2]^T$$
-
-例题2：如下图，f1-f3都是 $$(x_1+2x_2)^2$$，f4=logx。
-
-求[1, -2, 1] 点处的梯度下降值。
-
-![image-20241027183553508](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271835911.png)
-
-首先 forward pass 求出 g(θ)，并且在此过程中把每个函数对于 x1 x2 的求导也算出来（并带入输入 x1 x2 值）：
-
-![image-20241027183825574](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271838872.png)
-
-然后假设 g(θ)=1，反推回去得到 θ 的值。
-
-![image-20241027184236357](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271842537.png)
-
-$$\nabla \theta=[-4/3, -8/3,0]^T$$
+> 例题： $$g(\theta)=\theta^2_1+2\theta^2_2-\theta^2_3$$ ，求 [1,-1,1] 点处的梯度。
+>
+> 首先进行 forward pass，代入三点数值到计算图中求 g(θ) 在[1,-1,1] 处的数值，这一步的主要作用是确定计算图：
+>
+> ![image-20241027164947168](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271649432.png)
+>
+> 接着假设 g(θ)=1，倒推回来：
+>
+> ![image-20241027165203236](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271652421.png)
+>
+> [2, -2, 2] 部分是对 forward pass 中三个函数求导再代入 [1,-1,1] 的值得到的。
+>
+> 最终得到的 $$\nabla g(\theta)=[2,-4,-2]^T$$
+>
+> 例题2：如下图，f1-f3都是 $$(x_1+2x_2)^2$$，f4=logx。
+>
+> 求[1, -2, 1] 点处的梯度下降值。
+>
+> ![image-20241027183553508](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271835911.png)
+>
+> 首先 forward pass 求出 g(θ)，并且在此过程中把每个函数对于 x1 x2 的求导也算出来（并带入输入 x1 x2 值）：
+>
+> ![image-20241027183825574](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271838872.png)
+>
+> 然后假设 g(θ)=1，反推回去得到 θ 的值。
+>
+> ![image-20241027184236357](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271842537.png)
+>
+> $$\nabla \theta=[-4/3, -8/3,0]^T$$
 
 ## Binary Classification 上述方法在二元分类中的应用
 
