@@ -358,7 +358,7 @@ B. The probability that, given a positive result, the person is a sufferer is 0.
 
 **C. The probability that, given a negative result, the person is a non-sufferer is 0.9997;** 
 
-D. The probability that the person will be misclassified (i.e., they get an incorrect diagnose) is 0.09975. 
+**D. The probability that the person will be misclassified (i.e., they get an incorrect diagnose) is 0.09975.** 
 
 E. None of the above
 
@@ -370,7 +370,7 @@ E. None of the above
 >
 > C. 阴性结果中诊断正确的概率：(0.90\*0.995)/(0.05\*0.005+0.90\*0.995)=0.9997
 >
-> D. 诊断错误的概率：1-B+1-C=0.9548
+> D. 诊断错误的概率：0.05\*0.005+0.10\*0.995=0.09975
 
 ---
 
