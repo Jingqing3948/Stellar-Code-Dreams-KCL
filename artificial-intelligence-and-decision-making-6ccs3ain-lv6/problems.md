@@ -226,7 +226,7 @@ E. None of the above
 
 **11. Given the probability distribution P(U,V,W,X,Y), and the query P(¬w|¬x, y), which of the following are hidden variables:**
 
- **A. U **
+ **A. U**
 
 **B. V** 
 
