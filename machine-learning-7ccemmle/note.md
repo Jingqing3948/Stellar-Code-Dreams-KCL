@@ -815,6 +815,16 @@ $$
 \right .
 $$
 
+每次梯度下降迭代后的新 θ 参数计算公式：
+$$
+\theta^{(i+1)}=\theta^{(i)}+\gamma^{(i)}\cdot\left\{
+\begin{aligned}
+0\;\;\;if\;prediction\;is\;correct\\
+-t^\pm \cdot u(x)\;\;if\;prediction\;is\;wrong
+\end{aligned}
+\right .
+$$
+
 
 例题：
 
@@ -823,17 +833,18 @@ $$
 首先假设选取 (2.1, 1) 点计算梯度下降。
 $$
 \begin{aligned}
-\theta_2&=\theta_1-\gamma g(\theta_1)\\
-g(\theta_1)&=-1 \cdot 1 \cdot 2.1\,(prediction\;is\;wrong,\,-2.1 \neq 1)\\
+prediction\;is\;wrong,\ &\theta_1\cdot 2.1=-2.1, hard\ prediction=0\neq 1\\\\
+\theta_2&=\theta_1-\gamma x_1\\\\
+
 \theta_2&=-1+0.1\cdot 2.1=-0.79
 \end{aligned}
 $$
 然后选取 (-1.5, 0) 点计算梯度下降。
 $$
 \begin{aligned}
-\theta_2&=\theta_1-\gamma g(\theta_1)\\
-g(\theta_1)&=-1 \cdot -1 \cdot -1.5\,(prediction\;is\;wrong\,-1.5\cdot -0.79=1.185\neq 0)\\
-\theta_2&=-0.79+0.1\cdot 1.5=-0.64
+prediction\;is\;wrong,\ &\theta_2\cdot -1.5=1.185,\ hard\ prediction=1\neq 0\\\\
+\theta_3&=\theta_2-\gamma x_2\\\\
+\theta_3&=-0.79-0.1\cdot (-1.5)=-0.64
 \end{aligned}
 $$
 计算每个步骤中的 classification margin 会发现值是逐渐接近于0的。

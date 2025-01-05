@@ -1,10 +1,8 @@
-# Problems
-
 这里记录一些历年题，课后习题等，用于应试。
 
-## January 2022 File
+# January 2022
 
-### 1-5题
+## 1-5题
 
 课程的第一个常见题型：判断一个系统的稳定性，因果性，线性时不变性等。
 
@@ -36,7 +34,7 @@ $$
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412110709522.png" alt="gpt解答" style="zoom:67%;" />
 
-### 6-8题
+## 6-8题
 
 是连续信号采样得到离散信号的题型。
 
@@ -71,7 +69,7 @@ x(e^jw^) 截取 ±π 之间的部分，就是全1的矩形函数吧。
 
 *有点难，希望不是我做错了*
 
-### 9-11题
+## 9-11题
 
 ![January 2022 q9-11](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501021743100.png)
 
@@ -100,7 +98,7 @@ $$
     h_1[n]=-\frac{1}{6}\delta[n-1]+\frac{2}{3}\delta[n]+\frac{1}{3}(-1)^nu[-n-1]
     $$
 
-### 12-14题
+## 12-14题
 
 ![January 2022 q12-14](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501021759380.png)
 
@@ -116,9 +114,9 @@ $$
 
     $$\tilde{x}[0]\ \tilde{x}[1]$$ 是周期性循环的 x[5] 和 x[6] 的值，所以 $$\tilde{x}[n]$$ 从 0 到 4 的值分别是 {4, 1, 4, 8, 7}.
 
-## January 2023 File
+# January 2023
 
-### 第3题
+## 第3题
 
 ![January 2023 3](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301701649.png)
 
@@ -126,9 +124,9 @@ $$
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301701925.jpg)
 
-## January 2024 File
+# January 2024
 
-### 第1题
+## 第1题
 
 ![January 2024 q1](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301213344.png)
 
@@ -148,7 +146,7 @@ b) d) 先与 $$H(e^{j\omega})$$ 相乘后还原信号。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501021600046.jpg)
 
-### 第2题
+## 第2题
 
 ![January 2024 q2](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412302119995.png)
 
@@ -164,7 +162,7 @@ d) ROC 包含单位圆和正无穷的逆系统。
 
 *好复杂，希望不是做错了！*
 
-### 第3题
+## 第3题
 
 ![January 2024 q3](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301659953.png)
 
@@ -172,10 +170,30 @@ d) ROC 包含单位圆和正无穷的逆系统。
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301659281.jpg)
 
-### 第4题
+## 第4题
 
 ![January 2024 q4](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301700982.png)
 
 求 DFT 的知识点。
 
 ![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301700421.jpg)
+
+# January 2024 Lv6
+
+## 3
+
+![January 2024 lv6 q3](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501050028374.png)
+
+一个滤波器题。
+
+a) 根据如下图片第一行所给公式进行替换。
+
+b) 根据下图 b) 第一行所给公式进行替换。这里因为太复杂，我有点不确定可不可以进一步化简，所以就没继续做。后面也很简单，就是 z 逆变换。
+
+c) 冲击不变法是线性的，0处频域值相等。而双线性变换是一种映射，不一定满足。
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501050028850.jpg)
+
+c) 中的冲击不变法也可以根据课件中如下所示公式判断：
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501050031123.png)
