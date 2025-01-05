@@ -762,6 +762,8 @@ p(t=0|x,\theta)=1&-p(t=1|x,\theta)\\
 \sigma (x)=(&1+e^{(-x)})^{-1}
 \end{aligned}
 $$
+$$\sigma=\frac{1}{1+e^{-x}}$$ 或者 $$=\frac{e^2}{1+e^2}$$ ，**注意两种形式！**
+
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120232281.png" alt="image-20241112023239039" style="zoom: 67%;" />
 
 多项式计算结果区间位于0到5时，概率>0.5，说明更有可能发生。所以软预测器选择>0.5的那一项结果作为预测值。
@@ -820,7 +822,7 @@ $$
 \theta^{(i+1)}=\theta^{(i)}+\gamma^{(i)}\cdot\left\{
 \begin{aligned}
 0\;\;\;if\;prediction\;is\;correct\\
--t^\pm \cdot u(x)\;\;if\;prediction\;is\;wrong
+t^\pm \cdot u(x)\;\;if\;prediction\;is\;wrong
 \end{aligned}
 \right .
 $$
@@ -853,7 +855,6 @@ $$
 $$
 \nabla l(t^\pm \cdot (\theta^T(u(x)))=(\sigma(\theta^T u(x))-t)\cdot u(x)
 $$
-$$\sigma$$ 函数之前有介绍，=(1+exp\^(-x))\^-1.
 $$\sigma(\theta^T u(x))-t$$ 部分又用 $$\delta(x,t) $$ 表示，表示 mean error，=0 的时候说明预测完全准确。
 
 当 mean error = 0 时，如果 t=1，则 $$\theta^T(u(x))\rightarrow \infty$$ ；如果 t=0，则 $$\theta^T(u(x))\rightarrow -\infty$$ 
@@ -963,42 +964,45 @@ p(0|x,θ) 就1-0.12=0.88 即可。
 ![image-20241126040841418](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260408835.png)
 
 最后一层：
-
-![image-20241126041133897](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260411210.png)
-
-梯度：只说结论的话：
+$$
+l(\theta)=-log\,\sigma (t^{\pm}a^L)
+$$
+后向传播最后一层（第 L 层）所需梯度：只说结论的话：
 $$
 \delta^l=\sigma(a^L)-t
 $$
 
+最后一层后向传播的梯度=该层梯度的输入值代入 σ 函数再-目标值 t。比如最后一层输入-2，最终要计算 t=0 时的梯度，计算结果就是 $$\frac{e^{-2}}{1+e^{-2}}-0\approx0.12$$
 
-![image-20241126041317020](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260413415.png)
+推导也很简单，其实就是最后一层的损失函数求导罢了，$$t^\pm$$ 视作一个常数。大家可以对 l(θ) 求导试试，对于 t=1 和 0 的情况得到的分别是 $$\frac{1}{e^x+1}$$ 和 $$\frac{e^x}{e^x+1}$$ ，和下面的结论项是相等的。
+
+对于前面的1到 L-1 层，其导数还是对对应自变量求导代入求值，和之前的 GD 算法类似。
 
 比如：还是之前那道题，计算 t=0 时的梯度。首先是前向传播：
 
-![image-20241126043115009](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260431343.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260431343.png)
 
-输入损失函数后，t^±^=-1（那个公式=2t-1，预测值 t =0，t^±^=-1），a^2^ 是该层（第二层所以有个2的上标，不是平方）的输出=-2，两者相乘=2，代入公式计算得到0.13 为损失值。
+t=0 时，t^±^=-1（$$t^\pm=2t-1$$），a^2^ 是该层（第二层所以有个2的上标，不是平方）的输出 =-2，两者相乘=2，代入公式计算得到0.13 为损失值。
 
 然后假设结尾=1，开始后向传播：
 
-![image-20241126043929691](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260439190.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260439190.png)
 
 首先根据 t 和 a^2^ 计算出 δ=0.12，用1\*0.12再\*第二层权重回推。
 
 第一层的梯度公式是h对a^1^求导，h是一个 ReLU 函数，所以当a>0时求导结果=1，a<0 时求导结果=0. （参考 ReLU 公式）所以得到这一层的向量是 [1,0]，回推出反向传播误差。
 
-![image-20241126044627761](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260446136.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260446136.png)
 
 
 
 最终，我们给输入值*反向传播误差计算权重梯度，用原权重-权重梯度\*学习率更新权重。这里貌似学习率视作1了吧？
 
-![image-20241126044923671](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260449094.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260449094.png)
 
 下图是不同层数，随着迭代次数增加训练损失下降情况图。可以看出3层反而是最有效进行二元分类的训练方法。
 
-![image-20241126045100763](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260451091.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260451091.png)
 
 # Transformer
 
@@ -1006,25 +1010,25 @@ $$
 
 输入可以被划分为 subset 子集或者 token：
 
-![image-20241126045944516](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260459045.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260459045.png)
 
-![image-20241126045956864](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260459330.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260459330.png)
 
 对于输入数据，创建N个Tokens，每一个都有D*1的维度：
 
-![image-20241126050158513](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260501909.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260501909.png)
 
 transformer 的一个重要机制在于 self-attention。
 
-![image-20241126051531266](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260515316.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260515316.png)
 
 softmax 是形如下图的公式，这只是一种计算方法：
 
-![image-20241126052420915](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260524551.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260524551.png)
 
 在自注意力公式中，我们发现初始词嵌入出现了3次。前两次是作为句中词向量与其他词（包括它自己）点积得到权重；第三次再与权重相乘得到最终带上下文的词嵌入。这三个地方出现的词嵌入我们给他们三个术语：查询(Query), 键(Key), 值(Value)。
 
-![在这里插入图片描述](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260529285.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260529285.png)
 
 > [【万字长文】深度解析 Transformer 和注意力机制（含完整代码实现）_transformer架构注意力机制-CSDN博客](https://blog.csdn.net/jarodyv/article/details/130867562)
 
@@ -1038,29 +1042,33 @@ Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过
 
 相比监督学习没有一个“标准答案”，比如对于输入 x 我们没有期望 t 输出值。有很多问题是没有期望答案的，比如分类问题，或者异常检测（某个 x 的 p 值过小，很可能是异常）。
 
-![image-20241129222404799](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292224162.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292224162.png)
 
 一种常用的方法是自监督学习，把问题转化为监督学习。比如将预测所有 token 的问题转换为条件概率。
 
-![image-20241129223915118](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292239366.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292239366.png)
 
 ## Density Estimation 密度估计
 
 Compression 压缩：对于 x 向量中所有可能元素的表示，概率大的用简洁形式表示，概率小的用复杂形式表示更节省存储空间。比如摩斯电码。
 
+<div align="center">
+
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292244100.png" alt="image-20241129224409861" style="zoom:67%;" />
+
+</div>
 
 ### 直方图
 
 很简单的无参密度估计方法，就是统计x出现次数除以总数据数。
 
-![image-20241129232115088](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292321324.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292321324.png)
 
 首先我们定义区间 quantizer，一定区间范围内 x 一起统计。
 
 公式：
 
-![image-20241129232454535](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292324839.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292324839.png)
 
 也就是说概率高度是 x 在这个区间内出现次数除以(区间长度\*总区间数)。
 
