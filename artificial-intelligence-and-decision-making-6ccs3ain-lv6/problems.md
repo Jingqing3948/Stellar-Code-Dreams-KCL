@@ -1,6 +1,10 @@
-## Preface
+# Preface
 
 只有一套例题，没答案，我根据gpt边学边做的。如有疑问请dd~
+
+# Sample Paper
+
+## 1
 
 **1. The following network is a Hidden Markov Model:**
 
@@ -34,6 +38,8 @@ E. None of the above
 
 ---
 
+## 2
+
 **2. The random variables Y and Z are non-interacting causes of X. Given the conditional probability values P(¬x|y) = 0.1 and P(x|z) = 0.3, what does the Noisy Or model give as the value of P(x|y, z)?**
 
 A. 0.9
@@ -51,6 +57,8 @@ E. 0.28
 > 在这个泄露概率的影响下，我们就没法直接通过 P(x|y)·P(x|z) 来计算 P(x|y,z) 了。只能通过 $$1-P(¬x|y)P(¬x|z)$$ 获得（y，z题目中说了是互相独立影响 x 的 cause）。
 
 ---
+
+## 3
 
 **3. Consider the joint probability table for the three binary variables P, Q and R:**
 
@@ -72,6 +80,8 @@ E. None of the above
 
 ---
 
+## 4
+
 **4. Consider the joint probability table for the three binary variables P, Q and R:**
 
 ![Figure 4](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412262127495.png)
@@ -91,6 +101,8 @@ E. None of the above
 > 很简单，把图中黄色部分求和。
 
 ---
+
+## 5
 
 **5.  Consider the joint probability table for the three binary variables P, Q and R:**
 
@@ -112,6 +124,8 @@ E. None of the above
 
 ---
 
+## 6
+
 **6. Consider the following normal form game:**
 
 ![Figure 6](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412262136808.png)
@@ -132,6 +146,8 @@ E. There are none
 
 ---
 
+## 7
+
 **7. Consider the following normal form game:**
 
 ![Figure 7](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412262138511.png)
@@ -151,6 +167,8 @@ E. There are none
 > 社会福利就是两方收益求和。4+4=8是最小值。
 
 ---
+
+## 8
 
 **8. Consider the following normal form game:**
 
@@ -182,6 +200,8 @@ D. (D, R)
 
 ---
 
+## 9
+
 **9. Given the Bayesian network:**
 
 ![Figure 9](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412262147145.png)
@@ -204,6 +224,8 @@ E. None of the above
 
 ---
 
+## 10
+
 **10. In the Bellman equation:**
 
 ![Figure 10](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412262151491.png)
@@ -224,6 +246,8 @@ E. None of the above
 
 ---
 
+## 11
+
 **11. Given the probability distribution P(U,V,W,X,Y), and the query P(¬w|¬x, y), which of the following are hidden variables:**
 
  **A. U**
@@ -239,6 +263,8 @@ E. Y
 > 隐藏变量：没有观测到但可能影响结果。XY 是观测到的变量，W 是结果。
 
 ---
+
+## 12
 
 **12.  A variable X has values x1, ... xn, and there is a probability distribution P(X) over X. P(X) is such that:**
 
@@ -266,6 +292,8 @@ E. For all $$i \in \{1,2,...,n\}$$ , xi has to be an integer.
 
 ---
 
+## 13
+
 **13.  In the context of Markov decision processes, a policy:**
 
 **A. Generates the maximum expected utility.** 
@@ -285,6 +313,8 @@ E. None of he above.
 > D：说反了，根据状态采取行动。
 
 ---
+
+## 14
 
 **14. Use prior sampling to create an estimate of P(a b cd) based on three sampled events from the following network and its associated probabilities.**
 
@@ -310,6 +340,8 @@ E. None of he above.
 
 ---
 
+## 15
+
 **15. Use rejection sampling to create an estimate of P(a|b, ¬d) based on five sampled events from the following network and its associated probabilities.**
 
 ![Figure 15](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412262300163.png)
@@ -321,6 +353,8 @@ E. None of he above.
 > P 上方有一个 hat 代表是根据采样数据统计得到的概率，并非真实概率。只需要根据5个采样数据估计概率即可。
 
 ---
+
+## 16
 
 **16. Consider n binary random variables X1, X2... Xn. Which of the following  statements are correct.**
 
@@ -350,6 +384,8 @@ E. None of the above
 
 ---
 
+## 17
+
 **17. A diagnostic test has a probability 0.95 of giving a positive result when ap plied to a person suffering from a certain disease, and a probability 0.10 of giving a (false) positive when applied to a non-sufferer. It is estimated that 0.5% of the population are sufferers. Suppose that the test is now administered to a person about whom we have no relevant information relating to the disease (apart from the fact that he/she comes from this population). Which of the following statements is correct:**
 
  A. The probability that the test result will be positive is 0.20425; 
@@ -374,7 +410,7 @@ E. None of the above
 
 ---
 
-**18.**
+## 18
 
 ![Figure 18](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271346518.png)
 
@@ -392,6 +428,8 @@ E. None of the above
 
 ---
 
+## 19
+
 **19. Which of the following statements are correct. **
 
 **A. A Pareto optimal solution can minimise social welfare, but it doesn’t have to.** 
@@ -408,6 +446,8 @@ E. None of the above
 
 ---
 
+## 20
+
 **20. Consider a game with payoff matrices A (to i) and B (to j). Let (x\*, y\*) be a mixed strategy that is a Nash equilibrium. Which of the following statements are correct:**
 
 ![Figure 20](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271354113.png)
@@ -418,7 +458,11 @@ E. None of the above
 >
 > B：正确，见下图，YY 是一个纳什均衡，但是 XX 带来的两个维度的收益都更高。
 >
+> <div align="center">
+>
 > <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271408845.png" alt="Figure 20.1" style="zoom:50%;" />
+>
+> </div>
 >
 > C：可能画等号
 >
@@ -427,9 +471,11 @@ E. None of the above
 
 ---
 
+## 21
+
 **21. Consider the argumentation framework shown below.**
 
-![image-20241227151333727](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271513861.png)
+![Figure 21](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271513861.png)
 
 **Identify all complete extensions from the options below:** 
 
@@ -452,6 +498,8 @@ E. a2
 > 3. 集合尽可能大，包含所有不矛盾的点。所以 E 不行，因为 E 可以再加一个 a3.
 
 ---
+
+## 22
 
 **22. （还是上图） Identify all of the false statements from the options below. **
 
@@ -481,6 +529,8 @@ D. The set a2a4 is conflict-free.
 
 ---
 
+## 23
+
 **23.**
 
 ![Figure 23](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412272207474.png)
@@ -509,7 +559,7 @@ E. The set a2 is a complete extension.
 
 ---
 
-**24.**
+## 24
 
 ![Figure 24](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412271536553.png)
 
@@ -529,6 +579,8 @@ E. None of the above.
 
 ---
 
+## 25
+
 **25. You are the lead AI software developer for a company which designs, builds and sells autonomous (self-driving) cars. One of the cars sold by your com pany is involved in a road accident, where the vehicle was faced with a sudden difficult choice. The owner of the self-driving car was in the passen ger seat of the car at the time, and she had the power to stop the car in an emergency. The choice faced by the self-driving car was either to keep driving straight ahead and face a head-on collision with an oncoming car driven by a human that was driving in the wrong lane OR to move onto the footpath where there was a risk of killing some pedestrians who were there. The self-driving vehicle stayed in its current lane and crashed into the oncoming vehicle, killing the family that was in the car. The insurance company that had insured the driver of the oncoming vehicle has now taken action in court to sue you and your employer for damages, saying that you were responsible for the actions of the self-driving car. Which one of the following arguments do you think a court would find the most acceptable?**
 
 A. This is the responsibility of my employer, not me. I was just doing what I was told by my boss. 
@@ -544,6 +596,8 @@ E. As part of the software development for the car design, my team had run exten
 > 感谢 ERt 校正，ppt上说法庭不接受“无法在短时间内做出决定”的说法。
 
 ---
+
+## 26
 
 **26.  The technology company you work for has tasked you with developing an AI application which searches social media, such as Facebook and Linked In, for information and photos of potential recruits and then matches this information against profiles of the company’s best-performing existing staff to identify the best potential recruits. The plan is that the Human Resources Department will contact the potential recruits to invite them for an interview. After developing the system but before putting it into production, you notice that almost all the recommended potential recruits are men. Your realize that this may be because most of the staff in the technology sector, including most of company’s existing staff and most potential recruits, are men. You also notice that the system seems to reject any potential recruits whose photos show them wearing a hat or other headgear. You do not know why the AI system does this, but it may just be some trivial quirk of a machine learning system. What do you do?**
 
