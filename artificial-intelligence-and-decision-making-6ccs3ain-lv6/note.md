@@ -1,4 +1,4 @@
-## 介绍
+# 介绍
 
 人工智能主要从两个方面描述：“复刻**人类行为**”和“**理性**”。而大家对”智能“的主题也有两种看法：”智能“是**内部思维推理**，还是**外在行为**的表现。这两个维度会诞生四种不同的人工智能发展方向。
 
@@ -37,7 +37,7 @@ Utility-based agents：穷举出当前情况的所有actions，以及其效用�
 
 但是效用代理的缺点也很明显，一方面消耗大量资源时间（穷举），另一方面很难看得长远，比如国际象棋棋局，这种代理方式很可能只按照每一步的最佳走法走，长远目光不行。
 
-## LLM
+# LLM
 
 通过构建单词短语之间的关联而建立。根据上文猜测下文应该说的内容，GPT就是非常典型的例子。
 
@@ -48,7 +48,7 @@ Utility-based agents：穷举出当前情况的所有actions，以及其效用�
 3. 可能会幻想，自己编造数据。
 4. 如果数据来源不准确，不全面，有偏见等，也会影响生成的结果。所以需要很多评估，比如是否有偏见，数据准确度，语调等。
 
-## 概率
+# 概率
 
 这一段基本和机器学习是一样的内容，概率，条件概率，独立，贝叶斯公式等。
 
@@ -56,13 +56,13 @@ Utility-based agents：穷举出当前情况的所有actions，以及其效用�
 
 我们可以先用变量描述要解决的问题，然后将其转化为相互条件概率链接的马尔科夫链解决问题。
 
-### Inference by enumeration 枚举推理法
+## Inference by enumeration 枚举推理法
 
 列出所有条件概率。很明显这种方法能涵盖所有情况但是效率低。
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410091446081.png" alt="image-20241009144650015" style="zoom:67%;" />
 
-### Prior sampling 先验抽样
+## Prior sampling 先验抽样
 
 > 1）先验——根据若干年的统计（经验）或者气候（常识），某地方下雨的概率；
 >
@@ -102,13 +102,13 @@ S没发生，R发生的情况下，P(W|S,R)=0.9>0.2，所以W发生。
 
 但是先验概率没法算条件概率。
 
-### Rejection Sampling 接受-拒绝定理
+## Rejection Sampling 接受-拒绝定理
 
 比如计算P(X|e)，我们先用先验概率采样所有点，只选择其中落在e中的点进行统计。对于每个点i，让N[X=i]++统计总数，最后正交化数组N[X]统计所有在e范围内的X的概率分布情况。
 
 简单来说就是落在e之外的不用嘛。不过会带来的问题在于，如果e特别小，那么就会浪费很多采样点没用。
 
-### Likelihood weighting
+## Likelihood weighting
 
 已经观测到结果，条件发生的可能性。
 
@@ -132,7 +132,7 @@ R也是同理，不是条件，假设 R=true.
 
 所以权重为0.95的时候最可能发生有云且草地湿了后下雨了。
 
-### Gibbs sampling
+## Gibbs Sampling 吉布斯采样
 
 有点抽象，从一道例题来看吧。
 
@@ -147,7 +147,7 @@ R也是同理，不是条件，假设 R=true.
 3. 然后采样 R，其马尔科夫链是（C, S, WG），采样 P[R | C=false, S=true, W=true] 
 4. 可能重复上述步骤多次。最后根据采样结果估算这些采样中 P(Cloudy|Sprinker = true, WetGrass = true) 的概率。
 
-## Sequential decision making 顺序决策
+# Sequential decision making 顺序决策
 
 比如走迷宫，每个结点依赖于之前的结点的选择。
 
@@ -156,7 +156,7 @@ decision making 的要点在于简化决策。主要有两种方法做决策：
 1. 永远找最好的结果。
 2. 永远规避最坏的结果。
 
-### 乐观版：尽可能选择最好的结果
+## 乐观版：尽可能选择最好的结果
 
 例题：投硬币，正面赔2元，反面赚3元，玩合适吗？
 
@@ -172,7 +172,7 @@ decision making 的要点在于简化决策。主要有两种方法做决策：
 
 吃豆人结束一整局后的分数期望就是利用 sequence 中每一步选择的期望效用（utility）计算最终效用。
 
-### 悲观版：避开最坏的结果
+## 悲观版：避开最坏的结果
 
 比如下面这个图，乐观版追求最佳结果s6，选择a2方向。悲观版为了避开s4，选择a1方向。
 
@@ -180,7 +180,7 @@ decision making 的要点在于简化决策。主要有两种方法做决策：
 
 但这两种方式都有弊端：但是当前的最佳结果不一定是全局的最佳结果。下棋就是很明显的例子，每一步都想吃对方，可能会中陷阱。
 
-### Transition Model：概率
+## Transition Model：概率
 
 用于描述多步概率，比如吃豆人走“上上下下左右左右”这条路径的概率。
 $$
@@ -196,7 +196,7 @@ Transition Model 是一阶马尔科夫链，只和当前以及下一步的状态
 
 这个问题也叫做：
 
-### Markov decision process (MDP)：效用
+## Markov decision process (MDP)：效用
 
 已知：
 
@@ -243,7 +243,7 @@ $$
 $$
 其中最后一项就是单步期望效用，也就是说我们每一次决策都走期望效用最大的决策方向。
 
-### Bellman equation
+## Bellman equation
 
 那么问题就转化为：如何得到单步期望效用？每个状态的即时奖励期望 + 下一个状态的价值期望，不同的决策可能导致不同的下一个状态的价值期望不同，我们尝试所有的决策，最后取得期望效用最大的结果。
 $$
@@ -259,7 +259,7 @@ $$
 
 当然，每次移动的-0.04成本也可以用函数 c(s, a) 表示，可以赋值来表达移动偏好。
 
-### Policy Iteration 策略迭代
+## Policy Iteration 策略迭代
 
 Policy evaluation：给定一个 policy （比如当前的策略是向上走），求效用 U(s)
 
@@ -273,7 +273,7 @@ Policy improvement：根据效用找到当前状态的最好策略，更新效�
 
 但是这样计算量可能会很大（n个线性方程，每个有3种策略的话，计算量可能达到n^3^）所以我们取得近似值即可。
 
-## Principle Component Analysis 主成分分析
+# Principle Component Analysis 主成分分析
 
 之前我们已经学习了机器学习的决策方法。这部分主要讲述“怎么合理运用这些决策方法”。
 
@@ -315,7 +315,7 @@ PCA 既方便数据存储，也降低了学习难度。
 
 这条线就是降维后的特征。
 
-### 特征向量
+## 特征向量
 
 如何实现降维？首先我们了解一些概念。比如原坐标轴写法如下：
 
@@ -334,7 +334,7 @@ $$
 M \cdot \bold{v}= \lambda \bold{v}
 $$
 
-### PCA 具体算法
+## PCA 具体算法
 
 1. 首先我们有包括所有数据所有维度的矩阵（每一行是一个数据，每一列是同一个维度。n×d矩阵）：
 
@@ -376,13 +376,13 @@ $$
 
 ![image-20241101234233869](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012342979.png)
 
-## Consensus Mechanisms 共识机制
+# Consensus Mechanisms 共识机制
 
 相比之前的算法，这种算法主要用于解决多个 Agent 的情况。
 
 比如有一系列有颜色的 Agent 点，彼此之间能观测到其他点的颜色状态，我们每轮决策调整 Agent 颜色状态使得达到特定目标（如：全部同色；相邻的 Agent 异色；等等等等）。
 
-### Voter Model 投票模型
+## Voter Model 投票模型
 
 比如下图的例子，每个节点的颜色就是当前的颜色状态，连线的结点表示彼此能互相观测到。
 
@@ -408,7 +408,7 @@ $$
 
 当然这是比较简单的问题，“结束游戏的概率有多大”。更复杂的问题可能是“第x轮结束游戏的概率”，“有权有向图（不是随机选取邻居进行变色，而是带有权重地选择）结束游戏的概率”，“对颜色的偏见（更倾向于变为某种颜色）情况下结束游戏的概率……）
 
-### 应用：区块链技术
+## 应用：区块链技术
 
 比特币，区块链，就是共识机制的典型应用。
 
@@ -432,7 +432,7 @@ $$
 
 每个块10分钟左右就能产生（期望下），但是随之产生的比特币是逐渐减少的，2009年挖一个块有50个比特币，2020年左右630000个块才会产生6个比特币。而计算 POW 的过程其实很看运气，总体而言算力越大越可能更快地计算出结果。
 
-## Game Theory 游戏理论
+# Game Theory 游戏理论
 
 涉及多个 Agents 之间的交互，使得效用最大化。比如吃豆人游戏涉及到吃豆人和鬼两种 Agent，我们需要猜测鬼的行为并制定 solution strategy
 
@@ -450,11 +450,11 @@ $$
 
 $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 
-### Strategies
+## Strategies
 
 下面介绍几种效用策略。
 
-#### Dominant Strategies 主导策略
+### Dominant Strategies 主导策略
 
 如果采取某一个 action，取得的所有结果都优于另一个结果，可以说这个结果是占主导地位的，下图中明显对两个 Agents C 比 D 取得的结果都好：
 
@@ -470,7 +470,7 @@ $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 
 ![image-20241126055803806](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260558030.png)
 
-#### Nash equilibrium 纳什均衡
+### Nash equilibrium 纳什均衡
 
 指：在当前策略组合下，任何一方试图改变策略，都不会取得更好的结果。
 
@@ -482,7 +482,7 @@ $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 
 一个游戏中可能有多个纳什均衡，也可能一个也没有。
 
-#### Pareto Optimality 帕累托最优
+### Pareto Optimality 帕累托最优
 
 如果某种结果下，想提升一个 Agents 的回报，就必须要牺牲另一个 Agents 的回报才能实现的话，那么这个结果就叫帕累托最优。
 
@@ -490,11 +490,11 @@ $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 
 ![image-20241126060837133](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260608278.png)
 
-#### Social Welfare 社会福利
+### Social Welfare 社会福利
 
 所有人福利求和，总体福利最大化才是最优结果。
 
-### Normal form games 正规博弈
+## Normal form games 正规博弈
 
 一个正规博弈 (N, A, u)：N 表示玩家 / Agents 个数，A 是存储了每个玩家可能的 actions 的集合，u 是每个玩家的效用真实值，比如 pay off 就是一种效用表示方式。
 
@@ -502,7 +502,7 @@ $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 
 如果采取什么策略，总效益之和都一样，可以称之为 constant sum game. 如果=0，则为 zero sum game. （石头剪刀布）
 
-### Mixed strategy 混合策略
+## Mixed strategy 混合策略
 
 就像 MDP 有0.2的概率不沿着目标方向前进，混合策略用概率来决定最终行为。我们需要计算 P 的最优值使得期望效益最大。
 
@@ -518,9 +518,9 @@ $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 
 两线交点处是 rational choice of mixed strategy。也就是 P(a1)=0.2，那么 P(a2)=0.8
 
-## Software Agent 软件代理
+# Software Agent 软件代理
 
-### Agent Communications Languages (ACL)
+## Agent Communications Languages (ACL)
 
 我们希望代理可以独立、自动化地完成任务。
 
@@ -535,13 +535,13 @@ $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 1. 话题 topics
 2. 其涉及到的 utterances 话语（比如：下雨了吗？下雨了）
 
-#### FIPA ACL
+### FIPA ACL
 
 语句类型包括：询问查询，通知，赞同，否认，请求等（下雨了吗？下雨了。没下雨吧……）knowledge-sharing and automated contract negotiations
 
 这类语句比较简单，但是缺少论证、验证过程，自我转换过程 self-transformation。
 
-#### ACL 的语义 Semantics
+### ACL 的语义 Semantics
 
 - Axiomatic 公理语义：阐述真理前提/结论。比如 A 告诉 B 下雨了，说明 A 相信下雨了且希望 B 相信下雨了，B 也知道 A 相信下雨了且希望自己相信下雨了（当然 B 不一定相信）. 或者计算机请求密码, A 相信 S 有密码且会给自己. 但是这并不一定发生。
 - Operational 操作语义：状态的变化，比如“未登录状态”输入密码后变成“登录状态”。
@@ -550,7 +550,7 @@ $$a_{i'},_{j'}$$ 代表 i 采取 i' action，j 采取 j' action 的收益。
 
 ![image-20241126171733845](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411261717009.png)
 
-#### Dialogue Game Protocols 对话博弈协议
+### Dialogue Game Protocols 对话博弈协议
 
 FIPA ACL 的缺点是不够结构化。比如发起 query 不一定能受到响应。所以对话博弈协议用于规范化这一过程，比如假设会收到的答复，验证会收到的答复的准确性等（有点像 HTTPS）。
 
@@ -566,11 +566,11 @@ A 发起问话，B 可能给予 A 请求的内容或者给予不是A请求的内
 
 然后回到 3 重复。
 
-## Clustering 集群
+# Clustering 集群
 
 比如分类问题。
 
-### K-means
+## K-means
 
 在机器学习课程中有了解：
 
@@ -586,19 +586,19 @@ https://stellaris.graysea.cn/kcl/machine-learning-7ccemmle/note#unsupervised-lea
 
 ![image-20241201053807351](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010538468.png)
 
-### k-Means++
+## k-Means++
 
 用于解决如上问题。
 
 选择一些输入点x作为初始聚类点。
 
-### K-median
+## K-Median
 
 不是求均值，而是中位数。
 
 ![image-20241201054018749](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412010540874.png)
 
-### DBSCAN
+## DBSCAN
 
 一种基于密度的聚类算法。
 
@@ -608,7 +608,7 @@ https://stellaris.graysea.cn/kcl/machine-learning-7ccemmle/note#unsupervised-lea
 - 统计完所有点的邻居信息后，如果这个点的邻居数大于 m，那么其就是一个核心聚类点。
 - 核心聚类点保留，非核心聚类点内的点如果属于周围某些核心聚类点的 ε 半径内的点，就把这个点分配到那个聚类邻居中。否则，视作噪声点，舍弃。
 
-### 确定合适的 k 值
+## 确定合适的 k 值
 
 如何确定 k 的数量多少合适？我们先画出不同 k 数量下 k-means 求得的欧几里得距离总和图：
 
@@ -616,13 +616,13 @@ https://stellaris.graysea.cn/kcl/machine-learning-7ccemmle/note#unsupervised-lea
 
 根据肘部定理，我们选择“肘部”的这个第一个下降得不再变快的点。因为这个点的 score 已经很低了，而且再增加 k 数量，score 不会下降多少。
 
-### Flat Clustering 平坦聚类法
+## Flat Clustering 平坦聚类法
 
 不是按距离来分的了。
 
 比如我们将N篇文档分为k类（如科幻小说，历史小说……）分类结果满足特定的要求。最终挑选出最优的分类结果。比如四本书分3类，”计算机 物理 体育 体育“的分法不错，”科学 科学 网球 足球“的分法不好，因为感觉阶级乱了。
 
-### Hierarchical Clustering 层级聚类
+## Hierarchical Clustering 层级聚类
 
 按一定层级进行分类。
 
@@ -632,7 +632,7 @@ https://stellaris.graysea.cn/kcl/machine-learning-7ccemmle/note#unsupervised-lea
 
 那么层级聚类如何划分？通过两种方法。
 
-#### Agglomerative 层次聚类（自下向上）
+### Agglomerative 层次聚类（自下向上）
 
 首先我们建立一个树形图来说明点与点之间的相似性。
 
@@ -662,7 +662,7 @@ Complete 是找距离最远最不像的两个点。
 
 
 
-#### Divisive Heuristics 自顶向下聚类
+### Divisive Heuristics 自顶向下聚类
 
 接下来，对于 k 个聚类的划分，我们自顶向下依次划分。
 
@@ -674,7 +674,7 @@ Complete 是找距离最远最不像的两个点。
 
 分子是 S 和 S- 两个集合之间的连线的相似度之和。分母是他们两个内部的最小相似度。我们最终的聚类结果要让稀疏性最小。
 
-## AI and Ethics AI 伦理问题
+# AI and Ethics AI 伦理问题
 
 需要关注的问题：
 
@@ -691,13 +691,13 @@ Complete 是找距离最远最不像的两个点。
 - 开发人员的道德准则
 - 开发人员的道德培训
 
-### identify bias 识别偏见问题
+## identify bias 识别偏见问题
 
 比如以前银行贷款曾经试用过 AI 判断客户是否值得贷款，导致有一些客户穿着打扮长相可能会影响机器的判断。
 
 在第一节课中介绍过，AI 有两种，数据驱动型（比如深度学习）和模型驱动型。数据驱动型没法解释为什么这样做，而模型驱动型可以，所以数据驱动型识别偏见很困难，所以可以专注于识别数据流和代码的正确性。
 
-### 透明度问题
+## 透明度问题
 
 一般可能都需要我们建立一个仿照源模型逻辑的模型来呈现其内部透明逻辑。
 
@@ -705,7 +705,7 @@ Complete 是找距离最远最不像的两个点。
 
 但是数据驱动型还是很难解释，因为它对于一些要处理的数据可能完全没有概念。而且当下机器学习深度学习方法仍然不成熟，需要大量数据。
 
-### Humans in the loop 人类参与问题
+## Humans in the loop 人类参与问题
 
 什么情况下的应用需要人类参与，什么情况下不需要？参与的人类是什么职位结构呢？等等一系列问题。
 
