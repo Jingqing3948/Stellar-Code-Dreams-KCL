@@ -374,21 +374,21 @@ $$
 
 例题：
 
-![image-20241012181643970](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121816117.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121816117.png)
 
 给出的预测器形式很简单，就是x=0时预测结果为θ\_0，x=1时预测结果为θ\_1。我们计算2个维度四种情况分别的 loss 选取损失最小的预测器。
 
-![image-20241012181732276](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410121817373.png)
 
 ### 最优预测器和经验风险最小化预测器的对比
 
 例：
 
-![image-20241014131224176](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141312358.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141312358.png)
 
 当采用多项式函数模型，M=1时，两种预测器拟合出的预测结果分别如图：
 
-![image-20241014131359896](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141314110.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141314110.png)
 
 这种情况下，ERM **underfits** the data 欠拟合数据：
 
@@ -399,7 +399,7 @@ $$
 
 如果M=9：
 
-![image-20241014131846579](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141318744.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141318744.png)
 
 这种情况下，ERM **overfits** the data 过拟合数据：
 
@@ -411,7 +411,7 @@ $$
 
 M=3 时，模型预测如图，可以看出 ERM 在欠拟合和过拟合中间的M值会比较贴近正确预测结果：
 
-![image-20241014132520199](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141325430.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141325430.png)
 
 但是我们如何判断模型是否过拟合？我们不一定知道正确的模型公式。因为我们到目前为止只是用训练数据在测试，就算训练出了完全拟合训练数据的预测器（如上面第二个图，M=9 的例子）我怎么知道这是适用于所有数据的预测器呢？
 
@@ -450,7 +450,7 @@ $$
 
 比如我们可以利用验证选择更合适的模型：
 
-![image-20241014135027400](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141350628.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141350628.png)
 
 如何选择验证集？
 
@@ -458,7 +458,11 @@ $$
 
 首先将模型划分为K个类。每次迭代从每个类中选取一个值作为验证集，比如第3次就把3类作为验证集，把剩下的类作为训练集。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141707768.png" alt="image-20241014170717690" style="zoom: 80%;" />
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141707768.png" alt=" " style="zoom: 80%;" />
+
+</div>
 
 最后求所有迭代的损失平均值：
 $$
@@ -468,11 +472,15 @@ $$
 
 例题：如下，尝试计算只选取两个元素作为验证集（不用 K-Fold 验证方式）的损失。
 
-![image-20241014171317611](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141713672.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141713672.png)
 
 如果是总体最优预测模型：很简单，把所有数据都作为训练数据，并且如果只涉及到这四个数据，损失=0.
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141717057.png" alt="image-20241014171717926" style="zoom:50%;" />
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410141717057.png" alt="" style="zoom:80%;" />
+
+<div>
 
 ERM 学习：现在假设我们先选择两个数据作为训练数据。假设我们选择了x=2 x=3. 那就完蛋了，用这两个数据我们训练得到的预测器是t(x)=2，t的值不受x的影响。
 $$
@@ -498,7 +506,9 @@ M增加，也就是模型 class 复杂度增加，bias 会下降，但 estimatio
 
 N 增加，也就是训练数据集增加，bias 不变，estimation error 会减少。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142027925.png" alt="image-20241014202757817" style="zoom:67%;" />
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410142027925.png" alt="" style="zoom:67%;" />
 
 再细化一点，对于每个输入x，损失函数的表达方式是：
 $$
@@ -549,7 +559,7 @@ $$
 
 如果二阶导一直>=0，那么 g(θ) 的增长率（一阶导）就是一直增加或不变的（比如二次函数），那么我们可以称原函数 g 为凸函数 convex，并且 stationary point 一定是最小值点。
 
-![image-20241023063138746](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410230631921.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410230631921.png)
 
 θ向量是从1到D维的所有θ系数，而 ∇g(θ) 是所有θ的导数的向量。
 
@@ -557,11 +567,11 @@ $$
 
 多元函数的曲率由下公式定义 Hessian：
 
-![image-20241023182828095](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410231828240.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410231828240.png)
 
 这个矩阵是对称的，比如：
 
-![image-20241023183135607](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410231831727.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410231831727.png)
 
 其中的值全部=0说明是凸函数。
 
@@ -572,7 +582,6 @@ $$
 简单来说，每次迭代的时候沿损失梯度下降最快的方向走一定的步长，让下次迭代的θ序列损失更小。
 
 <div align="center">
-
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270009617.png" alt="[神经网络基础理论与简单实践 | korilin's blog](https://korilin.com/posts/basic-theory-and-simple-practice-of-neural-network/image_21.png)" style="zoom: 80%;" />
 
 </div>
@@ -585,7 +594,6 @@ $$
 如果 γ 设置的太大了，就容易迈过，再回头往反方向走。
 
 <div align="center">
-
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270016642.webp" alt=" " style="zoom:80%;" />
 
 </div>
@@ -602,7 +610,7 @@ $$
 
 就是 g(θ) 一阶导的增长率不会过快，一定在 L 的范围内。
 
-![image-20241027002233224](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270022541.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410270022541.png)
 
 - 当学习率 γ<=1/L 时，有如下性质：
   -  guaranteed reduction of the loss function: 
@@ -643,23 +651,22 @@ $$
 
 Symbolic Differentiation：直接求导。
 
-![image-20241027153846442](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271538688.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271538688.png)
 
 Numerical Differentiation：利用导数定义近似求解。把 g(θ) 看作一个黑盒，不关心其内部结构，只考虑输入输出。
 
 <div align="center">
-
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271540283.png" alt="image-20241027154010115" style="zoom:80%;" />
 
 </div>
 
-![image-20241027154230734](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271542004.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271542004.png)
 
 Automatic Differentiation：使用求导方法，但是只求出某个点的梯度值而不是先求出整体公式。
 
 三种方式的对比：
 
-![image-20241027161151946](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271611213.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271611213.png)
 
 ### Computational Graph 计算图
 
@@ -671,11 +678,11 @@ g(\theta)=\theta^2_1+\theta^2_2+\theta^2_3
 $$
 计算图表示为：
 
-![image-20241027162607416](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626631.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626631.png)
 
 当然也可能出现θ1θ2这样的形式：
 
-![image-20241027162639522](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626706.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271626706.png)
 
 已知 θ 序列求 g(θ) 非常简单，把参数带进去就可以。forward pass
 
@@ -685,11 +692,11 @@ backward pass 是反向传播，假设 g(θ)=1，反推回来。所有 f() 的�
 >
 > 首先进行 forward pass，代入三点数值到计算图中求 g(θ) 在[1,-1,1] 处的数值，这一步的主要作用是确定计算图：
 >
-> ![image-20241027164947168](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271649432.png)
+> ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271649432.png)
 >
 > 接着假设 g(θ)=1，倒推回来：
 >
-> ![image-20241027165203236](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271652421.png)
+> ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271652421.png)
 >
 > [2, -2, 2] 部分是对 forward pass 中三个函数求导再代入 [1,-1,1] 的值得到的。
 >
@@ -699,15 +706,15 @@ backward pass 是反向传播，假设 g(θ)=1，反推回来。所有 f() 的�
 >
 > 求[1, -2, 1] 点处的梯度下降值。
 >
-> ![image-20241027183553508](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271835911.png)
+> ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271835911.png)
 >
 > 首先 forward pass 求出 g(θ)，并且在此过程中把每个函数对于 x1 x2 的求导也算出来（并带入输入 x1 x2 值）：
 >
-> ![image-20241027183825574](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271838872.png)
+> ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271838872.png)
 >
 > 然后假设 g(θ)=1，反推回去得到 θ 的值。
 >
-> ![image-20241027184236357](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271842537.png)
+> ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410271842537.png)
 >
 > $$\nabla \theta=[-4/3, -8/3,0]^T$$
 
@@ -715,7 +722,7 @@ backward pass 是反向传播，假设 g(θ)=1，反推回来。所有 f() 的�
 
 如下图，给了一个新点判断这个点可能是圈还是叉。
 
-![image-20241112021653157](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120216352.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120216352.png)
 
 目标t值：0或者1.
 $$
@@ -752,7 +759,11 @@ $$
 $$
 \hat t(x|\theta)=step(\theta^Tu(x))
 $$
+<div align="center">
+
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120228255.png" alt="image-20241112022804087" style="zoom:67%;" />
+
+</div>
 
 软预测用指数函数处理：
 $$
@@ -764,11 +775,19 @@ p(t=0|x,\theta)=1&-p(t=1|x,\theta)\\
 $$
 $$\sigma=\frac{1}{1+e^{-x}}$$ 或者 $$=\frac{e^2}{1+e^2}$$ ，**注意两种形式！**
 
+<div align="center">
+
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120232281.png" alt="image-20241112023239039" style="zoom: 67%;" />
+
+</div>
 
 多项式计算结果区间位于0到5时，概率>0.5，说明更有可能发生。所以软预测器选择>0.5的那一项结果作为预测值。
 
+<div align="center">
+
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120233740.png" alt="image-20241112023354565" style="zoom:67%;" />
+
+</div>
 
 ### 损失函数
 
@@ -787,19 +806,23 @@ l(t,\hat t(x|\theta))&=\mathbb{1} (t\neq \hat t(x|\theta))\\
 $$
 但是这个函数没法应用 GD 降维（损失函数图像类似矩阵函数，只有0和1，没法降维）。所以我们可以应用其他的损失函数：
 
+<div align="center">
+
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120632479.png" alt="image-20241112063219179" style="zoom:67%;" />
 
-Exponential loss 指数损失：$$l(y)=e^{-y}$$
+</div>
 
-hinge loss 铰链损失：$$l(y)=max(0,1-y)$$
+- Exponential loss 指数损失：$$l(y)=e^{-y}$$
 
-hinge-at-zero loss 零损失铰链函数：$$l(y)=max(0,-y)$$
+- Hinge loss 铰链损失：$$l(y)=max(0,1-y)$$
 
-logistic loss 对数损失：$$l(y)=log(1+e^{-y})$$
+- Hinge-at-zero loss 零损失铰链函数：$$l(y)=max(0,-y)$$
+
+- Logistic loss 对数损失：$$l(y)=log(1+e^{-y})$$
 
 这些函数都可以用，相比 detection-error loss 都可以应用 GD 降维。
 
-软预测损失：$$l(t,\hat t(x|\theta))=log(1+e^{-y})$$
+- 软预测损失：$$l(t,\hat t(x|\theta))=log(1+e^{-y})$$
 
 ### Perceptron Algorithm 感知器算法
 
@@ -830,7 +853,7 @@ $$
 
 例题：
 
-![image-20241112074401735](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120744954.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411120744954.png)
 
 首先假设选取 (2.1, 1) 点计算梯度下降。
 $$
@@ -863,9 +886,9 @@ $$\sigma(\theta^T u(x))-t$$ 部分又用 $$\delta(x,t) $$ 表示，表示 mean e
 $$
 \theta^{i+1}\leftarrow \theta^{(i)}-\gamma^{(i)}\frac{1}{S^{(i)}}\sum_{n\in S^{(i)}}(\sigma((\theta^{(i)})^Tu(x_n))-t^n)\cdot u(x_n)
 $$
-例题：还是形如上一道题的数据，初始预测器 $$\theta_1=-1, \lambda=0, \gamma=0.1$$, minimum batch size S=1
+例题：还是上一道题的数据，初始预测器 $$\theta_1=-1, \lambda=0, \gamma=0.1$$, minimum batch size S=1
 
-![image-20241112222114793](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122221190.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411122221190.png)
 
 ## Neural Network Model 神经网络模型
 
@@ -1018,6 +1041,8 @@ t=0 时，t^±^=-1（$$t^\pm=2t-1$$），a^2^ 是该层（第二层所以有个2
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260501909.png)
 
+## Self-Attention 自注意力
+
 transformer 的一个重要机制在于 self-attention。
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411260515316.png)
@@ -1053,7 +1078,6 @@ Query 和 Key 不是对称的，一方对另一方的词注意力可能与反过
 Compression 压缩：对于 x 向量中所有可能元素的表示，概率大的用简洁形式表示，概率小的用复杂形式表示更节省存储空间。比如摩斯电码。
 
 <div align="center">
-
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292244100.png" alt="image-20241129224409861" style="zoom:67%;" />
 
 </div>
@@ -1078,7 +1102,7 @@ Compression 压缩：对于 x 向量中所有可能元素的表示，概率大�
 
 区间范围是 -2.5到-2 有一个，-1.5到-1有一个，1到1.5有一个，1.5到2有一个，2到2.5有一个。
 
-区间密度单位=1/5*0.5=0.4.
+区间密度单位=1/(5*0.5)=0.4.
 
 <img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411292326794.png" alt="image-20241129232656548" style="zoom:67%;" />
 
