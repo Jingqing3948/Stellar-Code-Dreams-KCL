@@ -28,11 +28,23 @@ $$
 
 4. 时不变性：把 x[n]=x[n-k] 代入系统得到 y1[n] 和直接代入 n=n-k 得到 y2[n]，判断两者是否相等。明显不等（*我懒得敲公式了，如下图*）。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412110644858.png" alt="gpt解答" style="zoom:67%;" /> 
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412110644858.png" alt="gpt解答" style="zoom:67%;" />
+
+</div> 
 
 5. 求传递函数，也就是我们常见的 H(e) 形式。解法是对 y[n] 进行傅里叶变换，再除以 X(e)。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412110709522.png" alt="gpt解答" style="zoom:67%;" />
+<div align="center">
+
+![image-20250106211703442](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501062117566.png)
+
+</div>
+
+没法提取出 Y/X 的形式。所以求不出传递函数。
+
+> 感谢 cwz 指正
 
 ## 6-8题
 
@@ -124,6 +136,18 @@ $$
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301701925.jpg)
 
+## 第4题
+
+![January 2024 q4](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501062118993.png)
+
+a) 简单的循环卷积。方法很多我这个比较笨蛋。
+
+b) 求长度=两个卷积信号长度之和-1.
+
+c) 这个比较有意思，用到了帕赛瓦尔定理。
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501062119549.jpg)
+
 # January 2024
 
 ## 第1题
@@ -180,7 +204,7 @@ d) ROC 包含单位圆和正无穷的逆系统。
 
 # January 2024 Lv6
 
-## 3
+## 第3题
 
 ![January 2024 lv6 q3](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501050028374.png)
 
