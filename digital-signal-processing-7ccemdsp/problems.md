@@ -192,15 +192,19 @@ d) ROC 包含单位圆和正无穷的逆系统。原来的两个极点一个1/2�
 
 第五章经常出现的题型。
 
-![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301659281.jpg)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501071744843.jpg)
+
+> 再谢粘苞米指正
 
 ## 第4题
 
 ![January 2024 q4](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301700982.png)
 
-求 DFT 的知识点。
+求 DFT 的知识点。和课后题 8.4 很像。
 
-![](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412301700421.jpg)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501071744119.jpg)
+
+> 三谢粘苞米指正
 
 # January 2024 Lv6
 

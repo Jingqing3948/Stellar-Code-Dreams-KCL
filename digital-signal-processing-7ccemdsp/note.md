@@ -777,7 +777,7 @@ z 平面上的变换公式为：
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290043188.png)
 
-Keiser window：用于求出窗函数合适的长度和形状。
+Kaiser window：用于求出窗函数合适的长度和形状。
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412290045275.png)
 

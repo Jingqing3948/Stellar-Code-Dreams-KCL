@@ -336,8 +336,7 @@ PCA 舍弃了无用或者对结果影响小的维度，既方便数据存储，�
 对于这个图我们找到一条线，让所有点到这条线的距离最之和（最小二乘距离）：
 
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012110391.png" alt="image-20241101211043265" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012110391.png" alt=" " style="zoom:67%;" />
 
 </div>
 
@@ -348,24 +347,21 @@ PCA 舍弃了无用或者对结果影响小的维度，既方便数据存储，�
 如何实现降维？首先我们了解一些概念。比如原坐标轴写法如下：
 
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012235907.png" alt="image-20241101223535647" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012235907.png" alt=" " style="zoom:67%;" />
 
 </div>
 
 其变形可以写作（两个列向量）：
 
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012235173.png" alt="image-20241101223559089" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012235173.png" alt=" " style="zoom:67%;" />
 
 </div>
 
 这个就是从图1到图2的变形矩阵。对于原图1中的向量 (x,y) 乘以这个变形矩阵就是变形图中的向量。
 
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012238308.png" alt="image-20241101223833215" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012238308.png" alt=" " style="zoom:67%;" />
 
 如果有一个向量乘这个矩阵后等于这个向量的一定倍数的向量，那么这个向量被称作 an eigenvector of the matrix M（M 矩阵的特征向量），倍数是 eigenvalue 特征值。
 $$
@@ -377,8 +373,7 @@ $$
 1. 首先我们有包括所有数据所有维度的矩阵（每一行是一个数据，每一列是同一个维度。n×d矩阵）：
 
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012313454.png" alt="image-20241101231315350" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411012313454.png" alt=" " style="zoom:67%;" />
 
 </div>
 
