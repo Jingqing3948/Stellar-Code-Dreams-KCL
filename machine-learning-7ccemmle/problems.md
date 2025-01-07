@@ -1,5 +1,49 @@
 记录往年题。
 
+# August 2023
+
+## 1
+
+![August 2023 q1](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501062316120.png)
+
+a) 阳性检测的结果中患有疟疾的概率是多少，条件概率计算。
+
+阳性检测概率：(1-0.6)\*98%+0.99\*2%，其中患病的概率：0.99\*2%。求条件概率=0.048，我怎么感觉又和答案不一样。
+
+b) (1-0.6)\*98%+0.99\*2%=0.4118
+
+c) 题里面写了啊 0.99
+
+## 2
+
+![August 2023 q2](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501062336688.png)
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501062342946.png)
+
+a) 硬预测挑概率最大的情况就行，$$\hat t ^*(0)=1,\ \hat t ^*(1)=1,\ \hat t ^*(2)=0$$
+
+b) 四种情况依次计算一下损失，00：0.6,01：0.8,10：0.2,11：0.4。所以选择10好。
+
+c) 好像和b一样但是换数据了。ERM 的意思是给定的概率表不是标准概率，而是通过样本统计得到的经验风险最小化概率。得到的结果还是10最优。
+
+## 3
+
+![August 2023 q3](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501062353879.png)
+
+a) 极点：求导=0. 0 或√(10/3) 两个极点。
+
+b) 根据二阶导判断这些极点是什么类型的极点。0处二阶导还=0，所以无法得出结论；√(10/3) 处二阶导>0，所以是极小值点 local minima.
+
+c) convex 凸函数，即二阶导一直>=0。二阶导= $$30\theta^4-60\theta^2$$ ，当 θ=1 时二阶导 <0 ，所以不是凸函数。
+
+d) L 的值是找二阶导绝对值的最大值，在 θ=1 处取到，=30. >10.
+
+## 4
+
+![August 2023 q4](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501070050527.png)
+
+
+
 # January 2024 File
 
 ## 1

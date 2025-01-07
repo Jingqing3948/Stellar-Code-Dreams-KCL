@@ -180,11 +180,11 @@ b) ROC 根据因果性，以及正逆系统 ROC 有交集判断，求 h[n]。
 
 c) 求出逆系统的 ROC 范围并确定是否包含单位圆。
 
-d) ROC 包含单位圆和正无穷的逆系统。
+d) ROC 包含单位圆和正无穷的逆系统。原来的两个极点一个1/2一个3，是不可能让 ROC 同时包含单位圆和正无穷的，所以要乘一个全通系统，把3的极点翻转到1/3位置，同时全通系统模长为1，所以全通系统乘H系统乘逆系统的模长仍然为1.
 
-![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412310428528.jpg)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501070039105.jpg)
 
-*好复杂，希望不是做错了！*
+> 感谢粘苞米小航指正！
 
 ## 第3题
 
