@@ -42,7 +42,13 @@ d) L 的值是找二阶导绝对值的最大值，在 θ=1 处取到，=30. >10.
 
 ![August 2023 q4](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501070050527.png)
 
+a) 利用初始聚类点分类并在每个类中找到第二轮的新聚类点。
 
+b) PCA 降维，由于所有点都在一条直线上所以降维后的矩阵就是沿着这条直线的单位向量。
+
+c) 把特定数据点分配到降维后的空间内的方法：降维矩阵直接和该点坐标相乘。
+
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501070120357.jpg)
 
 # January 2024 File
 
