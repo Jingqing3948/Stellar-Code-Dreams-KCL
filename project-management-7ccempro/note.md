@@ -1,4 +1,4 @@
-## 前言
+# Preface
 
 项目 project: 简单来说就是一部分人，为了一个共同的目标，利用有限的时间和其他资源制定计划来达到目标。
 
@@ -10,31 +10,35 @@ Project Structure, work package, task, activity 是逐步细化的概念。比�
 
 project和business operations的区别在于introduces business change.
 
-## 项目模型
+# 项目模型
 
-### Waterfall 瀑布模型
+## Waterfall 瀑布模型
 
 瀑布模型的特点在于专门化，每个阶段都只基于之前的阶段，考虑这个阶段的任务（因果性？）。
 
-<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032132696.png" alt="image-20241003213207578" style="zoom:67%;" />
+<div align="center">
 
-### V 模型
+<img src="https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032132696.png" alt=" " style="zoom:67%;" />
+
+</div>
+
+## V 模型
 
 也叫 Verification and Validation 验证确认模型，客户的最终反馈可以让我们反过来从头修改迭代计划。
 
-![image-20241003213350532](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032133598.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032133598.png)
 
-### Agile 敏捷开发模型
+## Agile 敏捷开发模型
 
 持续集成/持续交付（CI/CD）。rapid delivery
 
 打个比方，瀑布模型可能是做一道菜，我先准备食材，下锅，加调料，炒完出锅再给客户品尝，客户才能反馈做得如何。敏捷开发可以拆成一些小任务持续地交付，比如煮一点，尝一口，看看咸淡，及时调整。不需要整个大项目组一起做几个月做出全部成果再等反馈。
 
-![image-20241003213541417](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032135489.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410032135489.png)
 
-## 项目管理概述
+# 项目管理概述
 
-### 基本概念
+## 基本概念
 
 Project Management: Project Management (PM): is the Application of knowledge, skills,  tools and techniques to the project activities in order to meet stakeholders needs and expectations from the project. 利用所学知识管理项目来达到预期结果。
 
@@ -51,11 +55,11 @@ Project Life Cycle (PLC)：项目生命周期。定义了项目运行过程中�
 2. 计划阶段，选择合适的人，制定计划。
 3. 执行和交付阶段，下达指令，监控执行情况，提出新方案，发给客户。
 
-### 技术对项目管理的促进
+## 技术对项目管理的促进
 
 技术指的是科技产物，比如有形的工具（计算机），无形的软件，算法等。
 
-### 成熟度
+## 成熟度
 
 Readiness Level 是衡量项目的指标之一。
 
@@ -65,7 +69,7 @@ Readiness Level 是衡量项目的指标之一。
 
 随着项目发展，成熟度会越来越高，比如项目前期可能会提出一些新技术概念，项目后期新概念经过多次迭代后已经成熟许多。
 
-### Bid & Proposal B&P 投标提案
+## Bid & Proposal B&P 投标提案
 
 向客户证明：我们有能力能完成你的目标，我们的初步计划，公司价值等。
 
@@ -76,14 +80,14 @@ Readiness Level 是衡量项目的指标之一。
 
 招标方会发布 Request For Proposal （RFP）由招标方发布，发布自己的需求，让感兴趣的投标方提供解决方案，报价等。
 
-### Sources of Project Initiation 项目启动来源
+## Sources of Project Initiation 项目启动来源
 
 - **客户请求 (Customer Requests)**: 基于客户的具体需求启动项目。
 - **高层管理指令 (Top Management Directives)**: 由战略决策推动的新项目。
-- **已有系统（Existing systems）：**进一步迭代。
+- **已有系统 (Existing systems)**：进一步迭代。
 - **外部因素 (External Factors)**: 市场趋势、新技术或监管变化促发项目创意。
 
-###  Project Organization Structure 项目组织结构
+##  Project Organization Structure 项目组织结构
 
 项目组织是项目和上级组织之间的中间者 Project organisation is defined as the interface  between the project and its parent organisation.
 
@@ -94,9 +98,9 @@ Readiness Level 是衡量项目的指标之一。
 | Matrix Organisation 矩阵组织                     | 结合两者，在不同项目间共享人力物资等资源。不同部门的人为了这个项目临时组成一个纯项目组织，项目完成后解散 | 有效利用资源，平衡目标             | 可能权责不清，沟通不便；决策效率降低                     |
 | Collaborative Projects Organisation 合作项目组织 | 项目成员分布在不同地点甚至国家                               | 融会贯通，促进学习创新，扩展视野   | 沟通交流可能存在问题；知识产权界限                       |
 
-## 项目人员组成
+# 项目人员组成
 
-### Stakeholders 股东
+## Stakeholders 股东
 
 股东可以影响项目 having potential influence on the project
 
@@ -108,15 +112,15 @@ Readiness Level 是衡量项目的指标之一。
 
 - 使用者 users
 
-![image-20241011132016636](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111320043.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111320043.png)
 
 在项目过程中，首先我们需要 identify stakeholders，因为这些人会制定一些需求，项目最终目标就是满足他们的这些需求。同时项目过程中缺什么资源也可以和他们要。
 
-![image-20241011132322857](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111323177.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111323177.png)
 
 methodology（制定需求）-> capture requirements（实现需求）-> consolodate requirements（评估结果）
 
-#### capture requirements 实现股东需求
+### Capture requirements 实现股东需求
 
 Validation: Checks the proposed concept/solution  stakeholders’ requirements  **against the  and needs** 确保股东需求能实现
 
@@ -124,37 +128,37 @@ Verification：Check the implemented solution (prototype/service) **meet  design
 
 Performance:  **meet certain  performance (KPI) characteristics** 评估结果
 
-#### Categorisation of Stakeholders and Engagement 股东分类
+### Categorisation of Stakeholders and Engagement 股东分类
 
 然后需要对**股东**进行优先级排序，判断谁说的话更有分量。主要有两种分类方式：
 
 Stakeholder Power-Interest Matrix: 根据功能和股东兴趣两个维度制定优先级。
 
-![image-20241011140933227](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111409382.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111409382.png)
 
-Salience Model:  power, legitimacy, urgency 三个维度。（权力，比如我能给更多的钱，更能影响项目；权威，比如项目发起人，或者某些价值观的代表者；紧急性，比如我对这个项目的需求很急）
+Salience Model:  power, legitimacy, urgency 三个维度。（Power 影响力，比如我能给更多的钱，更能影响项目；Legitimacy 正当性，比如项目发起人，或者某些价值观的代表者；Urgency 紧迫性，比如我对这个项目的需求很急）
 
-![image-20241011141649633](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111416805.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111416805.png)
 
-- Dormant stakeholders 休眠股东: no need for major communication，给钱就完事了，少交流。
-- Discretionary stakeholders 可自由支配的股东：regular project updates . 也不需要过多交流，给他们项目更新进度就行。
-- Demanding stakeholders 需求股东：Only keep them informed，他们比较急。
-- Dominant stakeholders主要股东：consider their communication and their involvement **needs at all times** 要保持沟通和参与。
-- Dangerous stakeholders 危险股东：有权，且需求很急，所以很危险。Must meet their needs. 
-- Dependent stakeholders 相关股东：Keep them informed when I need their resources 需要他们爆金币的时候才通知他们。
-- Definitive stakeholders 明确股东：Always keep them informed, satisfied and involved。
+- Dormant stakeholders 休眠利益相关者: no need for major communication，你有权力，那就用权帮我执行项目就完事了，少交流。
+- Discretionary stakeholders 裁量型利益相关者：regular project updates . 也不需要过多交流，给他们项目更新进度就行。
+- Demanding stakeholders 要求型利益相关者：Only keep them informed，他们比较急。
+- Dominant stakeholders 支配型利益相关者：consider their communication and their involvement **needs at all times** 要保持沟通和参与。
+- Dangerous stakeholders 危险利益相关者：有权，且需求很急，所以很危险。**Must meet their needs**. 
+- Dependent stakeholders 依存型利益相关者：他们有需求和正当性，但是没有权力执行项目，依存于其他人执行项目。**Keep them informed** when I **need their helps** 需要他们帮忙的时候才通知他们。
+- Definitive stakeholders 决定型利益相关者：Always keep them **informed, satisfied and involved**。
 
-#### Monitoring 评估股东
+### Monitoring 评估股东
 
-股东部分我们就先不讲怎么实现项目了，直接讲到如何监控评估股东：
+股东部分先不讲怎么实现项目了（后面项目部分才会展开叙述），直接讲如何监控评估股东：
 
 ![image-20241011144022366](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111440485.png)
 
 **Communicate with key stakeholders to  discover and manage their expectations upfront and during the project.**
 
-### Project Teams 项目团队
+## Project Teams 项目团队
 
-![image-20241011144423888](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111444012.png)
+![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410111444012.png)
 
 核心执行团队： conducting the works on a continuous basis, and are required for decision making 负责持续工作，以及下决定。
 
@@ -170,13 +174,13 @@ Characteristics of good team members:
 - Should be robust 够强壮？？
 - Should have a strong result/goal orientation 目标性强
 
-###  Bid / Project Manager 投标经理 / 项目经理
+##  Bid / Project Manager 投标经理 / 项目经理
 
 Bid Manger：做计划，拉人组建团队， 筹备资源，在项目执行中确保足够的细节等等。
 
 Project Manager：执行，监控，控制（可能还会改团队人员或者计划），报告（和 top management, 各个功能部门，other stakeholders）等等。
 
-## Managing Bid & Proposal 标书管理
+# Managing Bid & Proposal 标书管理
 
 主要目的是创建优的投标提案，满足公司和客户需求。
 
@@ -186,13 +190,13 @@ Project Manager：执行，监控，控制（可能还会改团队人员或者�
 
 ![image-20241103131320088](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031313153.png)
 
-### Prospect Phase 前景阶段
+## Prospect Phase 前景阶段
 
 调研现有市场数据进行分析（如竞品分析），评估**是否值得为某个项目准备投标**。
 
 ![image-20241018132641835](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181326926.png)
 
-### Project Evaluation & Selection 项目评估选择
+## Project Evaluation & Selection 项目评估选择
 
 可能有很多值得公司做的项目，但不同项目之间要竞争资源，所以不可能所有项目都做，要选择项目进行投标。
 
@@ -214,11 +218,11 @@ Project Manager：执行，监控，控制（可能还会改团队人员或者�
 
 非数字类方法，根据对项目的兴趣以及项目的难度评估：
 
-- **The Sacred Cow 神圣的奶牛？**: Project suggested by a senior and influential person 老板说选啥项目我就选啥
+- **The Sacred Cow 神圣的奶牛？**（英语俚语，意为 神圣不可侵犯的思想、机构、制度等）: Project suggested by a senior and influential person 老板说选啥项目我就选啥
 - **The Operating/Competitive Necessity Model 运营/竞争必要性模型**: Project is necessary for continued operation of the company or for maintaining a competitive  position. 项目对公司的持续运营或者确保公司的竞争力的重要性
 - **The Comparative Benefit Model 比较效益模型**: A selection committee arranges projects in a ranked order and the projects will be selected 比较项目优先级。
 
-#### Project Selection Review GR1
+### Project Selection Review GR1
 
 接下来，要进行 Review 环节。有外部客户的 Review 如下：
 
@@ -233,15 +237,13 @@ Project Manager：执行，监控，控制（可能还会改团队人员或者�
 
 以及分析政治、经济、社会、技术、环境、法律等外部因素评估对项目的影响：PESTEL。
 
-Political, Economic, Social, Technological,  Environmental and Legal
+**Political, Economic, Social, Technological,  Environmental and Legal**
 
-![image-20241018140127589](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202410181401687.png)
-
-### Prepare B&P 准备提案
+## Prepare B&P 准备提案
 
 评估完成后就开始准备提案了。首先需要根据客户需求创建 project 并制定项目计划。
 
-#### Define project charter 定义项目章程
+### Define project charter 定义项目章程
 
 主要作用是让大家尽早达成一致，别做着做着发现大家目标不同。
 
@@ -252,7 +254,7 @@ Political, Economic, Social, Technological,  Environmental and Legal
 - goals, objectives, constraints
 - 等等……
 
-##### Requirements & Requirements baseline 需求和需求基线
+#### Requirements & Requirements baseline 需求和需求基线
 
 **注意下面的部分会提到一些概念，ppt 中强调务必不能搞混。Requirements, Goals, Objectives, Deliverables**
 
@@ -269,7 +271,7 @@ A requirement is a specific need or want defined in  unambiguous, abstract, clea
 
 ![image-20241103122003256](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031220378.png)
 
-##### Goals and Objectives 目标和具体目标
+#### Goals and Objectives 目标和具体目标
 
 Goal is  an overarching long-term clear aim. 项目的总体方向和预期成果，是一个长期、清晰、覆盖整个项目的目标。*比如：开发一个可用于自动驾驶车辆认证的模拟器。*
 
@@ -277,19 +279,19 @@ Objectives are concrete measurable achievements to be made following a certain  
 
 需求是项目必须满足的特定条件，用于判断项目是否成功。具体目标是为了实现项目总体目标制定的短期步骤，有助于项目逐步达成预期成果。比如需求规定系统响应时间必须小于1秒，那么具体目标可能会是“优化代码和数据库查询，在6个月内将系统响应时间减少到1秒以内”。*主要区别可能是具体目标有特定的步骤，时间金钱等限制？*
 
-##### Deliverable 可交付物
+#### Deliverable 可交付物
 
  the outcome/result of a project’s task/activity. 在 execution phase 产生，交给股东衡量是否和 proposal phase 阶段的 objectives 相符。
 
-#### Define Project Structures 定义项目结构
+### Define Project Structures 定义项目结构
 
-#####  Organisational Breakdown Structure 组织分解结构
+####  Organisational Breakdown Structure 组织分解结构
 
 to Organize the people who will be working on the project 所有要给这个项目打工的人。下图是一个 OBS 的示例，细化到每个层次的人，以及他们要向谁汇报。
 
 ![image-20241103125335269](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031253335.png)
 
-#####  Work Breakdown Structure 工作分解结构
+####  Work Breakdown Structure 工作分解结构
 
 把整体大工作分解为许多小工作（并且包含交付 deliverables 部分）。
 
@@ -303,19 +305,19 @@ to Organize the people who will be working on the project 所有要给这个项�
 - deliverables, milestones 产出
 - resources estimates 资源评估
 
-##### Responsibility Assignment Matrix (RAM)
+#### Responsibility Assignment Matrix (RAM)
 
 这部分有点像之前的股东分类。列出每个 WP 有谁参与，这些人的参与度。
 
 ![image-20241103131021874](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031310967.png)
 
-#### Create Management Plans (PMP) 准备管理计划
+### Create Management Plans (PMP) 准备管理计划
 
  defines how the project is executed,  monitored, and controlled.
 
 ![image-20241103133651829](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031336900.png)
 
-#### Estimates - Develop Costs/Budgets 评估成本
+### Estimates - Develop Costs/Budgets 评估成本
 
 Identify, define and establish all cost elements to be consider in the Project Lifecycle
 
@@ -338,7 +340,7 @@ cost 分为 direct / indirect
 - monitor estimating process
 - record, report, manage
 
-#### Risks 风险
+### Risks 风险
 
 A risk is an uncertain event, that, should it occur, would have an adverse effect  on the course of the project. 一旦发生会对项目造成不利影响。
 
@@ -349,7 +351,7 @@ risk 主要分为：
 - Risk Handling
 - Risk Monitoring
 
-#### Establish Resource Needs & Schedule
+### Establish Resource Needs & Schedule
 
 Specify a baseline for task durations, deliverables/milestones, dependencies and  expected resources to be allocated.
 
@@ -359,15 +361,15 @@ Specify a baseline for task durations, deliverables/milestones, dependencies and
 
 ![image-20241103145602198](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031456267.png)
 
-#### Project Proposal
+### Project Proposal
 
 Bid Manager 把各个提案部分**整合 integration** 起来变成一个用户文档。
 
-### Proposal Submission Review 提案审核与提交
+## Proposal Submission Review 提案审核与提交
 
 Bid Team 把最终的相关文档发给高层 Senior Management，等待其和  peer reviewers 的建议。确保 GR1 阶段决策基本都完成后进入下一阶段。
 
-#### Technical review of the proposal 技术审核
+### Technical review of the proposal 技术审核
 
 Reviewer 应该采纳用户建议 Customer Review Board，并且假设自己对项目没有任何先验知识 proir knowledge 地考虑一系列问题：
 
@@ -381,13 +383,13 @@ Reviewer 应该采纳用户建议 Customer Review Board，并且假设自己对�
 
 reviewer 应当在一定期限内考虑这些问题的解决方法和项目的改进方案，再发送给 technical lead。
 
-#### Proposal Submission Review GR2
+### Proposal Submission Review GR2
 
 完成风险审核和技术审核后进入 GR2。总结如下内容：
 
 ![image-20241103153039506](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411031530574.png)
 
-#### Proposal Hearing &  Negotiation Review GR3 听证会
+### Proposal Hearing &  Negotiation Review GR3 听证会
 
 用户可能会提问以及协商，bid team 需要准备召开听证会来获取用户授权许可签合同。
 
@@ -399,7 +401,7 @@ reviewer 应当在一定期限内考虑这些问题的解决方法和项目的�
 - Manage Price and contract: 销售经理确定可以协商的价钱范围，别给我砍一半我再不挣钱就完蛋了
 - Establish the contractual terms of the commercial proposal：采购主管 capture leader 在 bid manager, financial controller 和 contract manager 投标经理，财务总监，合同经理的帮助下确定商业计划书的合同条款
 
-#### Handover – GR4 交接
+### Handover – GR4 交接
 
 提案现在就当交完了，也和用户协商通过签合同了。接下来就不是 bid manager 主要负责的事情了，要交接给 project manager 开始干项目了，所以要把现有文件进行交接。
 
@@ -415,11 +417,11 @@ bid team 需要做的有：
 - updating the commercial opportunity data 更新商业机会数据，后续投标有用（这个公司这次采纳了我们的xx项目投标，说不定下次也很有机会继续合作）
 - handover!
 
-## Managing Risks and Estimates 风险和评估
+# Managing Risks and Estimates 风险和评估
 
 ![image-20241116042026518](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411160420760.png)
 
-### Risks 风险
+## Risks 风险
 
 风险是不确定是否真的会发生但是可以预见的事件。
 
@@ -430,12 +432,12 @@ bid team 需要做的有：
 - Risk Handling (Actions)：制定行动计划，记录了解决 risk 的 action 和其实现方式，相关开销，以及 risk register.
 - Risk Monitoring & Control：观察风险，采取缓解措施 mitigation actions，控制 actions 管理风险，并且检验记录这些方法对解决风险和风险产生的根本原因的有效性。
 
-#### 建立风险管理策略
+### 建立风险管理策略
 
 - establishing the risk management strategy 建立风险管理策略：通过一个结构化且连贯的方法来**动态地**管理风险；深入到具体细节（如股东，技术等）；定期根据项目的近期发展，重新评估方法以及采取新方法。
 - Compiling a Risk Register 风险登记单：记录了风险源，风险严重程度，风险类型（技术类，顾客金融类等），相应的解决措施；而且定期重新审阅风险登记单，删除不再有效的风险。
 
-#### Identification of Risks 识别风险
+### Identification of Risks 识别风险
 
 主要分为四步：
 
@@ -452,13 +454,13 @@ bid team 需要做的有：
 
 ![image-20241116180032263](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411161800333.png)
 
-#### Risk Prioritisation 风险优先级分析
+### Risk Prioritisation 风险优先级分析
 
 基于：发生概率，影响（如经济损失，时间损失，项目表现结果下降，公司形象受损）进行分类评级。两个维度是独立事件，求交集是分别的概率直接相乘。
 
 ![image-20241116180239736](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411161802801.png)
 
-#### Risk Handling 风险处理
+### Risk Handling 风险处理
 
 避免 avoid，转移 transfer，减少 reduce，接受 accept / tolerate。
 
@@ -470,7 +472,7 @@ bid team 需要做的有：
 
 Severity = Impact \* Likelihood
 
-#### Risk Monitoring and Control 风险检测控制
+### Risk Monitoring and Control 风险检测控制
 
 由 RM PM 负责。
 
@@ -478,7 +480,7 @@ Severity = Impact \* Likelihood
 
 项目执行阶段，监控风险，检查其是否处于控制之下；采取风险应对措施并检测其效果；定期重新审阅并更新风险，风险处理方案等内容。
 
-### Estimate 评估
+## Estimate 评估
 
 在项目整个生命周期都会进行，评估成本、时间周期、资源等。
 
@@ -487,18 +489,18 @@ Severity = Impact \* Likelihood
 3. 在项目过程中记录成本，时间周期，资源等，完成项目估算。
 4. 复盘评估，分析置信度 confidence level of estimates.，总结。
 
-#### 待评估项
+### 待评估项
 
 - resources：人力资源，材料，设备，供应等。使用 work breakdown structure 分解每个结构。
 
 - time：从活动信息和活动资源开始考虑，将其拆为 wp 或者 tasks 以及相应需要使用的工具。人们一般都会过度乐观，高估自己完成任务的速度，所以建议是找没做过类似工作的人评估时间，并且考虑只有80%的时间是有效工作的，再加上对突发事件的容错。
 - costs：人力，材料，设备，风险等直接开销；公共资源（如电话费，邮费等）开销，非直接员工开销，非直接设备开销（如电费，房费，保险）等非直接开销。
 
-#### 准备评估
+### 准备评估
 
 需要选出一个 estimate manager 评估经理。先确定评估范围，然后逐步细化到项目每个阶段每个部分，项目外部依赖等，给每个 WP 创建一个 Estimate Package，并且发给对应的 WP leaders。
 
-#### 评估方法
+### 评估方法
 
 - top-bottom 自顶向下：适合项目具体细节不清楚或者需要在短时间内完成评估的场景，不太精细，大致算出总体的花费和总体解决方式即可。图像大致呈倒三角。
 - bottom-top 自下向上：具体细化到每一个 WP，Tasks 的花费。正三角。
@@ -521,11 +523,11 @@ Severity = Impact \* Likelihood
 - 三点评估法 3-point：见下。
 - 蒙特卡洛法 monte-carlo：见下。
 
-#### Aggregate & Review 汇总
+### Aggregate & Review 汇总
 
 汇总总数据，记录以便后续项目过程中回顾。
 
-#### 三点评估法（处理不确定性）
+### 三点评估法（处理不确定性）
 
 当然肯定我们的评估预测不可能百分之百准确。三点评估法是一种处理工期和成本不确定性的方法，基于：输入数据的不确定性；历史数据的不确定性；评估过程中的方法的不准确性进行预测。
 
@@ -550,13 +552,13 @@ Severity = Impact \* Likelihood
   $$
   ![image-20241117210457670](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202411172104797.png)
 
-#### 蒙特卡洛法
+### 蒙特卡洛法
 
 信息非常有限时使用，否则优先使用三点评估法。
 
 根据事件发生的概率生成随机事件计算评估值，最后再整合。
 
-## Structuring and Scheduling 组织计划
+# Structuring and Scheduling 组织计划
 
 项目结构包括：
 
@@ -566,11 +568,11 @@ Severity = Impact \* Likelihood
 - other complimentary sections
 - summary and conclusions
 
-### Work
+## Work
 
 指明了项目中必做的 tasks and jobs
 
-####  Work Breakdown Structure (WBS)
+###  Work Breakdown Structure (WBS)
 
 把工作进行细分：
 
@@ -580,13 +582,13 @@ WPs 在逻辑上依靠前一个 WPs，比如：场地准备，购买材料，建
 
 WPs 是成本和进度的基础，每个 WPs 对一定的资源和管理责任负责。在项目执行过程中用项目预定进度和每个 WPs 的实际进度进行对比核实，并以 WPs 为单位采取相应的调整措施。
 
-### Scheduling
+## Scheduling
 
 将项目计划转换成图表等形式，典型的例子是甘特图。
 
 甘特图可以显示项目的起止日期，相互之间的依赖情况，以及所需资源等。
 
-#### Project schedule
+### Project schedule
 
 项目管理人员通过 Project schedule 来计划和审查项目。
 
@@ -594,7 +596,7 @@ WPs 是成本和进度的基础，每个 WPs 对一定的资源和管理责任�
 
 比如：WP Schedule，
 
-#### Scheduling Process & Challenges 流程和挑战
+### Scheduling Process & Challenges 流程和挑战
 
 scheduling 的过程包括：
 
@@ -609,7 +611,7 @@ scheduling 的过程包括：
 3. 资源有限；
 4. 复杂任务的处理。
 
-#### Schedule Development Activities 制定计划的12步活动
+### Schedule Development Activities 制定计划的12步活动
 
 1.  Identify the WPs/tasks 判断此项目中哪些是 WP，哪些是 tasks。
 
@@ -669,13 +671,13 @@ Negative Float NF：该项目已经落后了，需要提前几天完成。
 11. Resource Levelling 考虑资源因素调整活动的起止时间；常用甘特图，对于有共享资源的项目比较一目了然。
 12. Final Approval：制定 schedule baseline；把 schedule 上交给高级管理者批准，后续嵌入到项目中。
 
-## Managing Project 管理计划
+# Managing Project 管理计划
 
-### Completing Bid & Proposal
+## Completing Bid & Proposal
 
 首先我们需要完成投标。包括召开听证会给客户答疑，制定合同，交接到项目执行阶段，以及投标阶段的复盘与关闭。
 
-### Initialise
+## Initialise
 
 将从投标阶段递交过来的数据整理存入项目数据库，检查有无缺少部分等。PM 审核后批准项目章程。
 
@@ -693,7 +695,7 @@ Present the project main parts in particular 呈现项目的主要部分，比�
 
 如果可能的话，还需要对项目进一步修改。
 
-### Project Manager Responsibilities
+## Project Manager Responsibilities
 
 PM 负责的内容：
 
@@ -707,17 +709,17 @@ PM 必须是一个很好的谈判者，无论是谈判获取资源，和项目�
 
 风险问题一般源自于低估项目所需资源以及资源分配得不好。如果出现障碍，PM 需要及时提出解决方案并和客户沟通，并吸取经验。
 
-### Project Execution, Monitoring & Control 
+## Project Execution, Monitoring & Control 
 
-#### Start  WPs & WGs
+### Start  WPs & WGs
 
 启动 WP 工作包和 WG 工作小组。WP 工作包必须要详细确定好其计划，组织，资源分配，和其他工作包的接口。
 
-#### Control Project
+### Control Project
 
 防止出现偏差；定期更新记录；一旦出现偏差采取补救措施。
 
-#### Progress Reviews
+### Progress Reviews
 
 与团队成员召开内部会议检查 WPS 进度；
 
@@ -731,21 +733,21 @@ PM 必须是一个很好的谈判者，无论是谈判获取资源，和项目�
 
 ![image-20241207173309122](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071733296.png)
 
-#### Manage Customer
+### Manage Customer
 
 定期与客户交换信息达成一致；商务信息必须和商务经理沟通分析。
 
-#### Manage QA
+### Manage QA
 
 确保品质；定期检查应用质量和客户评价。
 
-### Project Closure
+## Project Closure
 
 PM 确保项目按合同完成所有需求，产出相应交付物，并取得合规文件（如海关出口许可），让财务提出最终费用 final invoices 后准备关闭项目。需要获取客户同意，以及更新项目数据库，Lesson Learnt：在团队成员的帮助下总结项目的优缺点。
 
-### Project Management Methods
+## Project Management Methods
 
-#### Methods
+### Methods
 
 Project Management Institute (PMI)：一种项目管理标准。
 
@@ -757,7 +759,7 @@ Project Management Institute (PMI)：一种项目管理标准。
 
 ![image-20241207175949934](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412071759021.png)
 
-#### Tool
+### Tool
 
 比如微软的 Microsoft Project Management，还有 Chorus 2.0。
 
@@ -767,11 +769,11 @@ Chorus 2.0 是一个流程框架 process  & procedures framework，所有工具�
 
 B1 是电商套件；Primavera 是 schedule 工具，类似微软 Project 工具（相比微软工具，Primavera 量级更大，需要填写的细节更多，适合大型项目）；OTL Oracle Time and Labour 是时间和考勤管理工具；mTools 接受上述输入，并提供实际进度、预测花费等信息。
 
-## Project Extcution 项目执行
+# Project Extcution 项目执行
 
 下面介绍一些项目执行模型。
 
-### waterfall 瀑布模型
+## Waterfall 瀑布模型
 
 就像瀑布顺着台阶留下来一样，一级一级地执行。
 
@@ -781,7 +783,7 @@ B1 是电商套件；Primavera 是 schedule 工具，类似微软 Project 工具
 
 Change Request 很常见，可能原因有：客户有新的需求；客户希望使用新技术；目前项目耽搁太多时间了；检测到新风险需要避免；等等。PM 在收到 Change Request Form 后必须评估改变请求对项目造成的影响。
 
-### Agile 敏捷开发
+## Agile 敏捷开发
 
 实际上在项目过程中，保持需求不变几乎是不可能的。所以没办法在最开始就确保整个项目的所有需求。
 
@@ -824,7 +826,7 @@ Change Request 很常见，可能原因有：客户有新的需求；客户希�
 
 ![image-20241207201252884](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412072012009.png)
 
-#### Scrum
+### Scrum
 
 Product Owner：客户。
 
@@ -854,7 +856,7 @@ Scrum 需要召开的会议如下：
 
 - sprint review：重审后就可以发布计划了。
 
-#### Kanban
+### Kanban
 
 看板是一种管理产品创建的方法，强调持续交付且不给开发团队带来太大的负担。
 
@@ -875,19 +877,19 @@ Scrum 需要召开的会议如下：
 | 生产力的量度 | velocity，每个 sprint 的完成时间都依赖于前一个 sprint 的完成 | cycle time：从开始到结束完成项目的一个完整部分来度量 |
 | 最佳应用场景 | 有稳定优先级的工作和团队，优先级不会修改                     | 有广泛不同优先级的项目                               |
 
-#### Scrummerfall
+## Scrummerfall
 
 混合了瀑布模型和 Agile。
 
 ![image-20241210022630433](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412100226532.png)
 
-## Control And Monitoring 检查控制
+# Control And Monitoring 检查控制
 
 执行过程中要持续监视项目状态并加以调控。这样让项目在有限的时间等资源范围内，在预期范围内发展，也可以减小风险，提高项目产出质量。
 
 但是需求和目标在项目执行过程中不断变化，控制不及时可能赶不上最佳时间。而且对于复杂项目来说控制难度更大。
 
-### Control Steps
+## Control Steps
 
 1. 确定要控制的量度 criteria/metrics：选择要被衡量的指标
 2. 建立标准 standards for performance analysis
@@ -900,7 +902,7 @@ Scrum 需要召开的会议如下：
 9. 实施措施
 10. 确保差表现不再出现 does not re-appear
 
-### 控制重点
+## 控制重点
 
 - Scope Control 控制范围：不要超出项目负责的范围，因为会浪费时间预算。
 - Schedule 控制时间：和计划的时间表对比，不能超时（如甘特图）。可以在计划阶段加入 time buffers，避免一心多用 multi-tasking，频繁收集活动状态，公布提前完成的好处和晚完成的惩罚。
@@ -908,16 +910,16 @@ Scrum 需要召开的会议如下：
 - quality 控制质量：采取预防措施，遵循质量计划。
 - Procurement 控制采购：控制对采购负责的承包商 contractor；提前列出应急解决措施。
 
-### 控制可能存在的问题
+## 控制可能存在的问题
 
 1. 不及时的控制措施可能跟不上变化；
 2. 成员对控制了解不到位；尽量人手一本手册。
 3. 发生问题时过度反应或者不采取措施。
 4. 及时报告问题。
 
-### performance analysis 分析表现
+## performance analysis 分析表现
 
-#### EVPM 分析时间金钱成本
+### EVPM 分析时间金钱成本
 
 Earned Value Performance Management 挣值绩效管理方法
 
@@ -949,7 +951,7 @@ c) 实际上每米花费 210 英镑，求 ACWP：210\*400
 
 但是如果出现了项目以外的开销影响（比如间接开销太大，影响 CV 为负数，但是对项目性能没影响）或者有没及时更新的数据，EVPM 方法就不一定准确。
 
-### Forcasting 预测是否即将完成/是否完成
+## Forcasting 预测是否即将完成/是否完成
 
 BAC：budget at Completion 完成时（计划）预算。**BCWP/BAC 表示工作量完成百分比**
 
@@ -959,9 +961,9 @@ ETC：Estimate to complete 剩余工作成本，**ETC = WP / CI**
 
 EAC：Estimate at Completion 完成时工作成本，**EAC=ACWP+ETC**，相当于现在的成本+按照现在的花费速度，完成剩余部分需要的成本。**EAC=BAC / CI**
 
-## Project Outputs and Managing IP 项目产出；知识产权管理
+# Project Outputs and Managing IP 项目产出；知识产权管理
 
-### Project Outputs 项目产出
+## Project Outputs 项目产出
 
 首先需要区分一下 Outputs 和 Outcomes 的概念。Outputs 是有形或无形的产出物，而 Outcomes 更接近于“间接价值”，比如价值，社会影响，有用性等。
 
@@ -981,11 +983,11 @@ EAC：Estimate at Completion 完成时工作成本，**EAC=ACWP+ETC**，相当�
 
 开发硬件类似，要遵循一定的硬件开发原则、代码编写规范等，并产出相应文档说明。
 
-#### Intangible  Outputs 无形产出
+### Intangible  Outputs 无形产出
 
 专利发明、创新这一类都属于无形的产出。不是一种技术，而是价值 value。
 
-### Intellectual Property IP
+## Intellectual Property IP
 
 IP 是一种财产，比如人类智力的无形创造。有很多种形式的 IP 用于保护创意，比如“商标” trade marks 用于保护品牌形象 brand；“版权” copyright 用于保护文件，图片，音乐等；专利保护发明；设计权保护产品外观……
 
@@ -997,7 +999,7 @@ IP 是一种财产，比如人类智力的无形创造。有很多种形式的 I
 
 业务销售部需要确定哪些关键技术需要 IP 保护，是否被保护了，以及能否使用这些 IP 攻击竞争对手。而法务部则避免发生此类情况（之前的中国乔丹，“乔丹是一种花名”，“我们的中国乔丹拿的是乒乓球拍”一案）。
 
-#### IP 保护方法
+### IP 保护方法
 
 - 商标 trade marks：比如图标，口号等。
 - 设计 Designs：分为外部可见的和内部设计两种。外部可见的设计（比如头盔，网页前端）保护其整体外观，最长注册时间25年，注册成功会有®标志。
@@ -1006,7 +1008,7 @@ IP 是一种财产，比如人类智力的无形创造。有很多种形式的 I
   - *软件只要对**技术**问题有所改进，比如能耗、效率等，就可以申请专利。但不包括非技术性的管理等方面。*
 - 商业机密 Trade Secret：比如配方，设计方法，工具等。相较其他知识产权，商业机密不公开。雇员可以签署合同来保证不泄露商业机密地使用。
 
-### Agreements and Liscences 协议和许可
+## Agreements and Liscences 协议和许可
 
 - 在多方合作项目中，所有人需要达成一致，制定保密协议 Non Disclosure Agreement 明确哪些部分是保密的，并且遵守保密义务。最终，在 B&P 阶段结尾，需要制定**联盟协议 Consortium Agreements (CA)**。
 
@@ -1017,21 +1019,21 @@ IP 是一种财产，比如人类智力的无形创造。有很多种形式的 I
 
 ![image-20241225180148283](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202412251801392.png)
 
-### Dissemination &  Exploitation 传播推广
+## Dissemination &  Exploitation 传播推广
 
 Dissemination：确定目标受众 target audience，传播途径 dissemination channels，关注 Stackholders 确保有效传播。
 
 Expliotation：首先确定不同的推广策略，主要分为商业 Commercial、知识 Knowledge、学术 Research/Academic 三种。然后找到其使用场景 Real-life Usage Scenarios 并投放使用，优先确定将有效利用结果的关键参与者  the players who will exploit the results。
 
-## Project Closure 项目关闭
+# Project Closure 项目关闭
 
 完结撒花！
 
-### Project Success or Failure
+## Project Success or Failure
 
 对于客户和 PM 来说的项目成功性是有区别的。客户只需要考虑是否达到自己的需求就可以了，PM 要考虑的可就多了。比如预算，时间期限，产品质量，客户满意度，团队关系，公司地位。
 
-### Project Closing
+## Project Closing
 
 PM 的最后一个任务。关闭项目包括：
 
@@ -1039,7 +1041,7 @@ PM 的最后一个任务。关闭项目包括：
 - Contractual agreements 合同被正确履行
 - 项目记录在库
 
-#### Project Termination 项目终止
+### Project Termination 项目终止
 
 首先需要停止项目。
 
@@ -1048,7 +1050,7 @@ PM 的最后一个任务。关闭项目包括：
 - starvation 饥饿终止：项目因资源枯竭，预算削减或政治因素而结束。
 - extinction 灭绝终止：高层管理层停止项目，因为没有达到预期目标，或者觉得效益不好。
 
-#### Project Closure Process/Actions
+### Project Closure Process/Actions
 
 PM 完成项目的其他阶段后，开始准备：
 
@@ -1064,7 +1066,7 @@ PM 完成项目的其他阶段后，开始准备：
 
 当所有要求都完成后，CM 应批准关闭项目。
 
-### Post-Mortem Analysis 事后分析
+## Post-Mortem Analysis 事后分析
 
 对项目的成功和不成功点进行总结分析，吸取教训。
 

@@ -50,7 +50,7 @@ c) 把特定数据点分配到降维后的空间内的方法：降维矩阵直�
 
 ![ ](https://raw.githubusercontent.com/Jingqing3948/FigureBed/main/mdImages/202501070120357.jpg)
 
-# January 2024 File
+# January 2024
 
 ## 1
 
