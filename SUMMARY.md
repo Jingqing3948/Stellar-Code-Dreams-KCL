@@ -14,3 +14,5 @@
 * [Project Management 7CCEMPRO](project-management-7ccempro/README.md)
   * [Note](project-management-7ccempro/note.md)
   * [Problems](project-management-7ccempro/problems.md)
+* [Design and Analysis of Digital Integrated Circuits 7CCEMICD](design-and-analysis-of -digital-integrated-circuits-7ccemicd/README.md)
+  * [Note](design-and-analysis-of -digital-integrated-circuits-7ccemicd/note.md)
