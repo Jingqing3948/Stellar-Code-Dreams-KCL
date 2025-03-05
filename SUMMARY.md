@@ -16,3 +16,5 @@
   * [Problems](project-management-7ccempro/problems.md)
 * [Design and Analysis of Digital Integrated Circuits 7CCEMICD](design-and-analysis-of-digital-integrated-circuits-7ccemicd/README.md)
   * [Note](design-and-analysis-of-digital-integrated-circuits-7ccemicd/note.md)
+* [Sensors and Actuators 7CCEMSAI](sensors-and-actuators-7ccemsai/README.md)
+  * [Note](sensors-and-actuators-7ccemsai/note.md)
